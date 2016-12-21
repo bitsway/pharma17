@@ -1,0 +1,2789 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>M-Reporting</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="build/icons.css" />
+
+    <link rel="stylesheet" type="text/css" href="build/af.ui.css" />
+
+     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.shim.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.ui.js"></script>
+
+
+    <script src="src/af.desktopBrowsers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.actionsheet.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animation.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.touchEvents.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.drawer.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.toast.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animateheader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.splashscreen.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.swipereveal.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.lockscreen.js"></script>
+	
+     <script src="survey.js"></script>
+     <script type="text/javascript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+     </script>
+</head>
+
+
+
+
+
+<body >
+    <div id="splashscreen" class='ui-loader heavy'>
+                M-Reporting
+                <br>
+                <br>
+                <span ><img style="" width="50px;" src="loading.gif" alt=""></span>
+                <h1>Starting ......</h1>
+
+            </div>
+    
+  
+  
+            
+            
+            
+            
+            
+          <!--  //============Login page Start-->
+    
+
+    
+    
+    <div class="view" id="loginView">
+        <div class="pages">
+         <header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Login</h1> </header> 
+            <div class="panel" id="login">
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <br><br><br><br>
+                    <div id="error_login" style="color:#C00"></div> 
+                    <input name="error_logintext" id="error_logintext"  type="hidden" placeholder="CID" value="">	
+                    <div class="input-group">
+                    	<form>		
+						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
+                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
+                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
+                    </form>						
+                    </div>
+                     <input type="submit" id="loginButton" onClick="check_user();new_ps()"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Sync     "   />
+                   <!-- <a class='button' id="loginButton" onClick="check_user()"  data-transition='up-reveal:dismiss'>Sync</a>-->
+                    <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
+                    
+               <!-- </div>-->
+            </div>
+        </div>
+        <footer>
+		 <a onClick="homePage()" class="icon home" ></a>
+          <a href="#imagePage"></a>
+        </footer>
+
+    </div>
+
+      
+<!--//==============================Image Page=================-->
+      
+       <div class="view" id="pageHomeView">
+        <div class="pages">
+         <header align="center"><h1 style="font-size:16px; font-weight:normal; color:#F8F8F8"><font style="font-size:12px">m</font>R<font style="font-size:14px">eporting</font></header> 
+         
+            <div class="panel" id="pageHome" >
+            
+           
+            </br></br></br></br>
+            
+  
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     <div id="error_image" style="color:#C00"></div> 
+                    <div class="input-group">
+                   
+                    <ul class="list" id="menu_lv" >
+                        
+                        </ul>
+                   
+                    
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+        </div>
+        <footer>
+		 
+
+          <a href="#" class="icon key" onclick="$.afui.drawer.show('#left','left','push')"></a>
+          <a href="#"  onclick="$.afui.drawer.show('#right','right','push')"><img style="height:30px; width:30px" src="menu.png"></a>
+         
+        </footer>
+		 <nav id="left"  style="z-index:5; background-color:#FFF;" >
+			
+				<header align="left"></header>
+                    <div class="pages" style="height:100%">     		
+                                 <!--<div  align="center"><img src="cloud_menu_1.png"></div>-->
+                                 </br></br></br>
+                                
+
+
+                               
+                               <div onClick="page_login()" align="center" > <img style="height:50px; width:50px" src="key.png"></div>
+                               
+                                 </br> </br> </br> </br>  </br> </br> </br> </br> </br> </br>  </br> </br></br> </br> </br> </br>  </br> </br>
+                                 
+                                 
+                               
+                                 <div onClick="exit()" align="center"> <img style="height:30px; width:30px" src="exit.png"></div>
+                                 
+                               
+                                
+                                
+                                <!--<li><a onClick="clear_autho()" href="#login">Clear Authorization</a></li>
+                                <div style="background:#008A8A; height:1px"></div>-->
+                       
+                        <br>
+    
+                   <!-- <div align="center"> <img src="logo_gp_p_1.png" alt="Grameen Phone" /></div>-->
+                </div>
+                 
+
+        </nav>
+        
+        <nav id="right" style="z-index:5; background-color:#FFF">
+            <div class="view active" id="navView2">
+                <header>
+                    <h1></h1>
+                </header>
+                <br>
+                 <!--<div onClick="page_inbox()" align="center"> <img style="height:70px; width:70px" src="inbox.png"></div>
+                <div style="background:#008A8A; height:1px"></div>-->
+               <div onClick="page_promo_main()" align="center"> <img style="height:70px; width:70px" src="promo.png"></div>
+               </br></br>
+              <!-- <div style="background:#008A8A; height:1px"></div>
+                <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
+               <div style="background:#008A8A; height:1px"></div>
+                <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
+                <div style="background:#008A8A; height:center"></div>-->
+                <div onClick="page_stock_main()" align="center"> <img style="height:70px; width:70px" src="stock.png"></div>
+                </br></br>
+                 <div onClick="page_notice()" align="center"> <img style="height:70px; width:70px" src="notice.png"></div>
+            </div>
+        </nav>
+        
+        
+    </div>      
+           
+  <!--//==============================Market Page=================-->
+       <div class="view" id="page_marketView">
+        <div class="pages">
+         <header align="center">
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  /></div></font></td>
+            <td width="10%" >&nbsp;</td> 
+          </tr>
+        </table>
+         
+
+         </header> 
+            <div class="panel" id="page_market">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                   
+                     <div id="error_login" style="color:#C00"></div> 
+                    
+                 <!--<div class="input-group"> -->
+                
+                <!--</div>-->
+				
+                         <ul class="list" id="market_combo_id_lv"  >
+                        
+                        </ul>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a id="dPending" name="dPending"  onClick="page_dList()" ><img src="pending.png"  height="50"  >	</a>
+        <a id="dBlank" name="dBlank" onClick="homePage()"></a>
+         </footer>
+
+    </div>               
+                      
+  
+  
+  
+  <!--//==============================Market Next Page=================-->
+       <div class="view" id="page_market_retView">
+        <div class="pages">
+         <header> 
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left" onClick="page_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="unscheduled_m_client_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchClient()"  /></div></font></td>
+            <td width="10%" ><img src="search.png" onClick="clearSearchDoctor()" width="30" height="30" alt="Back" ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_market_ret">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			
+				<div id="err_m_retailer_next" style="color:#C00"></div>
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                <div><span class="market" style="font-size:16px; color:#009191"  ></span></div>   
+
+				<br/> 
+                      
+                        <ul class="list" id="unscheduled_m_client_combo_id_lv" >				
+                       
+                        </ul>
+                        
+                        
+                        <div align="center">
+                        <img id="wait_image_ret" style="width:50px" src="loading.gif" alt="">
+                       </div>
+                        <br>
+                        <br>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+        
+		<a onClick="homePage()" class="icon home" ></a>
+        <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"   >
+        <img style="height:50px; width:50px" src="doctor_add.png"></a>
+        <a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+       
+         </footer>
+
+    </div>               
+                      
+                      
+   <!--   ================================Visit====================    -->  
+
+       <div class="view" id="page_visitView">
+        <div class="pages">
+         <header> 
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left" onClick="page_market_ret()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Chemist visit</td>
+            <td width="10%" >&nbsp;</td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_visit">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			<div id="myerror" style="color:#C00"></div>
+
+				<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  ></span></div>
+				
+				
+				
+				
+				
+				
+				
+				<table width="100%" border="0">
+  <tr>
+    <td align="center" onClick="getOrder();" style="background-color:#09C;"></br><a width="100%"  class="ui-btn" style="text-align:center; "  >
+    			<img src="order.png"></br></br></td>
+    </tr>
+    <tr>
+    <td align="center" ><img id="order_load" src="loading1.gif"  alt="Back" ></td>
+  </tr>
+</table>
+				
+				
+              
+                 <div id="order_total_show" style=" color:#009191; font-weight:bold"></div>
+              
+				
+                <input name="chemist_feedback" id="chemist_feedback" type="text" maxlength="100" placeholder="Note">
+                
+
+              
+
+                    <!--<select name="bonus_combo" id="bonus_combo" style="font-size:12px; color:#306161; background-color:#ECECFF">
+                     
+                    </select>-->
+                  
+              
+              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						<td>Priority Offer</td>
+						<td width="30%"> 
+                        <input type="radio" name="bonus_combo" value='YES' id="YES" checked >  <label for="YES">YES</label>
+                        </td>
+						<td width="30%"> 
+                        <input type="radio" name="bonus_combo" value='NO' id="NO"  >  <label for="NO">NO</label>
+                        </td>
+					  </tr>
+			  </table>
+				              
+              
+              
+              
+                
+                
+                <br/>
+          
+                <input name="errorChkVSubmitTxt" id="errorChkVSubmitTxt"   type="hidden">
+                <div id="errorChkVSubmit_1" style="color:#C00"></div>
+				<div id="errorChkVSubmit" style="color:#C00"></div>
+			<img src="" width="128" height="128" alt="" id="myImage" style="display:none">
+			<input name="lscPhoto" id="lscPhoto"   type="hidden">
+
+
+			
+			<div id="delivery_date_div">
+                <span style=" color:#009191; ">Delivery Date</span>
+				<input name="delivery_date" id="delivery_date"  value="" type="date" placeholder="Delivery Date">
+			</div>
+            <div id="collection_date_div">
+                <span style=" color:#009191; ">Collection Date</span>
+				<input name="collection_date" id="collection_date"  value="" type="date" placeholder="Delivery Date">
+			</div>
+            
+			<div id="payment_date_div">
+            	<span style=" color:#009191; ">Payment Date</span>
+				<input name="payment_date" id="payment_date"  value="" type="date" placeholder="Payment Date">
+			</div>
+			
+            
+            
+			<div id="payment_mode_div">
+          
+			
+
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						<td>Payment Mode</td>
+						<td width="30%"> 
+                        <input type="radio" name="payment_mode" value='Cash' id="Cash" onClick="payment_mode()" checked >  <label for="Cash">Cash</label>
+                        </td>
+						<td width="30%"> 
+                        <input type="radio" name="payment_mode" value='Credit' id="Credit" onClick="payment_mode()" >  <label for="Credit">Credit</label>
+                        </td>
+					  </tr>
+			  </table>
+			</div>
+
+			<br/>
+            <br/>
+
+			<input type="hidden" name="lat" id="lat" >
+			<input type="hidden" name="longitude" id="longitude" >
+            <!--readonly-->
+            
+			
+
+             <div id="checkLocation" style="color:#066"></div>
+            <div align="center"><img id="wait_image_visit_submit" style="" width="50px;" src="loading.gif" alt=""></div>
+            <div id="visit_location">
+            <input type="submit" id="loginButton" onClick="getLocationInfo();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Confirm Location     "   />
+			     
+            </div>
+			<br/>
+            <br/>
+            
+           
+            
+            
+           
+			<div id="visit_submit">
+            <input type="submit" id="btn_visit_submit" onClick="visitSubmit();"  style="width:100%; height:100px; background-color:#09C; color:#FFF; font-size:20px" value="    Submit     "   />
+            
+          
+            </div>
+            
+            
+            
+            
+            <br/><br/><br/>
+            <br/>
+            
+            <div id="visit_save_div">
+             <input type="submit" id="btn_visit_save" onClick="visitSave();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Save     "   />
+             
+           <!--</br> </br>
+            <input type="submit" id="btn_visit_save" onClick="app.sendSms()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Sent by SMS     "   />-->
+            
+          
+            
+             
+            </div>
+			
+				
+            <br/><br/><br/><br/><br/><br/><br/>
+                
+                    
+               <!-- </div>-->
+         </div>
+         </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a href="#"  onclick="$.afui.drawer.show('#customerInfo','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
+        </footer>
+        
+        
+        
+         <nav id="customerInfo" style="z-index:5; background-color:#FFF">
+            
+                <header>
+                   
+                </header>
+                <br>
+                 
+
+          	 <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
+             <br>
+             <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
+             <br>
+             <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
+             <br>
+             <div onClick="page_clientApproved()" align="center"> <img style="height:70px; width:70px" src="approved.png"></div>
+
+           
+        </nav>
+
+    </div> 
+
+  
+  <!--//==================Order===================-->
+    
+
+  
+       <div class="view" id="page_orderView">
+        <div class="pages">
+         <header> 
+         <table width="100%" border="0">
+          <tr>
+            <!--<td width="10%" align="left" onClick="page_visit()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	-->
+           <!-- <td align="left" width="30px" style="color:#000"> 
+           <select id="item_combo" style=" width:40px"data-native-menu="false" onChange="comboSearch()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+                </td>-->
+                <td>
+                
+                 <input  type="text" id="item_combo_id" name="item_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search by Name" onKeyUp="searchProduct()"  />
+            </td>
+            <td width="40%"><div id="orderTotalShow" style="color:#FFF" align="center"></div></td>
+            <td width="20%" align="right" onClick="getOrderData()" ><img src="icon-arrow-right_1.png" width="30" height="30" alt="Next" >&nbsp;&nbsp;</td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_order">
+            </br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                
+				
+			
+				<div id="err_order_item" style="color:#C00"></div>
+                
+            	
+                      
+                
+                <table width="100%" border="0"   >
+                <tr>
+                <td width="90%"  style="vertical-align:top;overflow:scroll; height:700px; display:block">
+                 <ul class="list" id="item_combo_id_lv" >	</ul>
+                 </td>
+                
+                 <td style="vertical-align:top" >
+                    <table >
+                    <tr  onClick="searchProductChar('A')">
+                    <td height="20px" >A</td>
+                    </tr>
+                    <tr  >
+                  
+                    <tr style="vertical-align:top" onClick="searchProductChar('B')">
+                    <td height="20px">B</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('C')">
+                    <td height="20px">C</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('D')">
+                    <td height="20px">D</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('E')">
+                    <td height="20px">E</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('F')">
+                    <td height="20px">F</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('G')">
+                    <td height="20px">G</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('H')">
+                    <td height="20px">H</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('I')">
+                    <td height="20px">I</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('J')">
+                    <td height="20px">J</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('K')">
+                    <td height="20px">K</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('L')">
+                    <td height="20px">L</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('M')">
+                    <td height="20px">M</td>
+                    
+                    </tr>
+                    <tr style="vertical-align:top" onClick="searchProductChar('N')">
+                    <td height="20px">N</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('O')">
+                    <td height="20px">O</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('P')">
+                    <td height="20px">P</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('Q')">
+                    <td height="20px">Q</td>
+                    </tr>
+                   
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('R')">
+                    <td height="20px">R</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('S')">
+                    <td height="20px">S</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('T')">
+                    <td height="20px">T</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('U')">
+                    <td height="20px">U</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('V')">
+                    <td height="20px">V</td>
+                    </tr>
+
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('W')">
+                    <td height="20px">W</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('X')">
+                    <td height="20px">X</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('Y')">
+                    <td height="20px">Y</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchProductChar('Z')">
+                    <td height="20px">Z</td>
+                    </tr>
+                    </table>
+                </td>
+                </tr>
+                </table>
+     
+
+                         <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+        
+        
+                <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit()" class="icon left" ></a></td>
+    
+    <td align="left" width="80%" style="color:#FFF">
+    <span class="visit_client"  style="font-size:12px; color:#FFF"  style="font-size:16px; color:#005CB9" ></span> - <span class="market" style="font-size:12px;color:#FFF" ></span>
+				
+				<!--<input  type="number" id="item_codeSearch" name="item_codeSearch" style="width:150px; color:#000; font-weight:normal" placeholder="Search by ID" onKeyUp="searchProductCode()"  />-->
+      			 
+         </td>
+  </tr>
+</table>
+	</footer>
+
+    </div>  
+  
+  
+ <!-- //==================Cart======================-->
+  
+       <div class="view" id="page_cartView">
+        <div class="pages">
+             <header> 
+             <table width="100%" border="0">
+              <tr>
+                <td width="10%" align="left" >	</td>
+                <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Order</td>
+                <td width="10%" ></td> 
+              </tr>
+            </table>
+            </header> 
+            <div class="panel" id="page_cart">
+            </br></br></br></br>                     
+				<br><br>
+			
+				<div id="err_m_retailer_next" style="color:#C00"></div>
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                
+				
+				
+                        
+					 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td style=" color:#009191"> 
+                    <div><b></b><span class="market" style="font-size:16px;color:#009191"></span></div>
+				   <div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0" ></span></div>
+                    </td>
+                    <td width="30px"><a  onClick="getOrder_load();"  href="#page_order" ><img src="edit.png"></a></td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table>
+				<div id="myerrorCart" style="color:#C00"></div>
+				
+                <br>
+                <br>
+				       
+                         <ul class="list" id="item_combo_id_lv_cart" >				
+                       
+                        </ul>
+				
+                </br>
+                
+                
+                <div id="product_total_cart" style=" color:#009191; font-weight:bold"></div>
+				
+				<!--<div  style=" color:#009191; font-weight:bold">
+						<input type="hidden" name="payment_mode" id="payment_mode" value="CASH" >
+			  </div>-->
+				
+                </br>
+
+
+             <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+               <td style=" background-color:#DEF; height:50px"  align="center" onClick="cancel_cart()" ><img src="cancel.png"></td>
+                <td width="5px">&nbsp;</td>
+                 <td style=" background-color:#DEF; height:50px"  align="center" onClick="cart_ok()"  ><img src="ok.png"></a></td>
+              </tr>
+            </table>
+            
+            </br></br></br></br></br></br></br></br>
+                
+                    </div>
+                   
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+
+
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+    
+    
+ <!-- //=======Order Submit Success===============-->   
+ 
+ 
+ <!--//==================Order===================-->
+    
+
+  
+       <div class="view" id="page_confirm_visit_successView">
+        <div class="pages">
+         <header> 
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Success</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+		</header> 
+            <div class="panel" id="page_confirm_visit_success" align="center">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                
+				
+			<!--<div align="center">-->
+				<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; height:200px; color:#FFF; font-size:20px;"   align="center"></br></br></br>Submitted Successfully</div>
+             <!--</div>-->
+
+            <br/><br/>
+            <input type="submit" id="btn_visit_save" onClick="homePage();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     New      "   />
+            
+            
+           
+            
+			
+			
+                        
+
+                        <br>
+                        <br>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>	
+		
+    </div>  
+ 
+ 
+ 
+ <!--/=============================Doctor Start==========================================-->
+ 
+ 
+  
+       <div class="view" id="page_visit_docView">
+        <div class="pages">
+         <header> 
+         <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor</td>
+            <td width="10%" ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_visit_doc">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			
+            	
+				
+			
+				<div id="myerror" style="color:#C00">   </div>
+				<ul data-inset="true"  data-role="listview">
+					<li >
+						<div><b></b><span class="market" style="font-size:16px; color:#009191" ></span></div>
+						<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0" ></span></div>
+					</li>
+				</ul>
+                </br></br>
+					<input type="submit" id="btn_visit_submit_doc" onClick="getCampaign();"  style="width:100%; height:50px;  background-color:#E9F0FE; color:#009191; font-size:20px" value="     Product      "   />
+                    
+                    
+                    <div id="doc_campaign"></div>
+                    <div style="height:2px;"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorSample();"  style="width:100%;  height:50px; background-color:#E9F0FE; color:#009191; font-size:20px" value="     Sample      "   />
+                   
+                   
+                    <div id="doc_sample"></div>
+					<!--</br>-->
+                    <div style="height:2px"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorGift();"  style="width:100%; height:50px;  background-color:#E9F0FE; color:#009191; font-size:20px" value="     Gift      "   />
+					<!--</br>-->
+					<div id="doc_gift"></div>
+					<!--</br></br>-->
+                    <div style="height:2px"></div>
+                    <input type="submit" id="btn_visit_submit_doc" onClick="getDoctorppm();"  style="width:100%;   height:50px; background-color:#E9F0FE; color:#009191; font-size:20px" value="     PPM      "   />
+                    
+					
+                    <div id="doc_ppm"></div>
+					
+                    
+					</br>
+               
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+						<td>Visited With</td>
+						<td ></td>
+						<td ></td>
+                        <td ></td>
+                         <td ></td>
+                         
+					  </tr>
+                      
+                      </table>
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						
+						<td ><input type="radio" name="v_with" value='Self' id="Self" >  <label for="Self"> <font style=" font-size:10px">Self</font></label>
+                         </td>
+						<td > <input type="radio" name="v_with" value='MSO' id="MSO" >  <label for="MSO"><font style=" font-size:10px">MSO</font></label>
+                        </td>
+                        <td ><input type="radio" name="v_with" value='FM/TL' id="FMTL" >  <label for="FMTL"><font style=" font-size:10px">FM/TL</font></label>
+                         </td>
+                         <td ><input type="radio" name="v_with" value='RSM' id="RSM" >  <label for="RSM"><font style=" font-size:10px">RSM</font></label>
+                         </td>
+                         <td ><input type="radio" name="v_with" value='NSM' id="NSM'" >  <label for="NSM'"><font style=" font-size:10px">NSM</font></label>
+                         </td>
+					  </tr>
+			  </table>
+
+		
+                </form>
+                </br>
+                Others:</br>
+                <input type="text" name="doc_others"  maxlength="50"  id="doc_others" placeholder="Others"  >
+                </br>
+                <input type="text" name="doc_feedback"  maxlength="50"  id="doc_feedback" placeholder="Feedback/Note/Place of Work"  >
+                
+				
+			            <br/></br>
+                         <div id="errorChkVSubmit_doc" style="color:#C00"></div>
+                          <input type="hidden" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
+                        <div id="checkLocation_doc" style="color:#066"></div>
+                    
+        				<div id="visit_location_doc">	
+                               		<input type="submit" id="btn_location_doc" onClick="getLocationInfo();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location      "   />
+                    </div>
+                    <div align="center"><img id="wait_image_visit_submit_doc" style="" width="50px;" src="loading.gif" alt=""></div>
+                    
+                   
+                    <br/>
+                    <br/>
+                    <div id="visit_submit_doc">
+                     <input type="submit" id="btn_visit_submit_doc" onClick="visitSubmit();"   style="width:100%; height:100px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                  
+                    </div>
+                    
+                    <br/>
+                    <br/>
+                    
+                        
+                        
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        <br/><br/><br/><br/><br/><br/><br/>
+                <br>
+				<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a href="#"  onclick="$.afui.drawer.show('#docInfo','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
+         </footer>
+         
+         
+         
+         <nav id="docInfo" style="z-index:5; background-color:#FFF">
+            
+                <header>
+                   
+                </header>
+                <br>
+                 
+
+          	 <div onClick="page_doctor_profile()" align="center"> <img style="height:70px; width:70px" src="editProfile.png"></div>
+
+
+           
+        </nav>
+
+    </div>  
+    
+  <!--  ====================Doc profile Start===============================-->
+ <div class="view" id="page_doctor_profileView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor Profile</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doctor_profile">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			
+            <input type="hidden" name="doctor_prof"    id="doctor_prof" placeholder="Name"  >
+            
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><input type="text" name="dName"   id="dName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  >-->
+                    <select name="dSpaciality" id="dSpaciality">
+                          
+                        </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDegree"   id="dDegree" placeholder="Degree"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  >-->
+                     
+                        <select name="dCategory" id="dCategory">
+                          
+                        </select>
+                  </td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><input type="date" name="dDOB"   id="dDOB" placeholder="DOB"  ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><input type="date" name="dMDay"   id="dMDay" placeholder="Marriage Daye"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><input type="text" name="dMobile"  maxlength="50"  id="dMobile" placeholder="Mobile"  ></td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td>Chamber Address</td>
+                     <td>:</td>
+                    <td><textarea name="dCAddress" id="dCAddress"  rows="3" placeholder="Chamber Address"></textarea>
+                   </td>
+                  </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDistrict"  maxlength="50"  id="dDistrict" placeholder="District"  >
+                   </td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><input type="text" name="dThana"  maxlength="50"  id="dThana" placeholder="Thana"  >
+                   </td>
+                  </tr>
+                  
+                </table>
+                <img id="wait_image_docProf" style="width:50px" src="loading.gif" alt="">	
+			    <div id="myerror_doctor_prof" style="color:#C00"></div>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_doc_profile" onClick="docProfileSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		             <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 
+         </td>
+  </tr>
+</table>
+</footer>
+    </div>      
+ <!--==========================Doc profile End===================================-->
+ 
+ 
+ <!--==========================Add Doc==================================-->
+   <!--  ====================Doc profile Start===============================-->
+ <div class="view" id="page_doctor_addView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Add Doctor</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doctor_add">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			
+            <input type="hidden" name="doctor_add"    id="doctor_add" placeholder="Name"  >
+            
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                                              
+					</li>					
+				</ul>
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><input type="text" name="dNameAdd"   id="dNameAdd" placeholder="Name"  ></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dSpaciality"    id="dSpaciality" placeholder="Specialty"  >-->
+                    <select name="dSpacialityAdd" id="dSpacialityAdd">
+                          
+                        </select>
+                    </td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDegreeAdd"   id="dDegreeAdd" placeholder="Degree"  ></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><!--<input type="text" name="dCaegory"   id="dCaegory" placeholder="Category"  >-->
+                     
+                        <select name="dCategoryAdd" id="dCategoryAdd">
+                          
+                        </select>
+                  </td>
+                  <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><input type="date" name="dDOBAdd"   id="dDOBAdd" placeholder="DOB"  ></td>
+                     <td ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><input type="date" name="dMDayAdd"   id="dMDayAdd" placeholder="Marriage Daye"  ></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><input type="number" name="dMobileAdd"  maxlength="50"  id="dMobileAdd" placeholder="Mobile"  ></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td>Chamber Address</td>
+                     <td>:</td>
+                    <td><textarea name="dCAddressAdd" id="dCAddressAdd"  rows="3" placeholder="Chamber Address"></textarea>
+                   </td>
+                   <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><input type="text" name="dDistrictAdd"  maxlength="50"  id="dDistrictAdd" placeholder="District"  >
+                   </td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><input type="text" name="dThanaAdd"  maxlength="50"  id="dThanaAdd" placeholder="Thana"  >
+                   </td>
+                    <td ></td>
+                  </tr>
+                  
+                </table>
+                <img id="wait_image_docAdd" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctor_add" style="color:#C00"></div>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_doc_add" onClick="docAddSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		            
+     <a onClick="page_market_ret_doc()" class="icon left" ></a>
+     <a onClick="#"  ></a>
+    
+</footer>
+    </div>      
+    
+    
+  <!--//==============================submitted doc List=================-->
+       <div class="view" id="page_dListView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Pending Doctors</h1></header> 
+            <div class="panel" id="page_dList">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_dList" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_dListTxt"  type="hidden" >
+                    <div id="error_dList" style="color:#C00"></div> 				
+                        <div id="dList"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+ <!--==========================Doc  End===================================-->
+<!-- //========================Campaign Start=====================-->
+ 
+ 
+  
+       <div class="view" id="page_doctor_campaignView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr >
+                    <td >
+					
+                    <input  type="text" id="campaign_combo_id" name="campaign_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchCampaign()"  />
+                    
+					
+					
+					
+					</td>
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocCampaignData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+</header> 
+           
+            <div class="panel" id="page_doctor_campaign">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			<div id="myerror_doctor_campaign" style="color:#C00"></div>
+            
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                     
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				
+     			
+				
+                 
+                 
+                 <table width="100%" border="0"   >
+                <tr>
+                <td width="90%"  style="vertical-align:top;overflow:scroll; height:700px; display:block">
+                  <ul class="list" id="campaign_combo_id_lv" >				             
+                 </ul>
+                 </td>
+            
+            <td style="vertical-align:top" >
+                    <table >
+                    <tr  onClick="searchCampaignChar('A')">
+                    <td height="20px" >A</td>
+                    </tr>
+                    <tr  >
+                  
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('B')">
+                    <td height="20px">B</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('C')">
+                    <td height="20px">C</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('D')">
+                    <td height="20px">D</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('E')">
+                    <td height="20px">E</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('F')">
+                    <td height="20px">F</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('G')">
+                    <td height="20px">G</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('H')">
+                    <td height="20px">H</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('I')">
+                    <td height="20px">I</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('J')">
+                    <td height="20px">J</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('K')">
+                    <td height="20px">K</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('L')">
+                    <td height="20px">L</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('M')">
+                    <td height="20px">M</td>
+                    
+                    </tr>
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('N')">
+                    <td height="20px">N</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('O')">
+                    <td height="20px">O</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('P')">
+                    <td height="20px">P</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('Q')">
+                    <td height="20px">Q</td>
+                    </tr>
+                   
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('R')">
+                    <td height="20px">R</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('S')">
+                    <td height="20px">S</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('T')">
+                    <td height="20px">T</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('U')">
+                    <td height="20px">U</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('V')">
+                    <td height="20px">V</td>
+                    </tr>
+
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('W')">
+                    <td height="20px">W</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('X')">
+                    <td height="20px">X</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('Y')">
+                    <td height="20px">Y</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchCampaignChar('Z')">
+                    <td height="20px">Z</td>
+                    </tr>
+                    </table>
+                </td>
+                </tr>
+                </table>
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		             <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 <select id="campaign_combo" style=" width:40px"data-native-menu="false" onChange="comboSearchCampaign()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+         </td>
+  </tr>
+</table>
+</footer>
+    </div>  
+    
+    <!-- //========================Sample Start=====================-->
+ 
+ 
+  
+       <div class="view" id="page_doctor_sampleView">
+        <div class="pages">
+         <header> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td >
+
+                    <input  type="text" id="sample_combo_id" name="sample_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchSample()"  />
+                    
+					
+					
+					
+					</td>
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocSampleData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+</header> 
+            <div class="panel" id="page_doctor_sample">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			<div id="myerror_doctor_sample" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+								
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                       
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				
+			
+
+        
+				 
+                 
+                 
+                  <table width="100%" border="0"   >
+                <tr>
+                <td width="90%"  style="vertical-align:top;overflow:scroll; height:700px; display:block">
+                 <ul class="list" id="sample_combo_id_lv" >				             
+                 </ul>
+                 </td>
+            
+            <td style="vertical-align:top" >
+                    <table >
+                    <tr  onClick="searchSampleChar('A')">
+                    <td height="20px" >A</td>
+                    </tr>
+                    <tr  >
+                  
+                    <tr style="vertical-align:top" onClick="searchSampleChar('B')">
+                    <td height="20px">B</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('C')">
+                    <td height="20px">C</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('D')">
+                    <td height="20px">D</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('E')">
+                    <td height="20px">E</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('F')">
+                    <td height="20px">F</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('G')">
+                    <td height="20px">G</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('H')">
+                    <td height="20px">H</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('I')">
+                    <td height="20px">I</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('J')">
+                    <td height="20px">J</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('K')">
+                    <td height="20px">K</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('L')">
+                    <td height="20px">L</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('M')">
+                    <td height="20px">M</td>
+                    
+                    </tr>
+                    <tr style="vertical-align:top" onClick="searchSampleChar('N')">
+                    <td height="20px">N</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('O')">
+                    <td height="20px">O</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('P')">
+                    <td height="20px">P</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('Q')">
+                    <td height="20px">Q</td>
+                    </tr>
+                   
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('R')">
+                    <td height="20px">R</td>
+                    </tr>
+                  
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('S')">
+                    <td height="20px">S</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('T')">
+                    <td height="20px">T</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('U')">
+                    <td height="20px">U</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('V')">
+                    <td height="20px">V</td>
+                    </tr>
+
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('W')">
+                    <td height="20px">W</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('X')">
+                    <td height="20px">X</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('Y')">
+                    <td height="20px">Y</td>
+                    </tr>
+                    
+                    <tr style="vertical-align:top" onClick="searchSampleChar('Z')">
+                    <td height="20px">Z</td>
+                    </tr>
+                    </table>
+                </td>
+                </tr>
+                </table>
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		<!--<a onClick="homePage()" class="icon home" >Home</a>
+        <a onClick="homePage()"  ></a>-->
+                      <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 <select id="sample_combo" style=" width:40px"data-native-menu="false" onChange="comboSearchSample()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+         </td>
+  </tr>
+</table>
+</footer>
+    </div>  
+    
+    
+    <!--  //=================Gift Start==================-->
+      
+      
+      <!-- //========================Sample Start=====================-->
+ 
+ 
+  
+       <div class="view" id="page_doctor_giftView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td >
+
+                    <input  type="text" id="gift_combo_id" name="gift_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchGift()"  />
+                    					
+					</td>
+                    <td width="10px"></td>
+                     <td align="right" height="50px" width="50px" onClick="getDocGiftData();"><img style="height:40px; width:40px;"   src="done.png">&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+</header> 
+            <div class="panel" id="page_doctor_gift">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			<div id="myerror_doctor_gift" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+					
+						<div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                        
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				
+          
+				
+				
+				
+				 <ul class="list" id="gift_combo_id_lv" >				             
+                 </ul>
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		<!--<a onClick="homePage()" class="icon home" >Home</a>
+        <a onClick="homePage()"  ></a>-->
+          <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 <select id="gift_combo" style=" width:40px"data-native-menu="false" onChange="comboSearchGift()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+         </td>
+  </tr>
+</table>
+</footer>
+		
+    </div>  
+      
+      
+         <!-- //========================PPM Start=====================-->
+ 
+ 
+  
+<div class="view" id="page_doctor_ppmView">
+<div class="pages">
+ <header> 
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td >
+
+                    <input  type="text" id="ppm_combo_id" name="ppm_combo_id" style="width:100%; color:#000; font-weight:normal" placeholder="Search" onKeyUp="searchPpm()"  />
+                    		
+                      			
+					</td>
+                    <td width="10px"></td>
+                    <td align="right" height="50px" width="50px" onClick="getDocppmData();"><img style="height:40px; width:40px; "   src="done.png">&nbsp;&nbsp;</td>
+                    
+                    
+                  </tr>
+                </table>
+                
+</header> 
+    <div class="panel" id="page_doctor_ppm">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    <div id="myerror_doctor_gift" style="color:#C00"></div>
+        <ul data-inset="true"  data-role="listview">
+                    <li>
+                       			
+                        <div><b>Market :</b><span class="market" style="font-size:16px;color:#009191"></span></div>
+                        
+                        <div><b>Doctor :</b><span class="visit_client"  style="font-size:16px; color:#00A3F0" style="font-weight:bold"></span></div>                        
+                    </li>					
+                </ul>
+       
+        
+        
+        
+         <ul class="list" id="ppm_combo_id_lv" >				             
+         </ul>
+        <br>
+        <br>
+      
+    
+    <br>                        
+    <br>
+    <br>            
+    <br>
+    <br>                        
+    <br>
+    <br>            
+    <br>
+    <br>                        
+    <br>
+    <br>            
+    <br>
+    <br>                        
+    <br>
+    <br>            
+    <br>
+    
+           
+       <!-- </div>-->
+       </div>
+    </div>
+
+<footer>
+ <table width="100%" border="0">
+  <tr>
+    <td align="left"> <a onClick="page_visit_doc()" class="icon left" ></a></td>
+    <td align="right">
+		
+      			 <select id="ppm_combo" style=" width:40px"data-native-menu="false" onChange="comboSearchPpm()" >
+                        <option value="A" >A</option>
+                        <option value="B" >B</option>
+                        <option value="C" >C</option>
+                        <option value="D" >D</option>
+                        <option value="E" >E</option>
+                        <option value="F" >F</option>
+                        <option value="G" >G</option>
+                        <option value="H" >H</option>
+                        <option value="I" >I</option>
+                        <option value="J" >J</option>
+                        <option value="K" >K</option> 
+                        <option value="L" >L</option>
+                        <option value="M" >M</option>
+                        <option value="N" >N</option>
+                        <option value="O" >O</option> 
+                        <option value="P" >P</option>
+                        <option value="Q" >Q</option>
+                        <option value="R" >R</option>
+                        <option value="S" >S</option>
+                        <option value="T" >T</option>
+                        <option value="U" >U</option>
+                        <option value="V" >V</option>
+                        <option value="W" >W</option>
+                        <option value="X" >X</option>
+                        <option value="Y" >Y</option>
+                        <option value="Z" >Z</option>
+                </select>
+         </td>
+  </tr>
+</table>
+ </footer>
+
+</div>     
+     
+     
+        <!-- //========================Save Start=====================-->
+ 
+
+  
+<div class="view" id="page_saved_visitView">
+<div class="pages">
+
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Saved Order</h1></header> 
+
+
+    <div class="panel" id="page_saved_visit">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    <div id="myerror_doctor_gift" style="color:#C00"></div>
+       <!-- <div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666"></font></div>-->
+				
+			
+				<div id="err_save_visit" style="color:#C00"></div>
+                
+
+				
+				
+                			
+               
+                <ul id="saved_visit" data-role="listview"  >
+                </ul>
+                
+				
+                
+                <br>
+				<br>
+    
+           
+       <!-- </div>-->
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>      
+     
+        <!-- //========================Save Success=====================-->
+ 
+ 
+  
+<div class="view" id="page_confirm_visit_saveView">
+<div class="pages">
+
+<header><h1>Success</h1></header> 
+
+
+    <div class="panel" id="page_confirm_visit_save">
+    </br></br></br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+    <div align="center">         
+    <div id="visit_save" style=" width:300px; height:200px; color:#FFF; font-size:20px;"   align="center"></br></br></br>Submitted Successfully</div>
+     </div>           
+				
+                
+                <br>
+				<br>
+    
+           
+       <!-- </div>-->
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div> 
+
+
+ 
+ 
+ <!--//==============Report===================-->
+ 
+  
+<div class="view" id="page_reports_dcrView">
+<div class="pages">
+
+<header><h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Report</h1></header> 
+
+
+    <div class="panel" id="page_reports_dcr">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    <div id="myerror" style="color:#C00"></div>               
+                              
+					<div id="report"> </div>
+					
+					<table width="100%" border="0">
+					  <tr>
+						<td>From &nbsp;</td>
+						<td><input id="date_from_doc" name="date_from_doc" type="date" data-role="date"  ></td>
+						</tr>	
+					
+					
+					  <tr>
+						<td>To &nbsp;</td>
+						<td><input id="date_to_doc" name="date_to_doc" type="date" data-role="date" ></td>
+					  </tr>
+					</table>
+				<br/>
+				<div id="doctor_report_button"> </div>
+                </br>
+                <div id="prescription_report_button"> </div>
+				
+				</br></br>
+				<div id="order_report_button"> </div>
+				
+                
+                <br>
+				<br>
+    
+           
+       <!-- </div>-->
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<!--====================Report====================-->
+
+
+ <div class="view" id="page_report_doctorView">
+        <div class="pages">
+         <header><h3 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8"> <div id="report_header_doc" align="center"> DCR Summary</div></h3></header> 
+            <div class="panel" id="page_report_doctor">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+<!--                   <input id="myerror_s_report_doctortxt" name="myerror_s_report_doctortxt" type="text"  >-->
+				
+                     <div id="myerror_s_report_doctor" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td><div id="report_mpo_doctor">  </div></td>
+                          </tr>
+                           <tr>
+                            <td><div id="report_market_doctor" >  </div></td>
+                           </tr>
+                          <tr>
+                            <td><div id="date_f_doctor"> </div></td>
+							</tr>
+							  <tr>	
+								<td> <div id="date_t_doctor">  </div></td>
+								
+								
+							  </tr>
+							</table>
+						
+												
+					</li>
+                  <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>
+					<li>
+					  		
+                            <img id="wait_image_doctor" style="width:50px" src="loading.gif" alt="">	
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								
+								<td><div id="visit_count_doctor">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withAtt_doctor">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withoutAtt_doctor">  </div></td>
+							  </tr>
+							</table>
+		
+					</li>
+						
+											
+				</ul>
+				
+				
+				<div id="rep_detail_doctor" style="color:#000066; font-size:10px; width:100%"></div>
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" ></a>
+        <a onClick="page_reports_dcr()"  ></a>
+         
+		</footer>
+    </div>               
+                   
+
+
+ <div class="view" id="page_report_prescriptionView">
+        <div class="pages">
+         <header><h3 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8"> <div id="report_header_prescription" align="center"> Prescription Summary</div></h3></header> 
+            <div class="panel" id="page_report_prescription">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+<!--                   <input id="myerror_s_report_doctortxt" name="myerror_s_report_doctortxt" type="text"  >-->
+					
+                     <div id="myerror_s_report_prescription" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td><div id="report_mpo_prescription">  </div></td>
+                          </tr>
+                           <tr>
+                            <td><div id="report_market_prescription" >  </div></td>
+                           </tr>
+                          <tr>
+                            <td><div id="date_f_prescription"> </div></td>
+							</tr>
+							  <tr>	
+								<td> <div id="date_t_prescription">  </div></td>
+								
+								
+							  </tr>
+							</table>
+						
+												
+					</li>
+                  <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>
+					<li>
+					  		<img id="wait_image_prescription" style="width:50px" src="loading.gif" alt="">	
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								
+								<td><div id="visit_count_prescription">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withAtt_prescription">  </div></td>
+								 </tr>
+								 <tr>
+								<td><div id="visit_withoutAtt_prescription">  </div></td>
+							  </tr>
+							</table>
+		
+					</li>
+						
+											
+				</ul>
+				
+				
+				<div id="rep_detail_prescription" style="color:#000066; font-size:10px; width:100%"></div>
+				
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" ></a>
+        <a onClick="page_reports_dcr()"  ></a>
+         </footer>
+
+    </div>  
+
+
+
+
+
+ <div class="view" id="page_sc_order_summary_reportView">
+        <div class="pages">
+         <header> <h3 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8"><div id="report_header" align="center"> Sales Call and Order Count</div></h3></header> 
+            <div class="panel" id="page_sc_order_summary_report">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                   <input id="myerror_s_reporttxt" name="myerror_s_reporttxt" type="hidden"  >
+                    
+                    <div id="myerror_s_report" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="report_mpo">  </div></td>
+							
+							  </tr>
+                              
+                              <tr>
+								<td><div id="report_market" >  </div></td>
+							 </tr>
+							  <tr>
+								<td><div id="report_item" >  </div></td>
+							 </tr>
+							  
+							  <tr>
+								
+								<td><div id="date_f"> </div></td>
+							 </tr>
+							  <tr>	
+								<td> <div id="date_t">  </div></td>
+							 </tr>
+							</table>
+						
+										
+					</li>
+                   
+                    <div style='background-color:#00BFBF; height:5px; font-size:5px'></div>	
+					<li>
+                     
+                     <img id="wait_image_order" style="width:50px" src="loading.gif" alt="">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="sales_call">  </div></td>
+							   </tr>
+							   <tr>
+								<td><div id="order_count">  </div></td>
+							   </tr>
+							   <tr>
+								<td><div id="order_value">  </div></td>
+							  </tr>
+							</table>
+					</li>
+                    
+					
+					<li>
+                    
+					
+					</li>						
+				</ul>
+				
+				
+				<div id="rep_detail" style="color:#000066"></div>
+				
+				
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_reports_dcr()" class="icon left" ></a>
+        <a onClick="page_reports_dcr()"  ></a>
+         </footer>
+
+    </div>  
+
+
+
+
+   <!--//==============================Promo Page=================-->
+       <div class="view" id="page_promoView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Promo</h1></header> 
+            <div class="panel" id="page_promo">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     <img id="wait_image_promo" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_promoTxt" name="error_promoTxt" type="hidden" >
+                     <div id="error_promo" style="color:#C00"></div> 
+                    
+                
+						<div id="promo" style="color:#2232BD"></div>
+                         
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="page_promo_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
+         </footer>
+	
+    </div>               
+                        
+    <!--//==============================Inbox Page=================-->
+       <div class="view" id="page_inboxView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Inbox</h1></header> 
+            <div class="panel" id="page_inbox">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                   <input id="error_inboxTxt" name="error_promoTxt" type="hidden" >
+                     <div id="error_inbox" style="color:#C00"></div> 
+                    
+                		<div id="inbox" style="color:#2232BD"></div>
+
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>    
+   
+   
+
+
+
+ <!--//==============================KPI Page=================-->
+       <div class="view" id="page_kpiView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">KPI</h1></header> 
+            <div class="panel" id="page_kpi">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                   
+                     <div id="error_kpi" style="color:#C00"></div> 
+                    
+                
+				<div id="kpi" style="color:#2232BD"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>    
+
+<!--//==============================Help Page=================-->
+       <div class="view" id="page_helpView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Help</h1></header> 
+            <div class="panel" id="page_help">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                   
+                     <div id="error_help" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="help" style="color:#2232BD"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>    
+            
+   
+  <!--//==============================Stock Page=================-->
+       <div class="view" id="page_stockView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Stock</h1></header> 
+            <div class="panel" id="page_stock">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_stock" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_stockTxt" name="error_stockTxt" type="hidden" >
+                     <div id="error_stock" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="stock"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+       <a onClick="page_stock_refresh()" ><img style="height:30px; width:30px" src="refresh_white.png"></a>
+         </footer>
+
+    </div>   
+   
+   
+  
+
+    <!--//==============================Outstanding report=================-->
+       <div class="view" id="page_outstandingView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Outstanding</h1></header> 
+            <div class="panel" id="page_outstanding">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_outstanding" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_outstandingTxt" name="error_stockTxt" type="hidden" >
+                     <div id="error_outstanding" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="outstanding"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div> 
+   <!--//==============================Invoice report=================-->
+       <div class="view" id="page_invoiceView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Invoice</h1></header> 
+            <div class="panel" id="page_invoice">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_invoice" style="width:50px" src="loading.gif" alt="">
+                   <input id="error_invoiceTxt"  type="hidden" >
+                     <div id="error_invoice" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="invoice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div> 
+   <!--//==============================Order report=================-->
+       <div class="view" id="page_clientOrderView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Last Order</h1></header> 
+            <div class="panel" id="page_clientOrder">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_clientOrder" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_clientOrderTxt"  type="hidden" >
+                     <div id="error_clientOrder" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="clientOrder"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+    
+    
+   <!--//==============================Order report=================-->
+       <div class="view" id="page_clientApprovedView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Approved Rate</h1></header> 
+             <div class="panel" id="page_clientApproved">
+             </br></br></br></br>
+              <img id="wait_image_clientApproved" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_clientApprovedTxt"  type="hidden" >
+                    <div id="error_clientApproved" style="color:#C00"></div> 
+                        <div id="clientApproved"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+            </div>
+      
+        <footer>
+		<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>  
+    
+  <!--//==============================Notice report=================-->
+       <div class="view" id="page_noticeView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Notice</h1></header> 
+            <div class="panel" id="page_notice">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <img id="wait_image_notice" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_noticeTxt"  type="hidden" >
+                     <div id="error_notice" style="color:#C00"></div> 
+                    
+                
+				
+                        <div id="notice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>   
+    
+ 
+ 
+
+
+
+<!--===============Doc Sup===========-->
+
+ <div class="view" id="page_doc_confirmView">
+        <div class="pages">
+         <header> 
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Add Doctor</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+</header> 
+            <div class="panel" id="page_doc_confirm">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+			
+            <input type="hidden" name="error_doc_confirm"    id="error_doc_confirm" placeholder="Name"  >
+
+				<br>
+                
+     			<table width="100%" border="0">
+                  <tr style="font-weight:bold">
+                    <td >Name</td>
+                    <td>:</td>
+                    <td><div id="docConName" ></div></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>Specialty</td>
+                     <td>:</td>
+                    <td><div id="docConSpeciality" ></div>
+                    </td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                     <td>:</td>
+                    <td><div id="docConDegree" ></div></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                     <td>:</td>
+                    <td><div id="docConDCategory" ></div></td>
+                  <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                     <td>:</td>
+                    <td><div id="docConDOB" ></div></td>
+                     <td ></td>
+                  </tr>
+                   <tr>
+                    <td>Marriage Day</td>
+                     <td>:</td>
+                    <td><div id="docConMDay" ></div></td>
+                     <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile</td>
+                     <td>:</td>
+                    <td><div id="docConMobNum" ></div></td>
+                    <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+               <tr>
+                    <td width="100px">Chamber Address</td>
+                     <td>:</td>
+                    <td><div id="docConAdd" ></div> </td>
+                   <td style="color:#F00; font-size:25px">*</td>
+                  </tr>
+                  <tr>
+                    <td>District</td>
+                     <td>:</td>
+                    <td><div id="docConDist" ></div></td>
+                    <td ></td>
+                  </tr>
+                  <tr>
+                    <td>Thana</td>
+                     <td>:</td>
+                    <td><div id="docConThana" ></div></td>
+                    <td ></td>
+                  </tr>
+                  
+                </table>
+                <img id="wait_image_docConAdd" style="width:50px" src="loading.gif" alt="">	
+			<div id="myerror_doctorCon_add" style="color:#C00"></div>
+				<br>
+                <br>
+				 <input type="submit" id="btn_submit_docConAdd" onClick="confirmDocSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Approve      "   />
+                 <br>                        
+            <br>
+                 <input type="submit" id="btn_submit_docConCancel" onClick="cancelDocSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Cancel      "   />
+                
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            
+                   
+               <!-- </div>-->
+               </div>
+            </div>
+       
+        <footer>
+		
+         
+		            
+     <a onClick="page_dList()" class="icon left" ></a>
+     <a onClick="#"  ></a>
+    
+</footer>
+    </div>     
+    
+    
+    
+ <script type="text/javascript" src="phonegap.js"></script>
+
+          
+              
+
+
+
+
+
+    
+    
+</body>
+
+</html>
