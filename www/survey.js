@@ -267,6 +267,68 @@ var mobile_off_flag=0;
 //	$.afui.loadContent("#pageHome",true,true,'right');
 //	
 //}
+function page_saved_Doc() {
+	//alert (localStorage.docSaveData)
+	var docSaveData=localStorage.docSaveData
+	var docSaveDataList = docSaveData.split('<doc>');	
+	var docSaveDataListLength=docSaveDataList.length
+	var docSaveStr=''
+	
+	for ( i=0; i < docSaveDataListLength-1; i++){	
+		var singleDoc=docSaveDataList[i]
+		var docShowList=singleDoc.split('<d>');
+		//alert (docShowList[0])
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+	}
+	$('#saved_visit_doc').empty()
+	$('#saved_visit_doc').append(docSaveStr);									
+	$.afui.loadContent("#page_saved_Doc",true,true,'right');
+}
+function saveDelete_doc(i) {
+	var docSaveData=localStorage.docSaveData
+	var docSaveDataList = docSaveData.split('<doc>');	
+	var replaceStr=docSaveDataList[i]+'<doc>'
+	docSaveData=docSaveData.replace(replaceStr,'')
+	localStorage.docSaveData=docSaveData
+	
+	
+	docSaveData=localStorage.docSaveData
+	var docSaveDataList = docSaveData.split('<doc>');	
+	var docSaveDataListLength=docSaveDataList.length
+	var docSaveStr=''
+	for ( i=0; i < docSaveDataListLength-1; i++){	
+		var singleDoc=docSaveDataList[i]
+		var docShowList=singleDoc.split('<d>');
+		//alert (docShowList[0])
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+	}
+	$('#saved_visit_doc').empty()
+	$('#saved_visit_doc').append(docSaveStr);				
+	
+}
+
+
+function saved_Doc_set(i) {
+	var docSaveData=localStorage.docSaveData
+	var docSaveDataList = docSaveData.split('<doc>');	
+	var docSaveDataListLength=docSaveDataList.length
+	var docSaveStr=''
+	alert (i);
+	for ( i=0; i < docSaveDataListLength-1; i++){	
+		var singleDoc=docSaveDataList[i]
+		var docShowList=singleDoc.split('<d>');
+		//alert (docShowList[0])
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td>'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+	}
+	$('#saved_visit_doc').empty()
+	$('#saved_visit_doc').append(docSaveStr);									
+	//$.afui.loadContent("#page_saved_Doc",true,true,'right');
+}
+
+
+
+
+
 function homePage() {
 	var currentDate = new Date()
 	var day = currentDate.getDate();if(day.length==1)	{day="0" +day_1};
@@ -282,12 +344,19 @@ function homePage() {
 	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
-	
-	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {
-		addMarketListCteam();}
-	else{
+	alert (localStorage.tourFlag)
+	if (localStorage.tourFlag==1){
+		addMarketListTour();
 		
-		addMarketList();}
+	}
+	else{
+	
+		if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {
+			addMarketListCteam();}
+		else{
+			
+			addMarketList();}
+	}
 	//$.afui.loadContent("#page_market",true,true,'right');
 }
 function page_market_ret() {
@@ -316,6 +385,14 @@ function page_visit_doc() {
 	$("#addDocanc").show();
 	$("#blankAnc").hide();
 	$("#wait_image_visit_submit_doc").hide();
+	//alert (localStorage.doctor_plan_flag)
+	if (localStorage.doctor_plan_flag==1){
+		$("#visit_submit_save_doc").show();		
+		
+	}
+	else{
+		$("#visit_submit_save_doc").hide();		
+	}
 	$.afui.loadContent("#page_visit_doc",true,true,'right');
 }
 function page_reports_dcr() {
@@ -991,6 +1068,7 @@ function clear_autho(){
 		localStorage.visit_plan_marketlist_combo=''
 		localStorage.visit_plan_marketlist_comboCteam=''
 		localStorage.cTeam=0
+		localStorage.tourFlag=0;
 		localStorage.visit_plan_client_cmb_list=''
 		localStorage.delivery_distributor_cmb_list=''
 		localStorage.delivery_retailer_cmb_list=''
@@ -1061,14 +1139,11 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-//	var  apipath_base_photo_dm='http://a002.businesssolutionapps.com/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://c003.cloudapp.net/skf/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline_ppm_report_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_ofline_ppm_report_test_live_20150502/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+
   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
-   
-   var apipath_base_photo_dm ='http://e.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
-	
+ 
 	
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -1123,6 +1198,7 @@ function check_user() {
 		localStorage.visit_plan_marketlist_combo=''
 		localStorage.visit_plan_marketlist_comboCteam=''
 		localStorage.cTeam=0
+		localStorage.tourFlag=0;
 		localStorage.visit_plan_client_cmb_list=''
 		localStorage.delivery_distributor_cmb_list=''
 		localStorage.delivery_retailer_cmb_list=''
@@ -1198,6 +1274,9 @@ function check_user() {
 		localStorage.promo_str=''
 		localStorage.promo_str_report=''
 		localStorage.promoDate=''
+		localStorage.tour_doc_str=''
+		localStorage.tour_route_str=''
+		localStorage.docSaveData=''
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1338,8 +1417,10 @@ function check_user() {
 													localStorage.spcStr=resultArray[28];
 													localStorage.marketListStrCteam=resultArray[29];
 													localStorage.cTeam=resultArray[30]
+													localStorage.marketStrDoc=resultArray[31]
+													//alert (localStorage.marketStrDoc)
 													
-													//alert (localStorage.marketStrCteam)
+													//alert (localStorage.menu)
 													//alert (localStorage.cTeam)
 													
 													//localStorage.client_depot_name=resultArray[27];
@@ -1461,9 +1542,10 @@ function check_user() {
 														//alert (marketNameID);
 														if(planMarketID!=''){
 															unscheduleMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</a></font></li>';
-															visitPlanMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="visitPlanMarketNextLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</font></a></li>';
 															
-															profileMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextCProfileLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold; color:#306161">'+marketNameID+'</font></a></li>';
+															visitPlanMarketComb+='<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;height=15px" onClick="check_boxTourTrue(\''+marketID+'\')"> '+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocTour_keyup(\''+marketID+'\')" name="doc_tour'+marketID+'" value="checkbox" id="doc_tour'+marketID+'"><label for="doc_camp'+marketID+'"></br></label></td><td  style="text-align:left;">'+'</br><font id="'+ marketID +'" onClick="check_boxTourTrue(\''+marketID+'\')" class="name" >'+ marketNameID+'</font></td></tr>'+'</table>'+'</li>';
+															
+															profileMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;height:15px"><a onClick="marketNextCProfileLV(\''+marketNameID+'\')"><font class="name" style="font-size:12; font-weight:bold; color:#306161">'+marketNameID+'</font></a></li>';
 															
 
 															}
@@ -1478,6 +1560,39 @@ function check_user() {
 													$('#market_combo_id_lv').empty();
 													$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 													
+													$('#tour_market_combo_id_lv').empty();
+													$('#tour_market_combo_id_lv').append(localStorage.visit_plan_marketlist_combo);
+													
+													
+										//==========================TourDoc=======================		
+										
+										//===========Market===========================
+												//------------- Visit Plan Market List / Client Profile Market List / Unschedule
+													var docMarketList = localStorage.marketStrDoc.split('<rd>');
+													var docMarketListShowLength=docMarketList.length	
+													var docMarketComb=''								
+													for (var k=0; k < docMarketListShowLength; k++){
+														var docMarketValueArray = docMarketList[k].split('<fd>');
+														docMarketID=docMarketValueArray[0];
+														docMarketName=docMarketValueArray[1];
+														var docmarketNameID=docMarketName+'|'+docMarketID;
+														if(docMarketID!=''){
+															docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+docmarketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+docmarketNameID+'</a></font></li>';
+															
+															}
+													}
+													
+																				
+													localStorage.docMarketComb=docMarketComb;								
+
+													
+													//$('#tour_market_combo_id_lv').empty();
+//													$('#tour_market_combo_id_lv').append(localStorage.visit_plan_marketlist_combo);
+													
+										
+										
+										
+												
 												
 										//===================		
 
@@ -1793,12 +1908,34 @@ function chemist_profile() {
 	
 	
 }
+
+
+
+function doctor_visit_plan() {
+	
+	$("#ret_cat").hide();
+	$("#d_visit").html("Doctors");
+	//$("#doc_start").html('Visit > Market > Doctor');
+	localStorage.doctor_flag=1;
+	localStorage.doctor_plan_flag=1;
+	
+	localStorage.saved_data_submit=0;
+	localStorage.visit_page="NO";
+	//addMarketList();
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketListDoctor();}
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
+	$("#dPending").show();
+	$("#dBlank").hide();
+	
+}
 function doctor_visit() {
 	
 	$("#ret_cat").hide();
 	$("#d_visit").html("Doctors");
 	//$("#doc_start").html('Visit > Market > Doctor');
 	localStorage.doctor_flag=1;
+	localStorage.doctor_plan_flag=1;
 	
 	localStorage.saved_data_submit=0;
 	localStorage.visit_page="NO";
@@ -1829,6 +1966,158 @@ function feedback() {
 	//var url = "#page_complain";	
 //	$.mobile.navigate(url);
 }
+
+function tour(){
+	
+	localStorage.tourFlag=1;
+	localStorage.saved_data_submit=0;
+	localStorage.doctor_flag=0;
+	localStorage.tour_doc_str=''
+	//alert (localStorage.user_type)
+	if (localStorage.user_type=='rep'){
+		showSubmitDocShow()
+		addMarketListTour()
+	}
+	if (localStorage.user_type=='sup'){
+		page_pending()
+		//addMarketListTour()
+	}
+}
+function page_pending(){
+	
+	$("#wait_image_pendingTour").show();
+	//alert (localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	//$("#tourpendingTxt").text(localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+	
+	$.ajax(localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_pendingTour").hide();
+								$("#err_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										$("#err_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_pendingTour").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+											$("#err_pendingTour").text("Approved route not available");	
+											$("#wait_image_pendingTour").hide();		
+											
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+											
+											$("#wait_image_pendingTour").hide();
+											localStorage.repPending=resultArray[1];
+											
+											$('#tour_pending_combo_id_lv').empty()
+											$('#tour_pending_combo_id_lv').append(localStorage.repPending);
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+				 
+			$.afui.loadContent("#page_tour_pending",true,true,'right');	 
+	
+	
+}
+
+function repPendingDoc(rep_id){
+	
+	localStorage.pendingRep=rep_id
+	localStorage.tour_route_str=''
+	$("#wait_image_rep_pendingTour").show();
+	//alert (localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id)
+	
+
+	$.ajax(localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_rep_pendingTour").hide();
+								$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_rep_pendingTour").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_rep_pendingTour").text("Retailer not available");	
+											$("#wait_image_rep_pendingTour").hide();
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+										
+										localStorage.repDocPending=resultArray[1];
+										
+										
+										$("#err_rep_pendingTour").text("");	
+										$("#wait_image_rep_pendingTour").hide();
+										if (localStorage.user_type=='rep'){
+											$("#tourButton").hide();
+										}
+										else{
+											$("#tourButton").show();
+										}
+										//alert (rep_id)
+										var repIdName=$("#"+rep_id).html();	
+										localStorage.repIdName=repIdName
+										$("#pendingRepShow").html(localStorage.repIdName);	
+										$('#tour_rep_pending_lv').empty()
+										$('#tour_rep_pending_lv').append(localStorage.repDocPending);
+										
+										//tour_ob.listview("refresh");	
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			$("#wait_image_route_pendingTour").hide();
+			//alert (rep_id_pending)	 
+//			$("#pendingRepShow").html(rep_id_pending);	
+			$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
+	
+}
+
+
+
+
+
 function reports() {
 	var str_report_rep='<table width="100%" border="0">'+
 					 '<tr><td>ID: </td><td><input id="se_mpo_doc" name="se_mpo_doc" type="text" readonly="true" placeholder="Rep">'+
@@ -1873,6 +2162,98 @@ function addMarketList() {
 	$.afui.loadContent("#page_market",true,true,'right');
 
 }
+
+function addMarketListDoctor() {
+	//alert (localStorage.unschedule_market_cmb_id);
+	$("#market_combo_id_lv").val('');
+	var unschedule_market_combo_list=localStorage.docMarketComb;
+	//alert (unschedule_market_combo_list)
+	$('#market_combo_id_lv').empty();
+	$('#market_combo_id_lv').append(unschedule_market_combo_list);
+	
+	//$('#market_combo_id_lv').empty();
+//	$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
+	//alert (unschedule_market_combo_list)
+	
+	$.afui.loadContent("#page_market",true,true,'right');
+
+}
+
+//==========================Show Submit Doctor=======================
+function showSubmitDocShow(){
+	localStorage.tour_route_str=''
+	$("#wait_image_rep_pendingTour").show();
+	//alert (localStorage.base_url+'repPendingDocShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	
+
+	$.ajax(localStorage.base_url+'repPendingDocShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_rep_pendingTour").hide();
+								$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_rep_pendingTour").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_rep_pendingTour").text("Retailer not available");	
+											$("#wait_image_rep_pendingTour").hide();
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+																			
+										//$('#tour_rep_pending_show_lv').empty()
+										$('#schedule_show').html(resultArray[1]);
+										
+										uncheckAll('tourErep') 
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			//$("#wait_image_route_pendingTour").hide();	 
+			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
+	
+}
+
+//========================================================
+
+function addMarketListTour() {
+	//alert (localStorage.visitPlanMarketComb);
+	$("#tour_market_combo_id_lv").val('');
+	var visitPlanMarketComb=localStorage.visit_plan_marketlist_combo;
+	//alert (visitPlanMarketComb)
+	
+	$('#tour_market_combo_id_lv').empty();
+	$('#tour_market_combo_id_lv').append(visitPlanMarketComb);
+	$("#wait_image_retTour").hide();
+	
+	//showSubmitDocShow()
+	
+	$.afui.loadContent("#page_tour_market",true,true,'right');
+
+}
+
 function addMarketListCteam() {
 	$("#market_combo_id_lv").val('');
 	var unschedule_market_combo_listCteam=localStorage.visit_plan_marketlist_comboCteam;
@@ -3172,6 +3553,9 @@ function marketNext_doc() {
 }
 
 
+
+
+
 //==============================Doctor==========
 
 function marketRetailerNext_doc() {
@@ -3233,6 +3617,15 @@ function marketRetailerNext_doc() {
 		$("#errorChkVSubmit_doc").html('');
 		
 		$("#wait_image_visit_submit_doc").hide();
+		
+		if (localStorage.doctor_plan_flag==1){
+			$("#visit_submit_save_doc").show();		
+			
+		}
+		else{
+			$("#visit_submit_save_doc").hide();		
+		}
+		
 		$.afui.loadContent("#page_visit_doc",true,true,'right');
 		//location.reload();
 							
@@ -3491,7 +3884,408 @@ function check_boxTrue(product_id){
 	}
 	}
 	
+function check_boxTourTrue(docID){	
+	var camp_combo="#doc_tour"+docID
+	var camp_combo_val=$(camp_combo).is(":checked")
 	
+	if (camp_combo_val==false){
+		$(camp_combo).prop('checked', true);
+		
+		getDocTour_keyup(docID)
+	}
+	else{
+		$(camp_combo).prop('checked', false);
+		getDocTour_keyup(docID)
+	}
+	}	
+	
+function check_boxTourRouteTrue(id){	
+	var camp_combo="#route_tour"+id
+	//alert (camp_combo)
+	var camp_combo_val=$(camp_combo).is(":checked")
+	
+	if (camp_combo_val==false){
+		$(camp_combo).prop('checked', true);
+		
+		getRouteTour_keyup(id)
+	}
+	else{
+		$(camp_combo).prop('checked', false);
+		getRouteTour_keyup(id)
+	}
+	}	
+function getRouteTour_keyup(id){
+	var doc_combo="#route_tour"+id
+	var camp_combo_val=$(doc_combo).is(":checked")
+	var tour_doc_str=localStorage.tour_route_str
+	//alert (localStorage.tour_route_str)
+	if (camp_combo_val == true ){
+		if (tour_doc_str.indexOf(id)==-1){
+			if (tour_doc_str==''){
+				tour_doc_str=id				
+			}else{
+				tour_doc_str=tour_doc_str+'<rd>'+id
+			}	
+		}
+		else{
+			var tour_doc_strList=localStorage.tour_route_str.split('<rd>');
+			var tour_doc_strtLength=tour_doc_strList.length;
+			for (var j=0; j < tour_doc_strtLength; j++){
+					var campaign_docId=tour_doc_strList[j];
+
+					if (campaign_docId==id){
+						tour_doc_str=tour_doc_str.replace(campaign_docId, "")
+						
+						
+						if (tour_doc_str==''){
+							tour_doc_str=id
+						
+						}else{
+							tour_doc_str=tour_doc_str+'<rd>'+id
+						
+							}		
+					}
+			}
+		}
+		localStorage.tour_route_str=tour_doc_str;
+		
+		
+	}
+	else{
+		var tour_doc_strList=localStorage.tour_route_str.split('<rd>');
+		var tour_doc_strLength=tour_doc_strList.length;
+		
+		for (var j=0; j < tour_doc_strLength; j++){
+		var campaign_docId=tour_doc_strList[j]
+				
+				doc_index=tour_doc_str.indexOf(campaign_docId)
+				if (campaign_docId==id){
+					if (tour_doc_strLength>1){
+						if (doc_index==0){
+							tour_doc_str=tour_doc_str.replace(tour_doc_strList[j]+'<rd>', "")
+						}
+						if (doc_index > 0){
+							tour_doc_str=tour_doc_str.replace('<rd>'+tour_doc_strList[j], "")
+						}
+					}
+					if (tour_doc_strLength==1){
+							tour_doc_str=tour_doc_str.replace(tour_doc_strList[j], "")
+						
+					}
+
+			}
+		}
+	
+		localStorage.tour_route_str=tour_doc_str;
+		
+	}
+		//alert (localStorage.tour_route_str)
+	}	
+		
+function getDocTour_keyup(docID){
+	var doc_combo="#doc_tour"+docID
+	var camp_combo_val=$(doc_combo).is(":checked")
+	var tour_doc_str=localStorage.tour_doc_str
+	//alert (camp_combo_val)
+	if (camp_combo_val == true ){
+		if (tour_doc_str.indexOf(docID)==-1){
+			if (tour_doc_str==''){
+				tour_doc_str=docID				
+			}else{
+				tour_doc_str=tour_doc_str+'<rd>'+docID
+			}	
+		}
+		else{
+			var tour_doc_strList=localStorage.tour_doc_str.split('<rd>');
+			var tour_doc_strtLength=tour_doc_strList.length;
+			for (var j=0; j < tour_doc_strtLength; j++){
+					var campaign_docId=tour_doc_strList[j];
+
+					if (campaign_docId==docID){
+						tour_doc_str=tour_doc_str.replace(campaign_docId, "")
+						
+						
+						if (tour_doc_str==''){
+							tour_doc_str=docID
+						
+						}else{
+							tour_doc_str=tour_doc_str+'<rd>'+docID
+						
+							}		
+					}
+			}
+		}
+		localStorage.tour_doc_str=tour_doc_str;
+		
+		
+	}
+	else{
+		var tour_doc_strList=localStorage.tour_doc_str.split('<rd>');
+		var tour_doc_strLength=tour_doc_strList.length;
+		
+		for (var j=0; j < tour_doc_strLength; j++){
+		var campaign_docId=tour_doc_strList[j]
+				doc_index=tour_doc_str.indexOf(campaign_docId)
+				//alert (doc_index)
+				if (campaign_docId==docID){
+					//alert (tour_doc_strLength)
+					if (tour_doc_strLength>1){
+						//alert (doc_index)
+						if (doc_index==0){
+							tour_doc_str=tour_doc_str.replace(tour_doc_strList[j]+'<rd>', "")
+						}
+						if (product_index > 0){
+							tour_doc_str=tour_doc_str.replace('<rd>'+tour_doc_strList[j], "")
+						}
+					}
+					if (tour_doc_strLength==1){
+							tour_doc_str=tour_doc_str.replace(tour_doc_strList[j], "")
+						
+					}
+
+			}
+		}
+	
+		localStorage.tour_doc_str=tour_doc_str;
+		
+	}
+		//alert (localStorage.tour_doc_str)
+	}	
+	
+
+
+function tourSubmit_doc(){	
+	$("#errorChkVSubmit").text("");
+	
+	
+	
+	var tour_date=$("#tour_date").val();
+	var tour_doc_str=localStorage.tour_doc_str;
+
+	if (tour_doc_str.indexOf('undefined')!=-1){
+		tour_doc_str=''
+	}
+	var errFlag=0;
+	if  (tour_date==''){
+		$("#err_marketTour").html('Select Tour Date');
+		errFlag=1
+	}
+	else if (tour_doc_str==''){
+		$("#err_marketTour").html('Select Route');
+		errFlag=1
+	}
+
+		
+		
+	if (errFlag==0){
+				var tour_date=$("#tour_date").val();
+				localStorage.tour_date=tour_date
+				
+				//$("#tourTxt").val(localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str);
+		//alert (localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str);		
+				$.ajax(localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str,{
+		
+										type: 'POST',
+										timeout: 30000,
+										error: function(xhr) {
+										$("#wait_image_retTour").hide();	
+										$("#err_marketTour").html('Network Timeout. Please check your Internet connection..');
+															},
+										success:function(data, status,xhr){	
+											$("#wait_image_retTour").hide();
+											 if (status!='success'){
+												$("#err_marketTour").html('Network Timeout. Please check your Internet connection...');
+												
+											 }
+											 else{	
+											
+											 if (data=='SUCCESS'){
+													$("#err_marketTour").html("Submitted Successfully");
+													localStorage.tour_doc_str=''
+													showSubmitDocShow();
+											 }
+											 else{
+													$("#err_marketTour").html(data);
+													showSubmitDocShow();
+											 }
+		
+									}
+								}
+							 
+					 });//end ajax
+				}//errorFlag
+		
+										
+		
+	//}//Sync date check
+  }
+function tourConfirm_doc(){	
+	var confirmStr=localStorage.tour_route_str
+	
+	if (confirmStr==''){
+		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
+	}
+	else{
+		//alert (localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str);
+		$.ajax(localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								$("#wait_image_route_pendingTour").hide();
+								$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									$("#wait_image_route_pendingTour").hide();
+									 if (status!='success'){
+										$("#wait_image_route_pendingTour").hide(); 
+										$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									
+									 if (data=='SUCCESS'){
+											$("#err_pendingRouteTour").html("Confirmed Successfully");
+											$("#wait_image_route_pendingTour").hide();
+											localStorage.tour_doc_str=''
+											//alert (localStorage.pendingRep)
+											repPendingDocShow(localStorage.pendingRep)
+											
+									 }
+									 else{
+											$("#err_pendingRouteTour").html(data);
+											localStorage.tour_doc_str=''
+									 }
+
+							}
+						}
+					 
+			 });//end ajax
+		
+		
+		
+	}//}//Sync date check
+  }
+function tourCancel_doc(){	
+	var confirmStr=localStorage.tour_route_str
+	if (confirmStr==''){
+		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
+	}
+	else{
+		//alert (localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str);
+		$.ajax(localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								$("#wait_image_route_pendingTour").hide();
+								$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									$("#wait_image_route_pendingTour").hide();
+									 if (status!='success'){
+										$("#wait_image_route_pendingTour").hide(); 
+										$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									
+									 if (data=='SUCCESS'){
+											$("#err_pendingRouteTour").html("Cancelled Successfully");
+											$("#wait_image_route_pendingTour").hide();
+											localStorage.tour_doc_str=''
+											repPendingDocShow(localStorage.pendingRep)
+											
+									 }
+									 else{
+											$("#err_pendingRouteTour").html(data);
+											localStorage.tour_doc_str=''
+									 }
+
+							}
+						}
+					 
+			 });//end ajax
+		
+		
+		
+	}//}//Sync date check
+  
+  }  
+  
+function repPendingDocShow(rep_id){
+	
+	localStorage.pendingRep=rep_id
+	localStorage.tour_route_str=''
+	$("#wait_image_rep_pendingTour").hide();
+	$.ajax(localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_rep_pendingTour").hide();
+								$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_rep_pendingTour").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_rep_pendingTour").html(resultArray[1]);	
+											$("#wait_image_rep_pendingTour").hide();
+											localStorage.repDocPending='';
+											$('#tour_rep_pending_lv').empty()
+											$('#tour_rep_pending_lv').append(localStorage.repDocPending);
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+										
+										//alert (resultArray[1])
+										
+										
+										
+										
+										localStorage.repDocPending=resultArray[1];
+										$("#err_rep_pendingTour").text("");	
+										$("#wait_image_rep_pendingTour").hide();
+										if (localStorage.user_type=='rep'){
+											$("#tourButton").hide();
+										}
+										else{
+											$("#tourButton").show();
+										}
+										
+										$('#tour_rep_pending_lv').empty()
+										$('#tour_rep_pending_lv').append(localStorage.repDocPending);
+										
+										//tour_ob.listview("refresh");	
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			$("#wait_image_route_pendingTour").hide();	 
+			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
+	
+}
+//==================================================================================	
 function campaign_as_sample(){
 	var campaign_show= localStorage.campaign_doc_str+'<rd>';
 	var campaign_showList=campaign_show.split('<rd>');
@@ -3557,6 +4351,14 @@ function getDocSampleData(){
 			$('#doc_sample').append("</br>"+localStorage.sample_show_1+"</br>").trigger('create');
 		}
 		$("#wait_image_visit_submit_doc").hide();
+		
+		if (localStorage.doctor_plan_flag==1){
+			$("#visit_submit_save_doc").show();		
+			
+		}
+		else{
+			$("#visit_submit_save_doc").hide();		
+		}
 		$.afui.loadContent("#page_visit_doc",true,true,'right');
 		
 		
@@ -3925,6 +4727,13 @@ function getDocGiftData(){
 		
 	}
 	$("#wait_image_visit_submit_doc").hide();
+	
+	if (localStorage.doctor_plan_flag==1){
+		$("#visit_submit_save_doc").show();		
+	}
+	else{
+		$("#visit_submit_save_doc").hide();		
+	}
 	$.afui.loadContent("#page_visit_doc",true,true,'right');
 
 		
@@ -4172,6 +4981,12 @@ function getDocppmData(){
 		
 	}
 	$("#wait_image_visit_submit_doc").hide();
+	if (localStorage.doctor_plan_flag==1){
+		$("#visit_submit_save_doc").show();		
+	}
+	else{
+		$("#visit_submit_save_doc").hide();		
+	}
 	$.afui.loadContent("#page_visit_doc",true,true,'right');
 
 		
@@ -4709,8 +5524,344 @@ function visitSubmit_doc(){
 			}//Visited with check
 	//}//Sync date check
   }
+//==============================Doctor visit save===========================
+function saveDocvisit(){	
+	$("#errorChkVSubmit").text("");
+	
+	visitClientId=localStorage.visit_client.split('|')[1]	
+	visit_type=localStorage.visit_type
+	scheduled_date=localStorage.scheduled_date
+	
+	
+	sample_doc_Str=localStorage.productSampleStr;
+	gift_doc_Str=localStorage.productGiftStr;
+	campaign_doc_str=localStorage.campaign_doc_str;
+	
+	ppm_doc_Str=localStorage.productppmStr;
+	
+	notes= $("#doc_feedback").val();
+	doc_others= $("#doc_others").val();
+	
+	notes=replace_special_char(notes);
+	
+	//----------------------- Campaign check
+	
+	if (campaign_doc_str.indexOf('undefined')!=-1){
+		campaign_doc_Str=''
+	}else{
+		var campaignList=campaign_doc_str.split('<rd>');	
+		var campaignListLength=campaignList.length;	
+		campaign_submit='';
+		
+		for ( i=0; i < campaignListLength; i++){		
+			
+			var camp_name=''
+			if (campaignList[i] !=''){
+				 camp_name=$("#doc_camp_name"+campaignList[i]).val();
+			}
+			if (campaign_submit==''){
+				campaign_submit=campaignList[i]
+			}
+			else{
+				campaign_submit=campaign_submit+','+campaignList[i]
+			}
+			if (campaignList[i] !=''){
+				campaign_submit=campaign_submit+'|'+camp_name
+			}
+			
+		}
+	}
 
+	if (sample_doc_Str.indexOf('undefined')!=-1){
+		sample_doc_Str=''
+	}else{
+		var sampleList=sample_doc_Str.split('<rd>');	
+		var sampleListLength=sampleList.length;	
+		sample_submit='';
+		for ( i=0; i < sampleListLength; i++){		
+			sample_single=sampleList[i]
+			sample_single_list=sample_single.split('<fd>');
+			var sample_name=''
+			if (sample_single_list[0] !=''){
+				sample_name=$("#sample_name"+sample_single_list[0]).val();
+			}
+			
+			if (sample_submit==''){
+				sample_submit=sample_single_list[1]+','+sample_single_list[0]
+			}
+			else{
+				sample_submit=sample_submit+'.'+sample_single_list[1]+','+sample_single_list[0]
+			}
+			if (sample_single_list[0] !=''){
+				sample_submit=sample_submit+'|'+sample_name
+			}
+			
+		}
+	}
+	
+	//----------------------- Gift check
+	if (gift_doc_Str.indexOf('undefined')!=-1){
+		gift_doc_Str=''
+		gift_submit=''
+	}else{
+		var giftList=gift_doc_Str.split('<rd>');	
+		var giftListLength=giftList.length;	
+		gift_submit='';
+		for ( i=0; i < giftListLength; i++){	
+			gift_single=giftList[i];
+			gift_single_list=gift_single.split('<fd>');
+			 
+			var gift_name=''
+			if (gift_single_list[0] !=''){
+				gift_name=$("#doc_gift_name"+sample_single_list[0]).val();
+			}
+			if (gift_submit==''){
+				gift_submit=gift_single_list[1]+','+gift_single_list[0]+'|'+gift_name
+			}
+			else{
+				gift_submit=gift_submit+'.'+gift_single_list[1]+','+gift_single_list[0]+'|'+gift_name
+			}
+			if (gift_single_list[0] !=''){
+				gift_submit=gift_submit+'|'+gift_name
+			}
+		}
+	}
+	//alert (gift_submit)
+	
+	//----------------------- ppm check
+	if (ppm_doc_Str.indexOf('undefined')!=-1){
+		ppm_doc_Str=''
+		ppm_submit=''
+	}else{
+		var ppmList=ppm_doc_Str.split('<rd>');	
+		var ppmListLength=ppmList.length;	
+		
+		ppm_submit='';
+		for ( i=0; i < ppmListLength; i++){	
+			ppm_single=ppmList[i];
+			ppm_single_list=ppm_single.split('<fd>');
+			var doc_ppm_name=''
+			if (ppm_single_list[0] !=''){
+				doc_ppm_name=$("#doc_ppm_name"+ppm_single_list[0]).val();
+			}
+			if (ppm_submit==''){
+				ppm_submit=ppm_single_list[1]+','+ppm_single_list[0]//+'|'+doc_ppm_name
+				
+			}
+			else{
+				ppm_submit=ppm_submit+'.'+ppm_single_list[1]+','+ppm_single_list[0]//+'|'+doc_ppm_name
+			}
+			if (ppm_single_list[0] != ''){
+					ppm_submit=ppm_submit+'|'+doc_ppm_name
+			}
+		}
+	}
+	//-------------------------------
+	//alert (ppm_submit)
+	
+	
+	
 
+	//------------------------
+	campaign_submit=campaign_submit.replace('undefined','').replace(',.','');
+	gift_submit=gift_submit.replace('undefined','').replace(',.','');
+	
+	sample_submit=sample_submit.replace('undefined','').replace(',.','');
+	
+	notes=notes.replace('undefined','').replace(',.','');
+	ppm_submit=ppm_submit.replace('undefined','').replace(',.','');
+	
+	
+	
+	if (campaign_submit==','){
+		campaign_submit='';
+		
+	}
+	if (gift_submit==','){
+		gift_submit='';
+		
+	}
+	if (sample_submit==','){
+		sample_submit='';
+		
+	}
+	if (ppm_submit==','){
+		ppm_submit='';
+		
+	}
+	
+	var msg=campaign_submit+'..'+gift_submit+'..'+sample_submit+'..'+notes+'..'+ppm_submit
+
+	var lscPhoto=$("#lscPhoto").val();
+	var lat=$("#lat").val();
+	var longitude=$("#longitude").val();
+	var now = $.now();
+	var currentDate_1 = new Date()
+	var day_1 = currentDate_1.getDate();if(day_1.length==1)	{day_1="0" +day_1};
+	var month_1 = currentDate_1.getMonth() + 1;if(month_1.length==1)	{month_1="0" +month_1};
+	var year_1 = currentDate_1.getFullYear()
+	var today_1=  year_1 + "-" + month_1 + "-" + day_1
+	
+	var v_with=$("input[name=v_with]:checked").val()
+	
+	if (lat=='' || lat==0 || longitude=='' || longitude==0 ){
+							
+		lat=localStorage.latitude
+		longitude=localStorage.latitude
+		localStorage.location_detail="LastLocation-"+localStorage.location_detail;
+	
+	}
+	
+
+			if (v_with=='' || v_with==undefined || v_with=='undefined'){
+				$("#errorChkVSubmit_doc").html('Visited with not selected');		
+			}else{
+				
+
+										
+										if (visitClientId=='' || visitClientId==undefined){
+											$("#errorChkVSubmit_doc").html('Invalid Client');		
+										}else{
+											if(visit_type=='' || visit_type==undefined){
+												$("#errorChkVSubmit_doc").html('Invalid Visit Type');
+											}else{
+													
+												//alert (localStorage.productOrderStr);
+												var marketNameId=localStorage.visit_market_show.split('|');
+												var market_Id=marketNameId[1];		
+
+										
+											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
+
+												var docSaveData=localStorage.docSaveData
+												//alert (localStorage.visit_client+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+encodeURI(msg)+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>')
+												var doctor_visit_save=docSaveData+localStorage.visit_client+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+encodeURI(msg)+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>'
+												
+												localStorage.docSaveData=doctor_visit_save
+
+													localStorage.visit_client=''
+													localStorage.visit_page=""
+													localStorage.productGiftStr='';
+													localStorage.campaign_doc_str=''
+													localStorage.productSampleStr=''
+													localStorage.productppmStr=''
+													
+													localStorage.campaign_show_1='';
+													localStorage.gift_show_1='';
+													localStorage.sample_show_1='';
+													localStorage.ppm_show_1='';
+													
+																	
+													////-------------
+													// Clear Campaign and sample
+														
+														//localStorage.productOrderStr='';
+														var productList=localStorage.productListStr.split('<rd>');
+														var productLength=productList.length;
+														for ( i=0; i < productLength; i++){
+															var productArray2 = productList[i].split('<fd>');
+															var product_id2=productArray2[0];	
+															var product_name2=productArray2[1];
+															$("#sample_qty"+product_id2).val('');
+															
+															
+															var camp_combo="#doc_camp"+product_id2
+															$(camp_combo).attr('checked', false);
+															//alert (product_id2);
+														}
+													// Clear Gift
+														
+														//localStorage.productOrderStr='';
+														var giftList=localStorage.gift_string.split('<rd>');
+														var giftLength=giftList.length;
+														for ( i=0; i < giftLength; i++){
+															var giftArray2 = giftList[i].split('<fd>');
+															var gift_id2=giftArray2[0];	
+															//var product_name2=giftArray2[1];
+															$("#gift_qty"+gift_id2).val('');
+														}
+														// Clear ppm
+														
+														//localStorage.productOrderStr='';
+														var ppmList=localStorage.ppm_string.split('<rd>');
+														var ppmLength=ppmList.length;
+														for ( i=0; i < ppmLength; i++){
+															var ppmArray2 = ppmList[i].split('<fd>');
+															var ppm_id2=ppmArray2[0];	
+															//var product_name2=ppmArray2[1];
+															$("#ppm_qty"+ppm_id2).val('');
+															
+			
+														}	
+															
+															//====================================
+														
+														
+														$("#doc_feedback").val('');
+														$("#doc_others").val('');
+														
+														//$(".market").html('');
+														$(".visit_client").html('');
+														//--------------------------------------------------------
+														$("#errorChkVSubmit").html('');
+														$("#lat").val('');
+														$("#longitude").val('');
+														$("#lscPhoto").val('');
+														document.getElementById('myImage').src = '';
+														
+														$("#lat_p").val('');
+														$("#long_p").val('');								
+																
+														//alert (localStorage.docSaveData)
+														
+														
+														
+														$("#errorChkVSubmit_doc").html('Saved Successfully');
+														$("#wait_image_visit_submit_doc").hide();
+														$("#visit_submit_doc").hide();	
+														$("#checkLocation_doc").html('');
+														$("#visit_location_doc").show();
+														
+														
+														
+														//--
+												//$("#visit_success").html('</br></br>Visit SL: '+resultArray[1]+'</br>Submitted Successfully');
+												//$("#visit_success").html('</br></br>Submitted Successfully');
+												localStorage.visit_page=''
+												
+												
+												
+												
+												/// CANCEL ALLcancelVisitPage();
+												
+													localStorage.campaign_show_1="";
+													localStorage.gift_show_1="";
+													localStorage.ppm_show_1=""
+													localStorage.sample_show_1="";
+													
+													
+													
+													localStorage.productGiftStr='';
+													localStorage.campaign_doc_str=''
+													localStorage.productSampleStr=''
+													localStorage.productppmStr='';
+													
+													set_doc_all();
+													$(".visit_client").html('');
+												
+												
+												
+												
+																											
+									
+								
+						
+						}
+					}
+				//  }//locaction check error
+			}//Visited with check
+	//}//Sync date check
+  }
 //===================Save visit
 //-----------------------------Visit Save Start
 function visitSave(){
@@ -5120,6 +6271,102 @@ function searchMarket() {
 	}
 }
 
+function searchSubmitRoute() {
+	var filter  = $("#tour_market_combo_id").val().toUpperCase();
+	//alert (filter);
+	 var lis =document.getElementById("tour_market_combo_id_lv").getElementsByTagName("li");
+	if (localStorage.doctor_flag==1){
+		//alert ('Nadira')
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.indexOf(filter) != -1) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	else{
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.toUpperCase().indexOf(filter) == 0) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	
+}
+function searchPendingRep() {
+	var filter  = $("#tour_pending_combo_id").val().toUpperCase();
+	//alert (filter);
+	 var lis =document.getElementById("tour_pending_combo_id_lv").getElementsByTagName("li");
+	if (localStorage.doctor_flag==1){
+		//alert ('Nadira')
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.indexOf(filter) != -1) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	else{
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.toUpperCase().indexOf(filter) == 0) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	
+}
+function clearsearchPendingRep(){
+	$("#tour_pending_combo_id").val("")
+	$("#tour_pending_combo_id").focus()
+	searchPendingRep()
+	
+}
+
+//===========
+function searchPendingR() {
+	var filter  = $("#tour_pending_combo_id").val().toUpperCase();
+	//alert (filter);
+	 var lis =document.getElementById("tour_rep_pending_lv").getElementsByTagName("li");
+	if (localStorage.doctor_flag==1){
+		//alert ('Nadira')
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.indexOf(filter) != -1) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	else{
+		for (var i = 0; i < lis.length; i++) {
+			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+			//alert (name)
+			if (name.toUpperCase().indexOf(filter) == 0) 
+				lis[i].style.display = 'list-item';
+			else
+				lis[i].style.display = 'none';
+		}
+	}
+	
+}
+function clearSearchR(){
+	$("#tour_pending_combo_id").val("")
+	$("#tour_pending_combo_id").focus()
+	searchPendingR()
+	
+}
+//=========
 function searchClient() {
 	var filter  = $("#unscheduled_m_client_combo_id").val().toUpperCase();
 	//alert (filter);
@@ -5147,6 +6394,7 @@ function searchClient() {
 	}
 	
 }
+
 function searchProduct() {
 	var filter  = $("#item_combo_id").val().toUpperCase();
 	//alert (filter);
@@ -6597,11 +7845,37 @@ function docProfileSubmit() {
 	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
 	
 }
-function clearSearchDoctor(){
-	$("#unscheduled_m_client_combo_id").val("")
-	$("#unscheduled_m_client_combo_id").focus()
-	searchClient()
+function clearSearchRouteDoctor(){
+	$("#tour_market_combo_id").val("")
+	$("#tour_market_combo_id").focus()
+	searchSubmitRoute()
 	
+}
+
+function tourDelete_doc(id){
+
+//alert (localStorage.report_url+'tourDelete_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_id='+id)
+
+$.ajax(localStorage.report_url+'tourDelete_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_id='+id,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 alert ('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										alert ('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{
+										showSubmitDocShow();
+									}
+					  }
+			 });//end ajax
+
+
+
 }
 
 //====================Doctor Add
@@ -6974,5 +8248,15 @@ function cancelDocSubmit() {
 					 });//end ajax
 	
 	 }
+	
+}
+
+function toggleentryDiv(){
+	 $("#err_marketTour").html('');
+	 $("#tourErep").toggle();
+}
+function uncheckAll(divid) {
+	 // $("#err_marketTour").html('');
+	 $('#'+divid).find('input[type=checkbox]:checked').attr("checked", false);
 	
 }
