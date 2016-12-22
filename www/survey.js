@@ -278,7 +278,7 @@ function page_saved_Doc() {
 		var singleDoc=docSaveDataList[i]
 		var docShowList=singleDoc.split('<d>');
 		//alert (docShowList[0])
-		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="Confirm"    /></td></tr></table></li>'
 	}
 	$('#saved_visit_doc').empty()
 	$('#saved_visit_doc').append(docSaveStr);									
@@ -300,7 +300,7 @@ function saveDelete_doc(i) {
 		var singleDoc=docSaveDataList[i]
 		var docShowList=singleDoc.split('<d>');
 		//alert (docShowList[0])
-		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="Confirm"    /></td></tr></table></li>'
 	}
 	$('#saved_visit_doc').empty()
 	$('#saved_visit_doc').append(docSaveStr);				
@@ -312,17 +312,22 @@ function saved_Doc_set(i) {
 	var docSaveData=localStorage.docSaveData
 	var docSaveDataList = docSaveData.split('<doc>');	
 	var docSaveDataListLength=docSaveDataList.length
-	var docSaveStr=''
-	alert (i);
-	for ( i=0; i < docSaveDataListLength-1; i++){	
-		var singleDoc=docSaveDataList[i]
-		var docShowList=singleDoc.split('<d>');
-		//alert (docShowList[0])
-		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td>'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
-	}
-	$('#saved_visit_doc').empty()
-	$('#saved_visit_doc').append(docSaveStr);									
-	//$.afui.loadContent("#page_saved_Doc",true,true,'right');
+	var docSaveStr=docSaveDataList[i]
+	var docShowList=docSaveStr.split('<d>');
+	
+	
+	//$(".market").html(localStorage.visit_market_show);
+	$(".visit_client").html(docShowList[0]);
+	//alert (i);
+	//for ( i=0; i < docSaveDataListLength-1; i++){	
+//		var singleDoc=docSaveDataList[i]
+//		var docShowList=singleDoc.split('<d>');
+//		//alert (docShowList[0])
+//		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td>'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px;" value=" X "    /></td></tr></table></li>'
+//	}
+//	$('#saved_visit_doc').empty()
+//	$('#saved_visit_doc').append(docSaveStr);									
+	$.afui.loadContent("#page_visit_doc",true,true,'right');
 }
 
 

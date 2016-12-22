@@ -908,7 +908,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <header> 
          <table width="100%" border="0">
           <tr>
-            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td width="10%" align="left" onClick="page_market_ret()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
             <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor</td>
             <td width="10%" ></td> 
           </tr>
@@ -1032,6 +1032,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="page_saved_Doc()" ><img style="padding-top:0px; padding-bottom:0px;" hight="50px" width="50px" src="confirm2.png"></a>
         <a href="#"  onclick="$.afui.drawer.show('#docInfo','right','push')"><img style="height:30px; width:30px" src="menu.png">  </a>
          </footer>
          
@@ -2085,7 +2086,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
 
 				
-				
+				<input type="submit" style="width:100%; height:30px; width:40px; background-color:#09C; color:#FFF; font-size:15px;" onClick="cancelSave('+i+')" value="C"  >' 
                 			
                
                 <ul id="saved_visit" data-role="listview"  >
@@ -2852,7 +2853,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
              
         
     
-        <div id="err_marketTour" style="color:#C00"></div>
+        
         <!--<div><span class="market" style="font-size:16px"></span></div>  -->
 
         <br/> 
@@ -2869,6 +2870,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <div align="center">
                 <img id="wait_image_retTour" style="width:50px" src="loading.gif" alt="">
                </div>
+               <div id="err_marketTour" style="color:#C00"></div>
                 <input name="tourTxt" id="tourTxt"  value="" type="hidden" placeholder="Tour Date ">
                <input type="submit" id="btn_submit_tour" onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
                </div>
@@ -2969,7 +2971,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
              
-        <div id="pendingRepShow"></div>
+        <div id="pendingRepShow" style="color:#936; font-size:16px"></div>
     
         <div id="err_pendingRouteTour" style="color:#C00"></div>
         <!--<div><span class="market" style="font-size:16px"></span></div>  -->
