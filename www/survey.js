@@ -278,7 +278,7 @@ function page_saved_Doc() {
 		var singleDoc=docSaveDataList[i]
 		var docShowList=singleDoc.split('<d>');
 		//alert (docShowList[0])
-		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="Confirm"    /></td></tr></table></li>'
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="OK"    /></td></tr></table></li>'
 	}
 	$('#saved_visit_doc').empty()
 	$('#saved_visit_doc').append(docSaveStr);									
@@ -300,7 +300,7 @@ function saveDelete_doc(i) {
 		var singleDoc=docSaveDataList[i]
 		var docShowList=singleDoc.split('<d>');
 		//alert (docShowList[0])
-		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="Confirm"    /></td></tr></table></li>'
+		docSaveStr=docSaveStr+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" > <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onClick="saved_Doc_set(\''+i+'\');">'+docShowList[0]+'</td><td width="60px"><input  type="submit" onClick="saveDelete_doc(\''+i+'\');"   style=" background-color:#09C; color:#FFF; font-size:12px; width:50px; ;  " value="OK"    /></td></tr></table></li>'
 	}
 	$('#saved_visit_doc').empty()
 	$('#saved_visit_doc').append(docSaveStr);				
