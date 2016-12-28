@@ -75,7 +75,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <!--<h1>Sync</h1>-->
                     <br><br><br><br>
                     <div id="error_login" style="color:#C00"></div> 
-                    <input name="error_logintext" id="error_logintext"  type="hidden" placeholder="CID" value="">	
+                    <input name="error_logintext" id="error_logintext"  type="text" placeholder="CID" value="">	
                     <div class="input-group">
                     	<form>		
 						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
@@ -151,7 +151,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                        </td>
                       </tr>
                        <tr>
-                        <td align="center"><div align="center"  style="width:100%; background-color:#09C; "><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team.png"> </div>
+                        <td align="center"><div align="center"  style="width:100%; background-color:#09C; "><img onClick="team();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team.png"> </div>
                         
                         
                         </td>
@@ -994,7 +994,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
 			            <br/></br>
                          <div id="errorChkVSubmit_doc" style="color:#C00"></div>
-                          <input type="hidden" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
+                          <input type="text" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
                         <div id="checkLocation_doc" style="color:#066"></div>
                     
         				<div id="visit_location_doc">	
@@ -1005,6 +1005,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                    
                     <br/>
                     <br/>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getDocImage()"></td>
+                        <td width="33%" align="center">
+                        <img src="images.png" width="70" height="70" alt="Image" id="myImageDoc">
+                        <input name="docVisitPhoto" id="docVisitPhoto" type="text" value="">
+                        </td>
+                        
+                      </tr>
+                    </table>
                     <div id="visit_submit_doc">
                      <input type="submit" id="btn_visit_submit_doc" onClick="visitSubmit();"   style="width:100%; height:100px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
                   
