@@ -1010,7 +1010,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getDocImage()"></td>
                         <td width="33%" align="center">
                         <img src="images.png" width="70" height="70" alt="Image" id="myImageDoc">
-                        <input name="docVisitPhoto" id="docVisitPhoto" type="text" value="">
+                        <input name="docVisitPhoto" id="docVisitPhoto" type="text" value="" >
                         </td>
                         
                       </tr>
@@ -2901,7 +2901,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 
 <a onClick="homePage()" class="icon home" ></a>
-<a id="addDocanc" name="addDocanc" onClick="#"></a>
+<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Request</a>
 
 
  </footer>
@@ -2957,12 +2957,222 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 
 <a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()" ></a>
+<div id="cReqShow">
+<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+</div>
+ </footer>
+
+</div>  
+
+<div class="view" id="page_cancel_pending_View">
+<div class="pages">
+ <header> 
+ <table width="100%" border="0">
+  <tr>
+    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
+    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
+  </tr>
+</table>
+</header> 
+    <div class="panel" id="page_cancel_pending">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    
+        <div id="err_cancel_pendingTour" style="color:#C00"></div>
+        <!--<div><span class="market" style="font-size:16px"></span></div>  -->
+        <div><span class="market" style="font-size:16px; color:#009191"  ></span></div>   
+
+        <br/> 
+              
+                <ul class="list" id="tour_cancel_pending_combo_id_lv" >				
+               
+                </ul>
+                
+                
+                <div align="center">
+                <img id="wait_image_canccel_pendingTour" style="width:50px" src="loading.gif" alt="">
+               </div>
+               
+            
+               
+               
+                <br>
+                <br>
+            </div>
+            
+       <!-- </div>-->
+    </div>
+
+<footer>
+
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()" ></a>
+<div id="cReqShow">
+<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+</div>
+ </footer>
+
+</div>  
+<!--============== Cancell planned Visit with reson===========-->   
+
+    
+<div class="view" id="page_tour_cancel_View">
+<div class="pages">
+ <header> 
+ <table width="100%" border="0">
+  <tr>
+    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
+    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
+  </tr>
+</table>
+</header> 
+    <div class="panel" id="page_tour_cancel">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    
+        <div id="err_tourCancel" style="color:#C00"></div>
+        <!--<div><span class="market" style="font-size:16px"></span></div>  -->
+        
+        <br/> 
+              
+                <div id="err_tourCancel" style="color:#C00"></div>
+                
+                <div id="tourCancelShow" ></div>
+                <div align="center">
+                <img id="wait_image_tourCancel" style="width:50px" src="loading.gif" alt="">
+               </div>
+                <input name="tourpendingTxt" id="tourpendingTxt"  value="" type="hidden" placeholder="Tour Date">
+            
+               
+               
+                <br>
+                <br>
+            </div>
+            
+       <!-- </div>-->
+    </div>
+
+<footer>
+
+<a onClick="homePage()" class="icon home" ></a>
 
 <a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
 
  </footer>
 
 </div>  
+
+
+<div class="view" id="page_repCancelReq_sup_View">
+<div class="pages">
+ <header> 
+ <table width="100%" border="0">
+  <tr>
+    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
+    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
+  </tr>
+</table>
+</header> 
+    <div class="panel" id="page_repCancelReq_sup">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    
+        <div id="err_tourCancelSup" style="color:#C00"></div>
+        <!--<div><span class="market" style="font-size:16px"></span></div>  -->
+        
+        <br/> 
+              
+                <div id="err_tourCancelSup" style="color:#C00"></div>
+                <div style="font-size:18px; color:#600" id="tourCancelShowRepName" ></div></br>
+                <div id="tourCancelShowSup" ></div>
+                <div align="center">
+                <img id="wait_image_tourCancelSup" style="width:50px" src="loading.gif" alt="">
+               </div>
+               
+               
+               
+                <br>
+                <br>
+            </div>
+            
+       <!-- </div>-->
+    </div>
+
+<footer>
+
+<a onClick="homePage()" class="icon home" ></a>
+
+<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+
+ </footer>
+
+</div>  
+
+
+<div class="view" id="page_repInfo_View">
+<div class="pages">
+ <header> 
+ <table width="100%" border="0">
+  <tr>
+    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
+    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
+  </tr>
+</table>
+</header> 
+    <div class="panel" id="page_repInfo">
+    </br></br></br></br>
+        <!--<div class="card">-->
+            <!--<h1>Sync</h1>-->
+             
+        
+    
+        <div id="err_repInfo" style="color:#C00"></div>
+        <!--<div><span class="market" style="font-size:16px"></span></div>  -->
+        
+        <br/> 
+              
+                <div id="err_repInfo" style="color:#C00"></div>
+                <div style="font-size:18px; color:#600" id="repInfoRepName" ></div></br>
+                <div id="repInfo" ></div>
+                <div align="center">
+                <img id="wait_image_repInfo" style="width:50px" src="loading.gif" alt="">
+               </div>
+               
+               
+               
+                <br>
+                <br>
+            </div>
+            
+       <!-- </div>-->
+    </div>
+
+<footer>
+
+<a onClick="homePage()" class="icon home" ></a>
+
+<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+
+ </footer>
+
+</div>  
+
+<!--=============================-->
+
 
 
 <div class="view" id="page_tour_rep_pending_View">

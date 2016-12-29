@@ -1174,7 +1174,7 @@ function check_user() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 
-  // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+ //  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
  
 	
 	var user_id=$("#user_id").val();
@@ -1600,39 +1600,43 @@ function check_user() {
 										
 										//===========Market===========================
 												//------------- Visit Plan Market List / Client Profile Market List / Unschedule
-													var docMarketList = localStorage.marketStrDoc.split('<rd>');
-													var docMarketListShowLength=docMarketList.length	
-													var docMarketComb=''
-													var today = new Date();
-													var dd = today.getDate();
-													var mm = today.getMonth()+1; //January is 0!
-													var yyyy = today.getFullYear()	
-													var CDate =yyyy+'-'+mm+'-'+dd	
-													var todayFlag=0
-													var tomorrowFlag=0					
-													for (var k=0; k < docMarketListShowLength; k++){
-														var docMarketValueArray = docMarketList[k].split('<fd>');
-														docMarketID=docMarketValueArray[0];
-														docMarketName=docMarketValueArray[1];
-														docMarketDate=docMarketValueArray[2];
-														var docmarketNameID=docMarketName+'|'+docMarketID;
-														if ((docMarketDate!=CDate) &&(tomorrowFlag==0)) {
-															docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Tomorrow</font></li>';
-															tomorrowFlag=1
-														}
-														if ((docMarketDate==CDate) &&(todayFlag==0)) {
-															docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Today</font></li>';
-															todayFlag=1
-														}
-														if(docMarketID!=''){
-															docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+docmarketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+docmarketNameID+'</a></font></li>';
-															
-															}
-													}
+													//alert (localStorage.marketStrDoc);
+													if (localStorage.marketStrDoc!=''){
+														var docMarketList = localStorage.marketStrDoc.split('<rd>');
+														var docMarketListShowLength=docMarketList.length	
+														var docMarketComb=''
+														var today = new Date();
+														var dd = today.getDate();
+														var mm = today.getMonth()+1; //January is 0!
+														var yyyy = today.getFullYear()	
+														var CDate =yyyy+'-'+mm+'-'+dd	
+														var todayFlag=0
+														var tomorrowFlag=0		
+														//alert (docMarketListShowLength)			
+														for (var k=0; k < docMarketListShowLength; k++){
+															var docMarketValueArray = docMarketList[k].split('<fd>');
+															docMarketID=docMarketValueArray[0];
+															docMarketName=docMarketValueArray[1];
+															docMarketDate=docMarketValueArray[2];
+															var docmarketNameID=docMarketName+'|'+docMarketID;
 													
-																				
-													localStorage.docMarketComb=docMarketComb;								
-
+													if ((docMarketDate!=CDate) &&(tomorrowFlag==0) && (docMarketDate.length > 5)) {
+																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Tomorrow</font></li>';
+																tomorrowFlag=1
+															}
+															if ((docMarketDate==CDate) &&(todayFlag==0)) {
+																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Today</font></li>';
+																todayFlag=1
+															}
+															if (docMarketID!=''){
+																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+docmarketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+docmarketNameID+'</a></font></li>';
+																
+																}
+														}
+														
+																					
+														localStorage.docMarketComb=docMarketComb;								
+													}
 													
 													//$('#tour_market_combo_id_lv').empty();
 //													$('#tour_market_combo_id_lv').append(localStorage.visit_plan_marketlist_combo);
@@ -2025,9 +2029,8 @@ function tour(){
 	//if (localStorage.user_type=='rep'){
 		showSubmitDocShow()
 		addMarketListTour()
-	//}
-	//if (localStorage.user_type=='sup'){
-	//}
+	
+	$("#err_marketTour").html('');
 }
 function team(){
 	
@@ -2090,12 +2093,241 @@ function page_pending(){
 						}
 						  
 				 });//end ajax
-				 
+			if (localStorage.user_type=='sup'){
+				$("#cReqShow").html('<a onClick="repCancelReqShow_sup()" style="font-size:18px; color:#FFF; " >CancelReqPending</a> ');
+			}
 			$.afui.loadContent("#page_tour_pending",true,true,'right');	 
 	
 	
 }
 
+function repCancelReqShow_sup(){
+	
+	$("#err_cancel_pendingTour").html('');
+	//alert (localStorage.base_url+'repPendingCancel?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+
+	
+	$.ajax(localStorage.base_url+'repPendingCancel?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_canccel_pendingTour").hide();
+								$("#err_cancel_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										$("#err_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_canccel_pendingTour").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+											$("#err_cancel_pendingTour").text("Approved route not available");	
+											$("#wait_image_canccel_pendingTour").hide();		
+											
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+											
+											$("#wait_image_canccel_pendingTour").hide();
+											
+										
+											
+											$('#tour_cancel_pending_combo_id_lv').empty()
+											$('#tour_cancel_pending_combo_id_lv').append(resultArray[1]);
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			
+			$.afui.loadContent("#page_cancel_pending",true,true,'right');	 
+	
+	
+}
+function repCancelReq_sup(rep_id){
+
+	
+	$("#wait_image_tourCancelSup").show();
+	$("#err_tourCancelSup").html('');
+	//alert (localStorage.base_url+'repCancelReq_sup?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id)
+
+	
+	$.ajax(localStorage.base_url+'repCancelReq_sup?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_tourCancelSup").hide();
+								$("#err_tourCancelSup").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										$("#err_tourCancelSup").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_tourCancelSup").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+											$("#err_tourCancelSup").text("Approved route not available");	
+											$("#wait_image_tourCancelSup").hide();		
+											
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+											localStorage.repPendingSup=rep_id;
+											
+											var repIdShow=$("#sup_"+rep_id).html();
+											localStorage.repshowSup=repIdShow;
+											$("#wait_image_tourCancelSup").hide();
+											$("#tourCancelShowRepName").html(localStorage.repshowSup);
+											$('#tourCancelShowSup').html(resultArray[1]);
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			
+			$.afui.loadContent("#page_repCancelReq_sup",true,true,'right');	 
+	
+	
+}
+function tourCReq_delete(id){
+	
+	
+	$("#wait_image_tourCancelSup").show();
+	$("#err_tourCancelSup").html('');
+	
+	//alert (localStorage.base_url+'tourCReq_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+localStorage.repPendingSup+'&rowId='+id)
+
+	
+	$.ajax(localStorage.base_url+'tourCReq_delete?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+localStorage.repPendingSup+'&rowId='+id,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_tourCancelSup").hide();
+								$("#err_tourCancelSup").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										$("#err_tourCancelSup").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_tourCancelSup").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+											$("#err_tourCancelSup").text("Approved route not available");	
+											$("#wait_image_tourCancelSup").hide();		
+											
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+											
+											$("#wait_image_tourCancelSup").hide();
+											$('#tourCancelShowSup').html(resultArray[1]);
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			
+		//	$.afui.loadContent("#page_repCancelReq_sup",true,true,'right');	 
+	
+	
+}
+
+function tourRepInfo(repId){
+	
+	
+	$("#err_repInfo").show();
+	$("#err_repInfo").html('');
+	
+	//alert (localStorage.base_url+'lastThreeVisit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+repId)
+
+	
+	$.ajax(localStorage.base_url+'lastThreeVisit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+repId,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_repInfo").hide();
+								$("#err_repInfo").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 if (status!='success'){
+										$("#err_repInfo").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_repInfo").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+										if (resultArray[0]=='FAILED'){
+											$("#err_repInfo").text("Approved route not available");	
+											$("#wait_image_repInfo").hide();		
+											
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+											
+											$("#wait_image_repInfo").hide();
+											
+											$('#repInfoRepName').html(resultArray[2])
+											$('#repInfo').html(resultArray[1]);
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			
+			$.afui.loadContent("#page_repInfo",true,true,'right');	 
+	
+	
+}
 function repPendingDoc(rep_id){
 	
 	localStorage.pendingRep=rep_id
@@ -2238,7 +2470,7 @@ function addMarketListDoctor() {
 
 //==========================Show Submit Doctor=======================
 function showSubmitDocShow(){
-	localStorage.tour_route_str=''
+	//localStorage.tour_route_str=''
 	$("#wait_image_rep_pendingTour").show();
 	//alert (localStorage.base_url+'repPendingDocShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 	
@@ -2293,6 +2525,119 @@ function showSubmitDocShow(){
 	
 }
 
+
+function repCancelReqShow(){
+	
+	$("#err_tourCancel").html('')
+	//alert (localStorage.base_url+'repCancelReqShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	
+
+	$.ajax(localStorage.base_url+'repCancelReqShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_tourCancel").hide();
+								$("#err_tourCancel").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_tourCancel").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_tourCancel").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_tourCancel").text("Retailer not available");	
+											$("#wait_image_tourCancel").hide();
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+																			
+										//$('#tour_rep_pending_show_lv').empty()
+										$('#tourCancelShow').html(resultArray[1]);
+										$("#wait_image_tourCancel").hide();
+										$.afui.loadContent("#page_tour_cancel",true,true,'right');
+										
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			//$("#wait_image_route_pendingTour").hide();	 
+			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
+	
+}
+
+function tourCReq_doc(i){
+	
+	var reson  = $("#R_opt_"+i).val().toUpperCase();
+	
+	//alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rowId='+i+'&reson='+reson)
+	
+	
+	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rowId='+i+'&reson='+reson,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_tourCancel").hide();
+								$("#err_tourCancel").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_tourCancel").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_tourCancel").hide();
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_tourCancel").text("Retailer not available");	
+											$("#wait_image_tourCancel").hide();
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+																			
+										//$('#tour_rep_pending_show_lv').empty()
+										$('#tourCancelShow').html(resultArray[1]);
+										$("#wait_image_tourCancel").hide();
+										//$.afui.loadContent("#page_tour_cancel",true,true,'right');
+										
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+
+	
+}
 //========================================================
 
 function addMarketListTour() {
@@ -5176,7 +5521,7 @@ function visitSubmit_doc(){
 	var doc_others= $("#doc_others").val();
 	//alert (notes);
 	notes=replace_special_char(notes);
-	alert (campaign_doc_str)
+	//alert (campaign_doc_str)
 	//----------------------- Campaign check
 	
 	if (campaign_doc_str.indexOf('undefined')!=-1){
@@ -5204,7 +5549,7 @@ function visitSubmit_doc(){
 			
 		}
 	}
-	alert (campaign_submit);
+	//alert (campaign_submit);
 	//----------------------- Sample check
 	//$("#errorChkVSubmit").html(sample_doc_Str);
 	//alert (sample_doc_Str.indexOf('undefined'));
