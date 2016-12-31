@@ -151,7 +151,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                        </td>
                       </tr>
                        <tr>
-                        <td align="center"><div align="center"  style="width:100%; background-color:#09C; "><img onClick="team();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team.png"> </div>
+                        <td align="center"><div id="teamShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="team();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team.png"> </div>
                         
                         
                         </td>
@@ -468,7 +468,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
              <div id="checkLocation" style="color:#066"></div>
             <div align="center"><img id="wait_image_visit_submit" style="" width="50px;" src="loading.gif" alt=""></div>
             <div id="visit_location">
-            <input type="submit" id="loginButton" onClick="getLocationInfo();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Confirm Location     "   />
+            <input type="submit" id="loginButton" onClick="getLocationInfo_ready()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="    Confirm Location     "   />
 			     
             </div>
 			<br/>
@@ -909,7 +909,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_market_ret()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Doctor Visit</td>
             <td width="10%" ></td> 
           </tr>
         </table>
@@ -972,14 +972,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 						
 						<td ><input type="radio" name="v_with" value='Self' id="Self" >  <label for="Self"> <font style=" font-size:10px">Self</font></label>
                          </td>
-						<td > <input type="radio" name="v_with" value='MSO' id="MSO" >  <label for="MSO"><font style=" font-size:10px">MSO</font></label>
+						<td > <input type="radio" name="v_with" value='MSO' id="MPO" >  <label for="MPO"><font style=" font-size:10px">MPO</font></label>
                         </td>
-                        <td ><input type="radio" name="v_with" value='FM/TL' id="FMTL" >  <label for="FMTL"><font style=" font-size:10px">FM/TL</font></label>
+                        <td ><input type="radio" name="v_with" value='FM/TL' id="AM" >  <label for="AM"><font style=" font-size:10px">AM</font></label>
                          </td>
                          <td ><input type="radio" name="v_with" value='RSM' id="RSM" >  <label for="RSM"><font style=" font-size:10px">RSM</font></label>
-                         </td>
-                         <td ><input type="radio" name="v_with" value='NSM' id="NSM'" >  <label for="NSM'"><font style=" font-size:10px">NSM</font></label>
-                         </td>
+                        
 					  </tr>
 			  </table>
 
@@ -993,12 +991,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
 				
 			            <br/></br>
-                         <div id="errorChkVSubmit_doc" style="color:#C00"></div>
-                          <input type="text" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
-                        <div id="checkLocation_doc" style="color:#066"></div>
+                         
+                          <input type="hidden" name="errorChkVSubmit_doc_t"  maxlength="50"  id="errorChkVSubmit_doc_t" placeholder="Feedback/Note"  >
+                        
                     
-        				<div id="visit_location_doc">	
-                               		<input type="submit" id="btn_location_doc" onClick="getLocationInfo();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location      "   />
+        				<div id="visit_location_doc" hidden="true">	
+                               		<input type="submit" id="btn_location_doc" onClick="getLocationInfo_ready()();"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location      "   />
                     </div>
                     <div align="center"><img id="wait_image_visit_submit_doc" style="" width="50px;" src="loading.gif" alt=""></div>
                     
@@ -1007,19 +1005,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <br/>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getDocImage()"></td>
-                        <td width="33%" align="center">
-                        <img src="images.png" width="70" height="70" alt="Image" id="myImageDoc">
-                        <input name="docVisitPhoto" id="docVisitPhoto" type="text" value="" >
+                        <td ><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getDocImage()"></td>
+                        <td >
+                        <img src="images.png" width="100" height="100" alt="Image" id="myImageDoc">
+                        <input name="docVisitPhoto" id="docVisitPhoto" type="hidden" value="" >
                         </td>
                         
                       </tr>
                     </table>
+                    <div id="checkLocation_doc" style="color:#066"></div>
+                    <div id="errorChkVSubmit_doc" style="color:#C00"></div>
                     <div id="visit_submit_doc">
                      <input type="submit" id="btn_visit_submit_doc" onClick="visitSubmit();"   style="width:100%; height:100px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
                   
                     </div>
-                    
+                     <br/>
+                    <br/>
                     <div id="visit_submit_save_doc">
                      <input type="submit" id="btn_visit_submit_doc" onClick="saveDocvisit();"   style="width:100%; height:80px; background-color:#09C; color:#FFF; font-size:20px" value="     Save      "   />
                   
@@ -2849,12 +2850,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="pages">
  <header> 
  <table width="100%" border="0">
-  <tr>
-    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_market_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchSubmitRoute()"  /></div></font></td>
-    <td width="10%" ><img src="search.png" onClick="clearSearchRouteDoctor()" width="30" height="30" alt="Back" ></td> 
-  </tr>
-</table>
+          <tr>
+            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Tour Plan</td>
+            <td width="10%" ></td> 
+          </tr>
+        </table>
 </header> 
     <div class="panel" id="page_tour_market">
     </br></br>
@@ -2901,7 +2902,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <footer>
 
 <a onClick="homePage()" class="icon home" ></a>
-<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Request</a>
+<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Tour</a>
 
 
  </footer>
@@ -2969,12 +2970,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="pages">
  <header> 
  <table width="100%" border="0">
-  <tr>
-    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
-    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
-  </tr>
-</table>
+          <tr>
+            <td width="10%" align="left" onClick="page_market_ret()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">CancelReqPending</td>
+            <td width="10%" ></td> 
+          </tr>
+        </table>
 </header> 
     <div class="panel" id="page_cancel_pending">
     </br></br></br></br>
@@ -3025,12 +3026,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="pages">
  <header> 
  <table width="100%" border="0">
-  <tr>
-    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
-    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
-  </tr>
-</table>
+          <tr>
+            <td width="10%" align="left" onClick="page_tour_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Cancel Tour</td>
+            <td width="10%" ></td> 
+          </tr>
+        </table>
 </header> 
     <div class="panel" id="page_tour_cancel">
     </br></br></br></br>
@@ -3126,12 +3127,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="pages">
  <header> 
  <table width="100%" border="0">
-  <tr>
-    <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-    <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"> <input type="text" id="tour_pending_combo_id" style="width:100% ; color:#000" placeholder="Search" onKeyUp="searchPendingRep()"  /></div></font></td>
-    <td width="10%" ><img src="search.png" onClick="clearsearchPendingRep()" width="30" height="30" alt="Back" ></td> 
-  </tr>
-</table>
+          <tr>
+            <td width="10%" align="left" onClick="page_tour_pending()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Team Info</td>
+            <td width="10%" ></td> 
+          </tr>
+        </table>
 </header> 
     <div class="panel" id="page_repInfo">
     </br></br></br></br>

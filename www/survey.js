@@ -113,8 +113,9 @@ $.afui.useOSThemes=false;
 
 		$('#visit_submit').hide();
 		
-		
-		
+		if (localStorage.user_type=='sup'){
+		 checkRequest()
+		}
 		
 		if ((localStorage.doctor_flag==1) && (localStorage.visit_page=="YES")){
 		
@@ -267,6 +268,15 @@ var mobile_off_flag=0;
 //	$.afui.loadContent("#pageHome",true,true,'right');
 //	
 //}
+function page_tour_pending() {;									
+	$.afui.loadContent("#page_tour_pending",true,true,'right');
+}
+function page_tour_market() {;									
+	$.afui.loadContent("#page_tour_market",true,true,'right');
+}
+
+
+
 function page_saved_Doc() {
 	//alert (localStorage.docSaveData)
 	var docSaveData=localStorage.docSaveData
@@ -350,7 +360,8 @@ function saved_Doc_set(i) {
 	//getDocSampleData();
 	getDocGiftDataPlan();
 	getDocppmDataPlan();
-
+	localStorage.saveSubmitDocFlag=1;
+	localStorage.saveSubmitDocI=i;
 						
 	//$.afui.loadContent("#page_visit_doc",true,true,'right');
 }
@@ -374,7 +385,7 @@ function homePage() {
 	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
-	alert (localStorage.tourFlag)
+	//alert (localStorage.tourFlag)
 	if (localStorage.tourFlag==1){
 		addMarketListTour();
 		
@@ -857,7 +868,8 @@ function onSuccess_ready(position) {
 	$("#wait_image_visit_submit_doc").hide();
 	$("#visit_submit_doc").show();
 	$("#visit_location_doc").hide();
-	
+	//alert (position.coords.longitude)
+	geocoder = new google.maps.Geocoder();
 	codeLatLng(position.coords.latitude, position.coords.longitude)
 	
 	
@@ -894,12 +906,15 @@ function onError_ready(error) {
 
 
 //========================================
+
 function codeLatLng(lat, lng) {
 	
     var geocoder;
+	//alert ('sdfds')
 	geocoder = new google.maps.Geocoder();
+	
 	var latlng = new google.maps.LatLng(lat, lng);
-	//alert (lat)
+	//alert (latlng)
 	geocoder.geocode(
 		{'latLng': latlng}, 
 		function(results, status) {
@@ -1871,6 +1886,9 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 													
 													$("#wait_image_login").hide();
 													$("#loginButton").show();
+													if (localStorage.user_type=='sup'){
+													 checkRequest()
+													}
 													$.afui.loadContent("#pageHome",true,true,'right');
 													
 													set_doc_all();
@@ -2044,7 +2062,7 @@ function team(){
 }
 
 function page_pending(){
-	
+	$("#err_pendingTour").show();
 	$("#wait_image_pendingTour").show();
 	//alert (localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 	//$("#tourpendingTxt").text(localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
@@ -2096,6 +2114,9 @@ function page_pending(){
 			if (localStorage.user_type=='sup'){
 				$("#cReqShow").html('<a onClick="repCancelReqShow_sup()" style="font-size:18px; color:#FFF; " >CancelReqPending</a> ');
 			}
+			else{
+				$("#cReqShow").html('<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a> ');
+			}
 			$.afui.loadContent("#page_tour_pending",true,true,'right');	 
 	
 	
@@ -2124,7 +2145,7 @@ function repCancelReqShow_sup(){
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 										
 										if (resultArray[0]=='FAILED'){
-											$("#err_cancel_pendingTour").text("Approved route not available");	
+											$("#err_cancel_pendingTour").text("Cancel request not available");	
 											$("#wait_image_canccel_pendingTour").hide();		
 											
 										}
@@ -2671,7 +2692,8 @@ function marketNextLV(lvalue) {
 	$("#unschedule_market_combo_id").val(lvalue);
 	
 	
-	getLocationInfo();
+	//getLocationInfo();
+	getLocationInfo_ready()
 	if (localStorage.doctor_flag==1){
 		marketNext_doc();
 	}
@@ -3961,7 +3983,8 @@ function marketNext_doc() {
 //==============================Doctor==========
 
 function marketRetailerNext_doc() {
-	
+	localStorage.saveSubmitDocFlag=0;
+	localStorage.saveSubmitDocI=''
 	$("#err_m_retailer_next").text("");
 	visit_client=$("#unscheduled_m_client_combo_id").val();		
 	
@@ -4553,6 +4576,7 @@ function tourConfirm_doc(){
 											//alert (localStorage.pendingRep)
 											repPendingDocShow(localStorage.pendingRep)
 											
+											
 									 }
 									 else{
 											$("#err_pendingRouteTour").html(data);
@@ -4682,6 +4706,7 @@ function repPendingDocShow(rep_id){
 						}
 						  
 				 });//end ajax
+			checkRequest()	 
 			$("#wait_image_route_pendingTour").hide();	 
 			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
 //	alert ('sdasf')
@@ -5740,7 +5765,7 @@ function visitSubmit_doc(){
 												//$("#errorChkVSubmit").html(msg1);
 												
 											// $("#errorChkVSubmit_doc_t").html(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+msg+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
-											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others)
+											 $("#errorChkVSubmit_doc_t").val(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg='+encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others+'&location_detail='+localStorage.location_detail)
 												// ajax-------
 												//alert (localStorage.location_error);
 											if ( localStorage.location_error==2){
@@ -5874,8 +5899,14 @@ function visitSubmit_doc(){
 														
 														//--
 												//$("#visit_success").html('</br></br>Visit SL: '+resultArray[1]+'</br>Submitted Successfully');
+												
 												$("#visit_success").html('</br></br>Submitted Successfully');
+												
+												if (localStorage.saveSubmitDocFlag==1){
+													saveDelete_doc(localStorage.saveSubmitDocI)
+												}
 												localStorage.visit_page=''
+												//saveDelete_doc(i)
 												
 												
 												
@@ -5901,7 +5932,10 @@ function visitSubmit_doc(){
 												
 												
 												//var url = "#page_confirm_visit_success";	
-												//$.mobile.navigate(url);
+												var image = document.getElementById('myImageDoc');
+												image.src = "";
+												imagePath = "";
+												$("#docVisitPhoto").val(imagePath);
 												$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
 												//location.reload();
 																											
@@ -5969,17 +6003,30 @@ function saveDocvisit(){
 							//alert (localStorage.productOrderStr);
 							var marketNameId=localStorage.visit_market_show.split('|');
 							var market_Id=marketNameId[1];		
-
-					
+						var  docSaveData=localStorage.docSaveData
+						
+						if (docSaveData.indexOf(localStorage.visit_client) !=-1){
+							docSaveDataList = docSaveData.split('<doc>');	
+							for ( i=0; i < docSaveDataList.length; i++){
+								//alert (docSaveData.indexOf(localStorage.visit_client))
+								var visit_client = docSaveDataList[i].split('<d>')[0];
+								if (visit_client==localStorage.visit_client){
+									var replaceStr=docSaveDataList[i]+'<doc>'
+									docSaveData=docSaveData.replace(replaceStr,'')
+									localStorage.docSaveData=docSaveData
+								}
+							}
+						}
+									
 						 $("#errorChkVSubmit_doc_t").val(docSaveData+localStorage.visit_client+'<d>'+localStorage.visit_market_show+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+localStorage.productSampleStr+'<d>'+localStorage.productGiftStr+'<d>'+localStorage.campaign_doc_str+'<d>'+localStorage.productppmStr+'<d>'+notes+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>')
 
-							var docSaveData=localStorage.docSaveData
+							//var docSaveData=localStorage.docSaveData
 							//alert (localStorage.visit_client+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+encodeURI(msg)+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>')
 							//alert ('sdas')
 							var doctor_visit_save=docSaveData+localStorage.visit_client+'<d>'+localStorage.visit_market_show+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+localStorage.productSampleStr+'<d>'+localStorage.productGiftStr+'<d>'+localStorage.campaign_doc_str+'<d>'+localStorage.productppmStr+'<d>'+notes+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>'
 							
 							localStorage.docSaveData=doctor_visit_save
-
+					//alert (localStorage.docSaveData)
 								localStorage.visit_client=''
 								localStorage.visit_page=""
 								localStorage.productGiftStr='';
@@ -6074,7 +6121,10 @@ function saveDocvisit(){
 							
 							
 							/// CANCEL ALLcancelVisitPage();
-							
+								image.src = "";
+								imagePath = "";
+								$("#docVisitPhoto").val(imagePath);
+								
 								localStorage.campaign_show_1="";
 								localStorage.gift_show_1="";
 								localStorage.ppm_show_1=""
@@ -8600,4 +8650,31 @@ function onFail_getDocImage(message) {
 	//alert ('Fail')
 	imagePath="";
     alert('Failed because: ' + message);
+}
+
+
+//===================check request================================
+function checkRequest() {	
+			//alert (localStorage.report_url+'checkRequest?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+				
+		  $.ajax(localStorage.report_url+'checkRequest?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+		
+										type: 'POST',
+										timeout: 30000,
+										error: function(xhr) {
+										 	$("#wait_image_docConAdd").hide();
+															},
+										success:function(data, status,xhr){	
+											// alert (data)
+											 if (data==1){
+												$("#teamShow").html('<img onClick="team();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team_1.png">');
+												
+											 }
+											 else{
+												 $("#teamShow").html('<img onClick="team();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team.png">');
+											 }
+						
+							  }
+					 });//end ajax
+
 }
