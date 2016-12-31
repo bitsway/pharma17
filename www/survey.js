@@ -72,8 +72,8 @@ $.afui.useOSThemes=false;
 		
 		$("#wait_image_region_report").hide();
 		
-		$("#visit_location_doc").show();
-		$("#visit_submit_doc").hide();	
+		//$("#visit_location_doc").show();
+		$("#visit_submit_doc").show();	
 		$("#checkLocation_doc").html('');
 		$("#wait_image_visit_submit_doc").hide('');
 		
@@ -722,8 +722,8 @@ function getLocationInfo() { //location
 	
 	
 	
-	$("#wait_image_visit_submit_doc").show()
-	$("#visit_submit_doc").hide();
+	$("#wait_image_visit_submit_doc").hide()
+	$("#visit_submit_doc").show();
 	$("#visit_location_doc").hide();
 	$("#checkLocation_doc").html('');
 	
@@ -825,7 +825,7 @@ function getLocationInfo_ready() { //location
 	//$("#checkLocationProfileUpdate").html('');
 	
 	
-	$("#wait_image_visit_submit_doc").show()
+	$("#wait_image_visit_submit_doc").hide()
 	$("#visit_submit_doc").show();
 	$("#visit_location_doc").hide();
 	
@@ -966,8 +966,8 @@ function set_confirm_page(){
 	
 	
 	$("#wait_image_visit_submit_doc").hide();
-	$("#visit_submit_doc").hide();
-	$("#visit_location_doc").show();
+	$("#visit_submit_doc").show();
+	//$("#visit_location_doc").show();
 	$("#checkLocation_doc").html('');
 	
 	
@@ -1053,8 +1053,8 @@ function set_doc_all(){
 	 
 	 
 	 
-	$("#visit_location_doc").show();
-	$("#visit_submit_doc").hide();	
+	//$("#visit_location_doc").show();
+	$("#visit_submit_doc").show();	
 	$("#checkLocation_doc").html('');
 	$("#wait_image_visit_submit_doc").hide('');
 	 
@@ -5891,9 +5891,9 @@ function visitSubmit_doc(){
 														
 														$("#errorChkVSubmit_doc").html('');
 														$("#wait_image_visit_submit_doc").hide();
-														$("#visit_submit_doc").hide();	
+														$("#visit_submit_doc").show();	
 														$("#checkLocation_doc").html('');
-														$("#visit_location_doc").show();
+														//$("#visit_location_doc").show();
 														
 														
 														
@@ -6106,9 +6106,9 @@ function saveDocvisit(){
 									
 									$("#errorChkVSubmit_doc").html('Saved Successfully');
 									$("#wait_image_visit_submit_doc").hide();
-									$("#visit_submit_doc").hide();	
+									$("#visit_submit_doc").show();	
 									$("#checkLocation_doc").html('');
-									$("#visit_location_doc").show();
+									//$("#visit_location_doc").show();
 									
 									
 									
