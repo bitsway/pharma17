@@ -390,6 +390,9 @@ function page_market() {
 		addMarketListTour();
 		
 	}
+	else if (localStorage.doctor_plan_flag==1){
+		doctor_visit_plan();
+	}
 	else{
 	
 		if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {
@@ -1943,6 +1946,8 @@ function chemist_visit() {
 	
 	
 	localStorage.doctor_flag=0;
+	localStorage.tourFlag=0;
+	localStorage.doctor_plan_flag=0;
 	localStorage.visit_page="NO";
 	addMarketList();
 	localStorage.saved_data_submit=0;
