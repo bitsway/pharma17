@@ -116,6 +116,7 @@ $.afui.useOSThemes=false;
 		if (localStorage.user_type=='sup'){
 		 checkRequest()
 		}
+		checkInbox();
 		
 		if ((localStorage.doctor_flag==1) && (localStorage.visit_page=="YES")){
 		
@@ -452,7 +453,7 @@ function page_inbox() {
 	$("#error_inbox").html('');
 	$("#error_inboxTxt").val(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
-	
+			//alert (localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 			$.ajax(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
@@ -1400,7 +1401,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							
+							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -1892,6 +1893,7 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 													if (localStorage.user_type=='sup'){
 													 checkRequest()
 													}
+													checkInbox();
 													$.afui.loadContent("#pageHome",true,true,'right');
 													
 													set_doc_all();
@@ -2065,6 +2067,8 @@ function team(){
 	page_pending()
 	//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
 }
+
+
 
 function page_pending(){
 	$("#err_pendingTour").show();
@@ -8659,6 +8663,30 @@ function onFail_getDocImage(message) {
 
 
 //===================check request================================
+function checkInbox() {	
+			//alert (localStorage.report_url+'checkInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+				
+		  $.ajax(localStorage.report_url+'checkInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+		
+										type: 'POST',
+										timeout: 30000,
+										error: function(xhr) {
+										 	$("#wait_image_docConAdd").hide();
+															},
+										success:function(data, status,xhr){	
+											// alert (data)
+											 if (data==1){
+												$("#inboxShow").html('<img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="inbox_1.png">');
+												
+											 }
+											 else{
+												 $("#inboxShow").html('<img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="inbox.png">');
+											 }
+						
+							  }
+					 });//end ajax
+
+}
 function checkRequest() {	
 			//alert (localStorage.report_url+'checkRequest?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 				
@@ -8682,4 +8710,116 @@ function checkRequest() {
 							  }
 					 });//end ajax
 
+}
+
+function holiday() {
+$("#error_holiday_page").html('');
+	//alert (localStorage.base_url+'holidayInfo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+	// ajax-------
+			$.ajax({
+				 type: 'POST',
+				 url: localStorage.base_url+'holidayInfo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,
+				 success: function(result) {
+						if (result==''){
+							$("#error_holiday_page").html('Sorry Network not available');
+						}else{					
+							var resultArray = result.split('<SYNCDATA>');			
+							if (resultArray[0]=='FAILED'){						
+								$("#error_holiday_page").html(resultArray[1]);								
+							
+							}else if (resultArray[0]=='SUCCESS'){
+														
+								var holiday_div=resultArray[1];
+								var leaveReason=resultArray[2];
+																							
+								
+								$("#holiday_div").html(resultArray[1]);
+								$("#leaveReason").html(leaveReason);
+								
+								
+								
+							}else{						
+								//$("#error_holiday_page").html('Network Timeout. Please try again.');
+								}
+						}
+					  },
+				  error: function(result) {			  
+					//  $("#error_holiday_page").html('Network Timeout. Please try again.');		
+				  }
+			 });//end ajax
+
+
+
+
+$.afui.loadContent("#page_holiday",true,true,'right');
+
+	
+}
+function holidaySubmit() {	
+	
+	$("#error_holiday_page").html('');
+	var holiday=$("#holiday_date").val();
+	var holidayReason=$("#holidayReason").val();
+	
+	var currentDate = new Date()
+	var day = currentDate.getDate()
+	var month = currentDate.getMonth() + 1
+	var year = currentDate.getFullYear()
+	var today=  year + "-" + month + "-" + day
+	//var holiday_check=holiday.replace('-','/')
+	
+	//alert (today)
+
+	var date1 = new Date(today);
+	var date2 = new Date(holiday);
+ 
+	var diffDays = date2- date1; 
+	//alert (diffDays)
+	
+
+	// ajax-------
+	if ((holiday!='') && (diffDays >= 0 )){
+		//alert (localStorage.base_url+'holidayAdd?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&holiday='+holiday+'&holiday='+holiday+'&holidayReason='+holidayReason);
+		// ajax-------
+				$.ajax({
+					 type: 'POST',
+					 url: localStorage.base_url+'holidayAdd?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&holiday='+holiday+'&holidayReason='+holidayReason,
+					 success: function(result) {
+							if (result==''){
+								$("#error_holiday_page").html('Sorry Network not available');
+							}else{					
+								var resultArray = result.split('<SYNCDATA>');			
+								if (resultArray[0]=='FAILED'){						
+									$("#error_holiday_page").html(resultArray[1]);								
+								
+								}else if (resultArray[0]=='SUCCESS'){
+															
+									var holiday_div=resultArray[1];
+																								
+									$("#error_holiday_page").html(holiday_div);
+									$("#holiday_div").html(resultArray[2]);
+									var leaveReason=resultArray[3];
+									$("#leaveReason").html(leaveReason);
+									
+									
+									
+								}else{						
+									$("#error_holiday_page").html('Network Timeout. Please try again.');
+									}
+							}
+						  },
+					  error: function(result) {			  
+						  $("#error_holiday_page").html('Network Timeout. Please try again.');		
+					  }
+				 });//end ajax
+	
+	}
+	else{
+		 $("#error_holiday_page").html('Back date entry not acceptable');
+	}
+	
+	
+	
+	//var url = "#page_report_prescription";
+	//$.mobile.navigate(url);	
 }
