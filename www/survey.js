@@ -453,7 +453,7 @@ function page_inbox() {
 	$("#error_inbox").html('');
 	$("#error_inboxTxt").val(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
-			alert (localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+			//alert (localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 			$.ajax(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
