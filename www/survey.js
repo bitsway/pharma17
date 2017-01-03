@@ -438,6 +438,8 @@ function page_visit_doc() {
 	else{
 		$("#visit_submit_save_doc").hide();		
 	}
+	$("#errorChkVSubmit_doc").val("");
+	
 	$.afui.loadContent("#page_visit_doc",true,true,'right');
 }
 function page_reports_dcr() {
@@ -6104,7 +6106,7 @@ function saveDocvisit(){
 									$("#lat").val('');
 									$("#longitude").val('');
 									$("#lscPhoto").val('');
-									document.getElementById('myImage').src = '';
+									document.getElementById('myImageDoc').src = '';
 									
 									$("#lat_p").val('');
 									$("#long_p").val('');								
