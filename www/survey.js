@@ -8665,7 +8665,29 @@ function onFail_getDocImage(message) {
     alert('Failed because: ' + message);
 }
 
+function getchAddImage() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+   navigator.camera.getPicture(onSuccess_getDocImage, onFail_getDocImage, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_getDocImage(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagechAdd');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#chAddPhoto").val(imagePath);
+	
 
+		
+}
+function onFail_getDocImage(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
 //===================check request================================
 function checkInbox() {	
 			//alert (localStorage.report_url+'checkInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
@@ -8830,7 +8852,19 @@ function holidaySubmit() {
 
 function chemist_add() {	
 	$(".market").html(localStorage.visit_market_show);
+	document.getElementById('myImagechAdd').src = '';
+	$("#chemist_name").val("");
+	$("#chemist_add").val("");
+	$("#chemist_ph").val("");
 	$.afui.loadContent("#page_chemist_add",true,true,'right');
+}
+function chemist_blank() {	
+	$(".market").html(localStorage.visit_market_show);
+	document.getElementById('myImagechAdd').src = '';
+	$("#chemist_name").val("");
+	$("#chemist_add").val("");
+	$("#chemist_ph").val("");
+	//$.afui.loadContent("#page_chemist_add",true,true,'right');
 }
 
 function page_chemist_cancel() {	
