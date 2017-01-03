@@ -453,7 +453,7 @@ function page_inbox() {
 	$("#error_inbox").html('');
 	$("#error_inboxTxt").val(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
-			//alert (localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+			alert (localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 			$.ajax(localStorage.report_url+'infoInbox?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
@@ -1191,9 +1191,9 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 
- //  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+   var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
  
 	
 	var user_id=$("#user_id").val();
@@ -1639,10 +1639,10 @@ function check_user() {
 															docMarketDate=docMarketValueArray[2];
 															var docmarketNameID=docMarketName+'|'+docMarketID;
 													
-													if ((docMarketDate!=CDate) &&(tomorrowFlag==0) && (docMarketDate.length > 5)) {
-																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Tomorrow</font></li>';
-																tomorrowFlag=1
-															}
+													//if ((docMarketDate!=CDate) &&(tomorrowFlag==0) && (docMarketDate.length > 5)) {
+//																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Tomorrow</font></li>';
+//																tomorrowFlag=1
+//															}
 															if ((docMarketDate==CDate) &&(todayFlag==0)) {
 																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Today</font></li>';
 																todayFlag=1
@@ -7919,40 +7919,41 @@ function page_clientApproved() {
 	//alert (client);
 	$("#error_clientApprovedTxt").val(localStorage.report_url+'client_approved_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client='+localStorage.visit_client);
 	// ajax-------
-	
-			$.ajax(localStorage.report_url+'client_approved_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client='+localStorage.visit_client,{
-
-								type: 'POST',
-								timeout: 30000,
-								error: function(xhr) {
-								 $("#wait_image_clientApproved").hide();
-								 $("#error_clientApproved").html('Network Timeout. Please check your Internet connection..');
-													},
-								success:function(data, status,xhr){	
-									 $("#wait_image_clientApproved").hide();
-									 if (status!='success'){
-										$("#error_clientApproved").html('Network Timeout. Please check your Internet connection...');
-										
-									 }
-									 else{	
-									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-								if (resultArray[0]=='FAILED'){
-											$("#error_clientApproved").text(resultArray[1]);	
-											
-										}
-								else if (resultArray[0]=='SUCCESS'){	
-									var result_string=resultArray[1];
-
-								$("#clientApproved").html(result_string);
-								
-							}else{	
-								 $("#wait_image_clientApproved").hide();
-								 $("#error_clientApproved").html('Network Timeout. Please check your Internet connection.');
-								}
-						}
-					  }
-			 });//end ajax
+	//alert (localStorage.report_url+'client_approved_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client='+localStorage.visit_client)
+//	
+//			$.ajax(localStorage.report_url+'client_approved_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client='+localStorage.visit_client,{
+//
+//								type: 'POST',
+//								timeout: 30000,
+//								error: function(xhr) {
+//								 $("#wait_image_clientApproved").hide();
+//								 $("#error_clientApproved").html('Network Timeout. Please check your Internet connection..');
+//													},
+//								success:function(data, status,xhr){	
+//									 $("#wait_image_clientApproved").hide();
+//									 if (status!='success'){
+//										$("#error_clientApproved").html('Network Timeout. Please check your Internet connection...');
+//										
+//									 }
+//									 else{	
+//									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+//										
+//								if (resultArray[0]=='FAILED'){
+//											$("#error_clientApproved").text(resultArray[1]);	
+//											
+//										}
+//								else if (resultArray[0]=='SUCCESS'){	
+//									var result_string=resultArray[1];
+//
+//								$("#clientApproved").html(result_string);
+//								
+//							}else{	
+//								 $("#wait_image_clientApproved").hide();
+//								 $("#error_clientApproved").html('Network Timeout. Please check your Internet connection.');
+//								}
+//						}
+//					  }
+//			 });//end ajax
 	
 	
 	$.afui.loadContent("#page_clientApproved",true,true,'right');
@@ -8822,4 +8823,15 @@ function holidaySubmit() {
 	
 	//var url = "#page_report_prescription";
 	//$.mobile.navigate(url);	
+}
+
+function chemist_add() {	
+	$(".market").html(localStorage.visit_market_show);
+	$.afui.loadContent("#page_chemist_add",true,true,'right');
+}
+
+function page_chemist_cancel() {	
+	$(".market").html(localStorage.visit_market_show);
+	$(".visit_client").html(localStorage.visit_client_show);
+	$.afui.loadContent("#page_chemist_cancel",true,true,'right');
 }

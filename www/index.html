@@ -333,7 +333,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		<a onClick="homePage()" class="icon home" ></a>
         <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"   >
         <img style="height:50px; width:50px" src="doctor_add.png"></a>
-        <a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a>
+        <a id="blankAnc" name="blankAnc" onClick="chemist_add()"  ><img style="height:40px; width:40px" src="add.png"></a>
        
          </footer>
 
@@ -531,6 +531,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
              <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
              <br>
              <div onClick="page_clientApproved()" align="center"> <img style="height:70px; width:70px" src="approved.png"></div>
+             <br>
+             <div onClick="page_chemist_cancel()" align="center"> <img style="height:70px; width:70px" src="inactive.png"></div>
 
            
         </nav>
@@ -2472,7 +2474,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         
     <!--//==============================Inbox Page=================-->
        <div class="view" id="page_inboxView">
-        <div class="pages">
+        <div class="pages" style="background-color:#EDFEED">
          <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Inbox</h1></header> 
             <div class="panel" id="page_inbox">
             </br></br></br></br>
@@ -3310,6 +3312,100 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 </div>  
 
+
+<div class="view" id="page_chemist_addView">
+<div class="pages">
+
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Chemist Add</h1></header> 
+
+
+    <div class="panel" id="page_chemist_add">
+    </br></br></br></br>            
+            
+            	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+            	<div id="error_chemist_page" style="color:#C00"></div>	
+                <table width="100%" border="0">
+                      <tr>
+                      <td >Name</td>
+                       <td width="70%"><input type="text" name="chemist_name" id="chemist_name"  value="" placeholder="Name"></td>
+                        </tr>
+                        <tr>
+                        <td >Address</td>
+                         <td><input type="text" name="chemist_name" id="chemist_name"  value="" placeholder="Adreass"></td>
+                        </tr>
+                        <tr>
+                        <td >Phone</td>
+                         <td ><input type="text" name="chemist_name" id="chemist_name"  value="" placeholder="Phone"></td>
+                        </tr>
+                        
+                    </table>
+
+                <input type="submit"  onClick="holidaySubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                	
+				
+				
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<div class="view" id="page_chemist_cancelView">
+<div class="pages">
+
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Chemist Inactive</h1></header> 
+
+
+    <div class="panel" id="page_chemist_cancel">
+    </br></br></br></br>            
+            	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  ></span></div>
+            	</br></br> 
+            	<div id="error_chemist_cancel_page" style="color:#C00"></div>	
+                <table width="100%" border="0">
+                      <tr>
+                      <td width="10%" >Reason:</td>
+                       <td width="70%">
+                       <select id="item_combo" style=" width:100%"data-native-menu="false" onChange="comboSearch()" >
+                        <option value="Permanently closed" >Permanently closed</option>
+                        <option value="Change of business" >Change of business</option>
+                        <option value="Relocation" >Relocation</option>
+                        <option value="Black List" >Black List</option>
+
+                		</select>
+                       
+                       
+                       </td>
+                        </tr>
+                        <tr>
+                        <td ></td>
+                         <td></td>
+                        </tr>
+                        <tr>
+                        <td ></td>
+                         <td ></td>
+                        </tr>
+                        
+                    </table>
+				
+                <input type="submit"  onClick="holidaySubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                	
+				
+				
+       </div>
+    </div>
+
+<footer>
+<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
     
 <!--    ===================Tour doc end====================-->
  <script type="text/javascript" src="phonegap.js"></script>
