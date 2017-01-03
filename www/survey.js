@@ -321,6 +321,7 @@ function saveDelete_doc(i) {
 
 
 function saved_Doc_set(i) {
+	$("#errorChkVSubmit_doc").val("")
 	var docSaveData=localStorage.docSaveData
 	var docSaveDataList = docSaveData.split('<doc>');	
 	var docSaveDataListLength=docSaveDataList.length
