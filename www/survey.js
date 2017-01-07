@@ -1404,7 +1404,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -8858,12 +8858,59 @@ function chemist_add() {
 	$("#chemist_ph").val("");
 	$.afui.loadContent("#page_chemist_add",true,true,'right');
 }
-function chemist_blank() {	
+function chemist_pending() {	
+	$.afui.loadContent("#page_chemist_pending",true,true,'right');
+}
+function page_businessVolume() {	
+	$.afui.loadContent("#page_businessVolume",true,true,'right');
+}
+function chemist_submit() {	
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
-	$("#chemist_name").val("");
-	$("#chemist_add").val("");
-	$("#chemist_ph").val("");
+	var marketId=(localStorage.visit_market_show).split('|')[1]
+	var chemist_name=$("#chemist_name").val();
+	var chemist_add=$("#chemist_add").val();
+	var chemist_ph=$("#chemist_ph").val();
+	var trade_license_no=$("#trade_license_no").val();
+	var vat_registration_no=$("#vat_registration_no").val();
+	var chemist_dob=$("#chemist_dob").val();
+	chemist_name=chemist_name.replace(",","").replace("'","").replace(";","").replace('"','')
+		// ajax-------
+	if ((chemist_name !='') && (chemist_ph !='' )){
+		alert (localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&chemist_name='+encodeURI(chemist_name)+'&chemist_add='+encodeURI(chemist_name)+'&chemist_ph='+encodeURI(chemist_ph)+'&trade_license_no='+encodeURI(trade_license_no)+'&vat_registration_no='+encodeURI(vat_registration_no)+'&chemist_dob='+encodeURI(chemist_dob));
+		
+		// ajax-------
+				$.ajax({
+					 type: 'POST',
+					 url: localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&chemist_name='+encodeURI(chemist_name)+'&chemist_add='+encodeURI(chemist_name)+'&chemist_ph='+encodeURI(chemist_ph)+'&trade_license_no='+encodeURI(trade_license_no)+'&vat_registration_no='+encodeURI(vat_registration_no)+'&chemist_dob='+encodeURI(chemist_dob),
+					 success: function(result) {
+							if (result==''){
+								$("#error_chemist_add_page").html('Sorry Network not available');
+							}else{					
+								var resultArray = result.split('<SYNCDATA>');			
+								if (resultArray[0]=='FAILED'){						
+									$("#error_chemist_add_page").html(resultArray[1]);								
+								
+								}else if (resultArray[0]=='SUCCESS'){																								
+									$("#error_chemist_add_page").html(resultArray[1]);
+									
+									
+								}else{						
+									$("#error_chemist_add_page").html('Network Timeout. Please try again.');
+									}
+							}
+						  },
+					  error: function(result) {			  
+						  $("#error_chemist_add_page").html('Network Timeout. Please try again.');		
+					  }
+				 });//end ajax
+	
+	}
+	else{
+		 $("#error_chemist_add_page").html('Name and ph entry must');
+	}
+	
+
 	//$.afui.loadContent("#page_chemist_add",true,true,'right');
 }
 
@@ -8871,4 +8918,56 @@ function page_chemist_cancel() {
 	$(".market").html(localStorage.visit_market_show);
 	$(".visit_client").html(localStorage.visit_client_show);
 	$.afui.loadContent("#page_chemist_cancel",true,true,'right');
+}
+function chemist_cancelSubmit() {	
+	
+	var marketId=(localStorage.visit_market_show).split('|')[1]
+	var visit_client=(localStorage.visit_client_show).split('|')[1]
+	var inactive_reason=$("#inactive_reason").val();
+	
+		// ajax-------
+
+		alert (localStorage.base_url+'chemist_cancelSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&visit_client='+visit_client+'&inactive_reason='+inactive_reason);
+		
+		// ajax-------
+				$.ajax({
+					 type: 'POST',
+					 url: localStorage.base_url+'chemist_cancelSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&visit_client='+visit_client+'&inactive_reason='+inactive_reason,
+					 success: function(result) {
+							if (result==''){
+								$("#error_chemist_cancel_page").html('Sorry Network not available');
+							}else{					
+								var resultArray = result.split('<SYNCDATA>');			
+								if (resultArray[0]=='FAILED'){						
+									$("#error_chemist_cancel_page").html(resultArray[1]);								
+								
+								}else if (resultArray[0]=='SUCCESS'){																								
+									$("#error_chemist_cancel_page").html(resultArray[1]);
+									
+									
+								}else{						
+									$("#error_chemist_cancel_page").html('Network Timeout. Please try again.');
+									}
+							}
+						  },
+					  error: function(result) {			  
+						  $("#error_chemist_cancel_page").html('Network Timeout. Please try again.');		
+					  }
+				 });//end ajax
+	
+
+}
+function thisMShow() {	
+	$("#thisMonth").show();
+	$("#nextMonth").hide();
+}
+function nextMShow() {	
+	$("#nextMonth").show();
+	$("#thisMonth").hide();
+}
+function NearExpiaryCheck() {	
+	$.afui.loadContent("#page_NearExpiaryCheck",true,true,'right');
+}
+function page_Competitorsactivity() {	
+	$.afui.loadContent("#page_Competitorsactivity",true,true,'right');
 }

@@ -166,12 +166,37 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         
                         </td>
                         <td>
-                       <div align="center"  style="width:100%; background-color:#09C; "><img onClick="holiday()" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="leave.png"> </div>
+                       <div align="center"  style="width:100%; background-color:#09C; ">
+                       <!--<img onClick="holiday()" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="leave.png">-->  <img onClick="page_notice()"  hight="100px" width="100px"  src="notice.png"></div>
                         
                        </td>
                       </tr>
                     
+                     
+					  <tr>
+                        <td align="center"><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="PrescriptionCapture.png"> </div>
+                        
+                        
+                        </td>
+                        <td>
+                       <div align="center"  style="width:100%; background-color:#09C; ">
+                       <!--<img onClick="holiday()" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="leave.png">-->  <img   onClick="page_businessVolume()" hight="100px" width="100px"  src="BusinessVolume_1.png"></div>
+                        
+                       </td>
+                      </tr>
                       
+                       <tr>
+                        <td align="center"><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="NearExpiaryCheck();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="NearExpiaryCheck.png"> </div>
+                        
+                        
+                        </td>
+                        <td>
+                       <div align="center"  style="width:100%; background-color:#09C; ">
+                       <!--<img onClick="holiday()" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="leave.png">-->  <img  onClick="page_Competitorsactivity();" hight="100px" width="100px"  src="CompetitorsActivity.png"></div>
+                        
+                       </td>
+                      </tr>
+                       
                     </table>
 				
                    
@@ -333,10 +358,24 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		<a onClick="homePage()" class="icon home" ></a>
         <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"   >
         <img style="height:50px; width:50px" src="doctor_add.png"></a>
-        <a id="blankAnc" name="blankAnc" onClick="chemist_add()"  ><img style="height:40px; width:40px" src="add.png"></a>
+      
+        <a href="#" id="blankAnc" name="blankAnc" onclick="$.afui.drawer.show('#rightD','right','push')"  ><img style="height:40px; width:40px" src="menu.png"></a>
        
          </footer>
-
+		
+        <nav id="rightD" style="z-index:5; background-color:#FFF">
+            <div class="view active" id="navView2">
+                <header>
+                    <h1></h1>
+                </header>
+                <br>
+                
+               <div onClick="chemist_add()" align="center"> <img style="height:70px; width:70px" src="add.png"></div>
+                </br></br>
+                 <div  align="center" onClick="chemist_pending()"> <img style="height:150px; width:150px" src="PendingCustomerApproval.png"></div>
+            </div>
+        </nav>
+        
     </div>               
                       
                       
@@ -524,16 +563,17 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <br>
                  
 
-          	 <div onClick="page_outstanding()" align="center"> <img style="height:70px; width:70px" src="outstanding.png"> </div>
+          	 <div onClick="page_outstanding()" align="center"> <img style="height:80px; width:150px" src="outstanding.png"> </div>
              <br>
-             <div onClick="page_invoice()" align="center"> <img style="height:70px; width:70px" src="invoice.png"></div>
+             <div onClick="page_invoice()" align="center"> <img style="height:80px; width:150px" src="invoice.png"></div>
              <br>
-             <div onClick="page_clientOrder()" align="center"> <img style="height:70px; width:70px" src="orderC.png"></div>
+             <div onClick="page_clientOrder()" align="center"> <img style="height:80px; width:100px" src="orderC.png"></div>
              <br>
-             <div onClick="page_clientApproved()" align="center"> <img style="height:70px; width:70px" src="approved.png"></div>
-             <br>
-             <div onClick="page_chemist_cancel()" align="center"> <img style="height:70px; width:70px" src="inactive.png"></div>
-
+             <div onClick="page_clientApproved()" align="center"> <img style="height:80px; width:120px" src="approved.png"></div>
+                        
+             <div onClick="page_businessVolume()" align="center"> <img style="height:80px; width:150px" src="BusinessVolume.png"></div>
+			 
+             <div onClick="page_chemist_cancel()" align="center"> <img style="height:100px; width:150px" src="inactive.png"></div>
            
         </nav>
 
@@ -1211,7 +1251,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  
  
  <!--==========================Add Doc==================================-->
-   <!--  ====================Doc profile Start===============================-->
  <div class="view" id="page_doctor_addView">
         <div class="pages">
          <header> 
@@ -1357,7 +1396,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </footer>
     </div>      
     
-    
+   
   <!--//==============================submitted doc List=================-->
        <div class="view" id="page_dListView">
         <div class="pages">
@@ -2697,7 +2736,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     
                 
 				
-                        <div id="notice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto"></div>
+                        <div id="notice"  style="color:#2232BD; overflow:scroll ; overflow-style:auto; height:500px" ></div>
                     </div>
                     
                <!-- </div>-->
@@ -2860,7 +2899,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         </table>
 </header> 
     <div class="panel" id="page_tour_market">
-    </br></br>
+    </br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
              
@@ -2869,7 +2908,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         
         <!--<div><span class="market" style="font-size:16px"></span></div>  -->
 
-        <br/> 
+       <!-- <br/> 
              <div id="tourErep" hidden="true" >
         	  	
               <input name="tour_date" id="tour_date"  value="" type="date" placeholder="Tour Date">
@@ -2886,26 +2925,481 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                <div id="err_marketTour" style="color:#C00"></div>
                 <input name="tourTxt" id="tourTxt"  value="" type="hidden" placeholder="Tour Date ">
                <input type="submit" id="btn_submit_tour" onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
-               </div>
+               </div>-->
                
                
-                <input id="Tdiv"   type="submit" onClick="toggleentryDiv();"   style=" background-color:#09C; color:#FFF; font-size:20px; width:50px;" value=" + "    />
+                <!--<input id="Tdiv"   type="submit" onClick="toggleentryDiv();"   style=" background-color:#09C; color:#FFF; font-size:20px; width:50px;" value=" + "    />-->
                 
-                <div id="schedule_show"></div>
+               <!-- <div id="schedule_show"></div>-->
                 
                 <!--<ul class="list" id="tour_rep_pending_show_lv" >				
                
                 </ul>-->
+                <br><br>
+<table width="100%" border="0">
+<tr>
+    <td><input type="submit" id="btn_submit_tour" onClick="thisMShow();"   style="width:100%; height:30px; background-color:#09C; color:#FFF; font-size:20px" value="This Month"   /></td>
+    <td><input type="submit" id="btn_submit_tour" onClick="nextMShow();"   style="width:100%; height:30px; background-color:#09C; color:#FFF; font-size:20px" value="Next Month"   /></td>
+  </tr>
+</table>
+
+		<div id="thisMonth">
+        
+         					
+         <table width="100%" border="0">
+  <tr>
+    <td>Jany 2017</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align="right">Approved</td>
+  </tr>
+</table>
+        <table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">
+  <tr >
+    <td>SUN</td>
+    <td>1</td>
+    <td width="40%">Bashndhara<br>
+    Nadda<br>
+    
+
+
+</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>2</td>
+    <td>Kuril<br>
+    Apollo Hospital<br></td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>3</td>
+    <td>PATHARGHATA BAZAR<br>
+   MILK VITA ROAD<br></td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>4</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>5</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>7</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>9</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>10</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>11</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>12</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>13</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>14</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>15</td>
+    <td>&nbsp;</td>
+   <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>16</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>17</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>18</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>19</td>
+    <td>&nbsp;</td>
+   <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>20</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>21</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>22</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>23</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>24</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>25</td>
+    <td>&nbsp;</td>
+   <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr><tr>
+    <td>THU</td>
+    <td>26</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  
+  <tr>
+    <td>FRI</td>
+    <td>27</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>28</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>29</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>30</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>31</td>
+    <td>&nbsp;</td>
+    <td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow();"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td>
+  </tr>
+  
+</table>
+
+        
+        </div>
+        <div id="nextMonth"></div>
+
+		<table width="100%" border="0">
+  <tr>
+    <td>February 2017</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align="right">DRAFT/Approved</td>
+  </tr>
+</table>
+        <table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">
+  <tr >
+    <td>SUN</td>
+    <td>1</td>
+    <td align="left" >
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="1" value="checkbox" id="1"><label for="1"></br></label></td><td  style="text-align:left;"></br>Bashndhara</br></br></td></tr></table>
+  
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="2" value="checkbox" id="2"><label for="2"></br></label></td><td  style="text-align:left;"></br>Nadda</br></br></td></tr></table>
+   
+   
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="3" value="checkbox" id="3"><label for="3"></br></label></td><td  style="text-align:left;"></br>Kuril</br></br></td></tr></table>
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="4" value="checkbox" id="4"><label for="4"></br></label></td><td  style="text-align:left;"></br>Apollo Hospital</br></br></td></tr></table>
+   
+   
+    </td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>2</td>
+    <td align="left" width="80%">
+   <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="1" value="checkbox" id="5"><label for="5"></br></label></td><td  style="text-align:left;"></br>Bashndhara</br></br></td></tr></table>
+  
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="2" value="checkbox" id="6"><label for="6"></br></label></td><td  style="text-align:left;"></br>Nadda</br></br></td></tr></table>
+   
+   
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="3" value="checkbox" id="7"><label for="7"></br></label></td><td  style="text-align:left;"></br>Kuril</br></br></td></tr></table>
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="4" value="checkbox" id="8"><label for="8"></br></label></td><td  style="text-align:left;"></br>Apollo Hospital</br></br></td></tr></table >
+    
+    </td>
+    
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>3</td>
+    <td>
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="1" value="checkbox" id="9"><label for="9"></br></label></td><td  style="text-align:left;"></br>Bashndhara</br></br></td></tr></table>
+  
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="2" value="checkbox" id="10"><label for="10"></br></label></td><td  style="text-align:left;"></br>Nadda</br></br></td></tr></table>
+   
+   
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="3" value="checkbox" id="11"><label for="11"></br></label></td><td  style="text-align:left;"></br>Kuril</br></br></td></tr></table>
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="4" value="checkbox" id="12"><label for="12"></br></label></td><td  style="text-align:left;"></br>Apollo Hospital</br></br></td></tr></table >
+    
+    </td>
+    
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>4</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>5</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>6</td>
+   
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>7</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>9</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>10</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>11</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>12</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>13</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>14</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>15</td>
+    <td>&nbsp;</td>
+  
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>16</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>17</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>18</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>THU</td>
+    <td>19</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>FRI</td>
+    <td>20</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>21</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>22</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>23</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>24</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>WED</td>
+    <td>25</td>
+    <td>&nbsp;</td>
+   
+  </tr><tr>
+    <td>THU</td>
+    <td>26</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  
+  <tr>
+    <td>FRI</td>
+    <td>27</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>SAT</td>
+    <td>28</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+    <td>SUN</td>
+    <td>29</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>30</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>TUE</td>
+    <td>31</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  
+</table>
+<input type="submit" id="btn_cancel_tour" onClick="tourCancel_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
+               
+</br></br></br>
             </div>
+            
             
        <!-- </div>-->
     </div>
 
+
+
 <footer>
-
 <a onClick="homePage()" class="icon home" ></a>
-<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Tour</a>
-
+<!--<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Tour</a>
+--><a id="dBlank" name="dBlank"  style="font-size:18px; color:#FFF; "></a>
 
  </footer>
 
@@ -3030,7 +3524,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_tour_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Cancel Tour</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Edit</td>
             <td width="10%" ></td> 
           </tr>
         </table>
@@ -3039,24 +3533,54 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     </br></br></br></br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
-             
-        
     
         <div id="err_tourCancel" style="color:#C00"></div>
         <!--<div><span class="market" style="font-size:16px"></span></div>  -->
         
         <br/> 
               
-                <div id="err_tourCancel" style="color:#C00"></div>
+                <!--<div id="err_tourCancel" style="color:#C00"></div>
                 
                 <div id="tourCancelShow" ></div>
                 <div align="center">
                 <img id="wait_image_tourCancel" style="width:50px" src="loading.gif" alt="">
                </div>
-                <input name="tourpendingTxt" id="tourpendingTxt"  value="" type="hidden" placeholder="Tour Date">
-            
-               
-               
+                <input name="tourpendingTxt" id="tourpendingTxt"  value="" type="hidden" placeholder="Tour Date">-->
+                <table width="100%" border="0">
+                		 <tr>
+                      <td >Jan </td>
+                       <td >1 </td>
+
+                       <td width="70%" >
+                       
+                       <font style="font-size:16px; color:#603">Approved Plan</font></br>
+                       Bashndhara</br>
+                       Nadda</br>
+                       Kuril                       
+                       </td>
+                       </tr>
+                       <tr>
+                       <td > </td>
+                       <td > </td>
+                       <td >
+                        <font style="font-size:16px; color:#603">Amendment Request</font></br>
+                       <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="1" value="checkbox" id="r1"><label for="r1"></br></label></td><td  style="text-align:left;"></br>Bashndhara</br></br></td></tr></table>
+  
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="2" value="checkbox" id="r2"><label for="r2"></br></label></td><td  style="text-align:left;"></br>Nadda</br></br></td></tr></table>
+   
+   
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="3" value="checkbox" id="r3"><label for="r3"></br></label></td><td  style="text-align:left;"></br>Kuril</br></br></td></tr></table>
+  
+    <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="4" value="checkbox" id="r4"><label for="r4"></br></label></td><td  style="text-align:left;"></br>Apollo Hospital</br></br></td></tr></table>
+                       
+                       
+                       </td>
+                        </tr>
+
+
+                    </table>
+                    <input type="submit"     style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
                 <br>
                 <br>
             </div>
@@ -3323,7 +3847,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     </br></br></br></br>            
             
             	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
-            	<div id="error_chemist_page" style="color:#C00"></div>	
+            	<div id="error_chemist_add_page" style="color:#C00"></div>	
                 
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -3338,7 +3862,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     </br>
                 <table width="100%" border="0">
                       <tr>
-                      <td >Name</td>
+                      <td >Name <font style="color:#903; font-size:16px"> * </font></td>
                        <td width="70%"><input type="text" name="chemist_name" id="chemist_name"  value="" placeholder="Name"></td>
                         </tr>
                         <tr>
@@ -3346,16 +3870,247 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                          <td><input type="text" name="chemist_add" id="chemist_add"  value="" placeholder="Adreass"></td>
                         </tr>
                         <tr>
-                        <td >Phone</td>
-                         <td ><input type="text" name="chemist_ph" id="chemist_ph"  value="" placeholder="Phone"></td>
+                        <td >Phone <font style="color:#903; font-size:16px"> * </font></td>
+                         <td ><input type="number" name="chemist_ph" id="chemist_ph"  value="" placeholder="Phone"></td>
                         </tr>
+                         <tr>
+                        <td >Trade License</td>
+                         <td ><input type="text" name="trade_license_no" id="trade_license_no"  value="" placeholder="Trade License"></td>
+                        </tr>
+                         <tr>
+                        <td >Vat Registration</td>
+                         <td ><input type="text" name="vat_registration_no" id="vat_registration_no"  value="" placeholder="Vat Registration"></td>
+                        </tr>
+                         <tr>
+                        <td >Date of birth</td>
+                         <td ><input type="date" name="chemist_dob" id="chemist_dob"  value="" placeholder="Date of birth"></td>
+                        </tr>
+                        
                         
                     </table>
 
-                <input type="submit"  onClick="chemist_blank();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                <input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
                 	
 				
 				
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<div class="view" id="page_chemist_pendingView">
+<div class="pages">
+
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Chemist Add</h1></header> 
+
+
+    <div class="panel" id="page_chemist_pending">
+    </br></br></br></br>            
+            
+            	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+            	<div id="error_chemist_add_page" style="color:#C00"></div>	
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        
+                        <td >
+                        <img src="images.png" width="100" height="100" alt="Image" >
+                        
+                        </td>
+                        
+                      </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                		 <tr>
+                      <td >Name <font style="color:#903; font-size:16px"> * </font></td>
+                       <td >Joint Medical Store</td>
+                        </tr>
+                        <tr>
+                        <td >Address</td>
+                         <td >Basunia Patty,Dinajpur</td>
+                        </tr>
+                        <tr>
+                        <td >Phone <font style="color:#903; font-size:16px"> * </font></td>
+                          <td >8801722345612</td>
+                        </tr>
+                         <tr>
+                        <td >Trade License</td>
+                        <td >12123564</td>
+                        </tr>
+                         <tr>
+                        <td >Vat Registration</td>
+                         <td >121564564</td>
+                        </tr>
+                         <tr>
+                        <td >Date of birth</td>
+                         <td >2nd Jan, 1970</td>
+                        </tr>
+                      
+                         <tr>
+                        <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Approve"   /></td>
+                         <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Reject"   /></td>
+                        </tr>
+                        
+                        
+                    </table>
+
+               
+                
+                
+                
+                <br><br>
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        
+                        <td >
+                        <img src="images.png" width="100" height="100" alt="Image" >
+                        
+                        </td>
+                        
+                      </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                		 <tr>
+                      <td >Name <font style="color:#903; font-size:16px"> * </font></td>
+                       <td >Shurid Pharmacy</td>
+                        </tr>
+                        <tr>
+                        <td >Address</td>
+                         <td >Medicine Road,Panchagor</td>
+                        </tr>
+                        <tr>
+                        <td >Phone <font style="color:#903; font-size:16px"> * </font></td>
+                          <td >8801722345688></td>
+                        </tr>
+                         <tr>
+                        <td >Trade License</td>
+                        <td >1224563</td>
+                        </tr>
+                         <tr>
+                        <td >Vat Registration</td>
+                         <td >Na</td>
+                        </tr>
+                         <tr>
+                        <td >Date of birth</td>
+                         <td >13th Sep, 1976</td>
+                        </tr>
+                      
+                         <tr>
+                        <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Approve"   /></td>
+                         <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Reject"   /></td>
+                        </tr>
+                        
+                        
+                    </table>
+
+               
+                	
+				 <br><br>
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        
+                        <td >
+                        <img src="images.png" width="100" height="100" alt="Image" >
+                        
+                        </td>
+                        
+                      </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                		 <tr>
+                      <td >Name <font style="color:#903; font-size:16px"> * </font></td>
+                       <td >Green Medical Store</td>
+                        </tr>
+                        <tr>
+                        <td >Address</td>
+                         <td >Madlihat,  Birampur,Dinajpur</td>
+                        </tr>
+                        <tr>
+                        <td >Phone <font style="color:#903; font-size:16px"> * </font></td>
+                          <td >8801722345640></td>
+                        </tr>
+                         <tr>
+                        <td >Trade License</td>
+                        <td >1224563</td>
+                        </tr>
+                         <tr>
+                        <td >Vat Registration</td>
+                         <td >12132454</td>
+                        </tr>
+                         <tr>
+                        <td >Date of birth</td>
+                         <td >2nd Feb, 1966</td>
+                        </tr>
+                      
+                         <tr>
+                        <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Approve"   /></td>
+                         <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Reject"   /></td>
+                        </tr>
+                        
+                        
+                    </table>
+
+                 <br><br>
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        
+                        <td >
+                        <img src="images.png" width="100" height="100" alt="Image" >
+                        
+                        </td>
+                        
+                      </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                		 <tr>
+                      <td >Name <font style="color:#903; font-size:16px"> * </font></td>
+                       <td >Rafi Pharmacy</td>
+                        </tr>
+                        <tr>
+                        <td >Address</td>
+                         <td >Boda Bazer,Boda</td>
+                        </tr>
+                        <tr>
+                        <td >Phone <font style="color:#903; font-size:16px"> * </font></td>
+                          <td >8801722345658></td>
+                        </tr>
+                         <tr>
+                        <td >Trade License</td>
+                        <td >1224563</td>
+                        </tr>
+                         <tr>
+                        <td >Vat Registration</td>
+                         <td >Na</td>
+                        </tr>
+                         <tr>
+                        <td >Date of birth</td>
+                         <td >2nd Jan, 1958</td>
+                        </tr>
+                      
+                       
+                        
+                         </tr>
+                         <tr>
+                        <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Approve"   /></td>
+                         <td ><input type="submit"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Reject"   /></td>
+                        </tr>
+                    </table>
+
+                
+				<br><br><br><br>
        </div>
     </div>
 
@@ -3378,12 +4133,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
 				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  ></span></div>
             	</br></br> 
-            	<div id="error_chemist_cancel_page" style="color:#C00"></div>	
+            	
                 <table width="100%" border="0">
                       <tr>
                       <td width="10%" >Reason:</td>
                        <td width="70%">
-                       <select id="item_combo" style=" width:100%"data-native-menu="false" onChange="comboSearch()" >
+                       <select id="inactive_reason" style=" width:100%"data-native-menu="false" >
                         <option value="Permanently closed" >Permanently closed</option>
                         <option value="Change of business" >Change of business</option>
                         <option value="Relocation" >Relocation</option>
@@ -3404,8 +4159,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         </tr>
                         
                     </table>
-				
-                <input type="submit"  onClick="holidaySubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                    </br>
+				<div id="error_chemist_cancel_page" style="color:#C00"></div>	
+                <input type="submit"  onClick="chemist_cancelSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
                 	
 				
 				
@@ -3419,6 +4175,121 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 </div>  
     
+    
+    
+<div class="view" id="page_businessVolumeView">
+<div class="pages">
+
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Business Volume</h1></header> 
+
+
+    <div class="panel" id="page_businessVolume">
+    </br></br></br></br>            
+            	<div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+				<div><b></b><span class="visit_client"  style="font-size:16px; color:#00A3F0"  ></span></div>
+            	</br></br> 
+            	
+                <table width="100%" border="0">
+                      <tr>
+                      <td width="40%" ><input type="date" name="chemist_dob" id="chemist_dob"  value="" placeholder="Amount"></td>
+                       <td width="60%">ACI </td>
+                        </tr>
+                        
+                        <tr>
+                      <td  ><input type="date" name="chemist_dob" id="chemist_dob"  value="" placeholder="Amount"></td>
+                       <td >SKF </td>
+                        </tr>
+                        
+                        <tr>
+                      <td  ><input type="date" name="chemist_dob" id="chemist_dob"  value="" placeholder="Amount"></td>
+                       <td >Insepta </td>
+                        </tr>
+                        
+                        <tr>
+                      <td  ><input type="date" name="chemist_dob" id="chemist_dob"  value="" placeholder="Amount"></td>
+                       <td >Acme </td>
+                        </tr>
+                        <tr>
+                        <td ></td>
+                         <td></td>
+                        </tr>
+                        <tr>
+                        <td ></td>
+                         <td ></td>
+                        </tr>
+                        
+                    </table>
+                    </br>
+				<div id="error_chemist_cancel_page" style="color:#C00"></div>	
+                <input type="submit"  onClick="chemist_cancelSubmit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                	
+				
+				
+       </div>
+    </div>
+
+<footer>
+<a onClick="page_visit()" class="icon left" ></a>
+        <a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+
+
+ <div class="view" id="page_NearExpiaryCheckView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Near Expiary Check</h1></header> 
+            <div class="panel" id="page_NearExpiaryCheck">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <!--<img id="wait_image_notice" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_noticeTxt"  type="hidden" >
+                     <div id="error_notice" style="color:#C00"></div> -->
+                    
+                
+				
+                        <div   style="color:#2232BD; overflow:scroll ; overflow-style:auto; height:500px" ></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div> 
+    
+    
+  <div class="view" id="page_CompetitorsactivityView">
+        <div class="pages">
+         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Competitors Activity</h1></header> 
+            <div class="panel" id="page_Competitorsactivity">
+            </br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <!--<img id="wait_image_notice" style="width:50px" src="loading.gif" alt="">
+                    <input id="error_noticeTxt"  type="hidden" >
+                     <div id="error_notice" style="color:#C00"></div> -->
+                    
+                
+				
+                        <div   style="color:#2232BD; overflow:scroll ; overflow-style:auto; height:500px" ></div>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		<a onClick="homePage()" class="icon home" ></a>
+        <a onClick="homePage()"  ></a>
+         </footer>
+
+    </div>   
 <!--    ===================Tour doc end====================-->
  <script type="text/javascript" src="phonegap.js"></script>
 
