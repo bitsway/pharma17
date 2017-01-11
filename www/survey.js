@@ -275,7 +275,9 @@ function page_tour_pending() {;
 function page_tour_market() {;									
 	$.afui.loadContent("#page_tour_market",true,true,'right');
 }
-
+function page_cancel_pending() {;									
+	$.afui.loadContent("#page_cancel_pending",true,true,'right');
+}
 
 
 function page_saved_Doc() {
@@ -1193,8 +1195,10 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
 
   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
  
@@ -1331,6 +1335,11 @@ function check_user() {
 		localStorage.tour_doc_str=''
 		localStorage.tour_route_str=''
 		localStorage.docSaveData=''
+		
+		localStorage.marketStrDoc=''
+		localStorage.marketTourStr=''
+		localStorage.docTThisMonthRow=''
+		localStorage.docMarketComb=''
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1404,7 +1413,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -1426,6 +1435,7 @@ function check_user() {
 											$("#error_login").html(resultArray[1]);
 										}
 										else if (resultArray[0]=='SUCCESS'){
+													//alert (resultArray)
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
 													//alert (resultArray[2]);
@@ -1472,7 +1482,9 @@ function check_user() {
 													localStorage.marketListStrCteam=resultArray[29];
 													localStorage.cTeam=resultArray[30]
 													localStorage.marketStrDoc=resultArray[31]
-													//alert (localStorage.marketStrDoc)
+													localStorage.marketTourStr=resultArray[32]
+													localStorage.docTThisMonthRow=resultArray[33]
+													//alert (localStorage.docTThisMonthRow)
 													
 													//alert (localStorage.menu)
 													//alert (localStorage.cTeam)
@@ -2366,6 +2378,8 @@ function repPendingDoc(rep_id){
 	localStorage.pendingRep=rep_id
 	localStorage.tour_route_str=''
 	$("#wait_image_rep_pendingTour").show();
+	$("#err_pendingRouteTour").html('');
+	
 	//alert (localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id)
 	
 
@@ -2380,39 +2394,117 @@ function repPendingDoc(rep_id){
 								success:function(data, status,xhr){	
 									
 									 if (status!='success'){
-										$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection...');
 										$("#wait_image_rep_pendingTour").hide();
+										
+										
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-											
+										
 										if (resultArray[0]=='FAILED'){
-											$("#err_rep_pendingTour").text("Retailer not available");	
+											$("#err_pendingRouteTour").html(resultArray[1]);	
 											$("#wait_image_rep_pendingTour").hide();
 ;
 										}
 										
 										else if (resultArray[0]=='SUCCESS'){
 										
-										localStorage.repDocPending=resultArray[1];
+											localStorage.repDocPending=resultArray[1];
+											
+											
+											
+											var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+											var d = new Date();
+											var month = d.getMonth()+2;
+											var day = d.getDate();
+											var year =d.getFullYear();
+											
+											var monthThis=''
+											
+											if (month==1){monthThisShow='Jan'+'  '+year;}
+											if (month==2){monthThisShow='Feb'+'  '+year;}
+											if (month==3){monthThisShow='Mar'+'  '+year;}
+											if (month==4){monthThisShow='Apr'+'  '+year;}
+											if (month==5){monthThisShow='May'+'  '+year;}
+											if (month==6){monthThisShow='Jun'+'  '+year;}
+											if (month==7){monthThisShow='Jul'+'  '+year;}
+											if (month==8){monthThisShow='Aug'+'  '+year;}
+											if (month==9){monthThisShow='Sep'+'  '+year;}
+											if (month==10){monthThisShow='Oct'+'  '+year;}
+											if (month==11){monthThisShow='Nov'+'  '+year;}
+											if (month==12){monthThisShow='Dec'+'  '+year;}
 										
-										
-										$("#err_rep_pendingTour").text("");	
-										$("#wait_image_rep_pendingTour").hide();
-										if (localStorage.user_type=='rep'){
-											$("#tourButton").hide();
-										}
-										else{
-											$("#tourButton").show();
-										}
-										//alert (rep_id)
-										var repIdName=$("#"+rep_id).html();	
-										localStorage.repIdName=repIdName
-										$("#pendingRepShow").html(localStorage.repIdName);	
-										$('#tour_rep_pending_lv').empty()
-										$('#tour_rep_pending_lv').append(localStorage.repDocPending);
-										
-										//tour_ob.listview("refresh");	
+											var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
+											//alert (monthThisShow)
+											var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+											
+											docTThisMonthRow=localStorage.repDocPending
+											//alert (docTThisMonthRow)
+											for (var i=0; i < days; i++){
+												var dayShow=i+1
+												var fulDate=year+'-'+month+'-'+day
+												
+												var a = new Date(month+'/'+dayShow+'/'+year);
+												var dayName=weekday[a.getDay()];
+												var monthCheck=''
+												var dayCheck=''
+												
+												if (month<10){monthCheck='0'+month}else{monthCheck=month}
+												if (dayShow<10){dayCheck='0'+dayShow}else{dayCheck=dayShow}
+												var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
+												
+												//alert (dayCheckFinal)
+												
+													
+												
+												
+												
+												
+												thisMonthTable=thisMonthTable+'<tr ><td >'+dayName+'</td><td>'+dayShow+'</td><td width="40%">'
+												//'Bashndhara<br> Nadda<br>'
+												if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
+													var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
+													//if (dayShow==21){alert (dateRouteSingle)}
+													var marketStrListThisMonth=dateRouteSingle.split('<rd>')
+													var dayRoute=''
+													for (var m=0; m < marketStrListThisMonth.length; m++){
+														var marketIdThisMonth=marketStrListThisMonth[m].split('<fd>')[0]
+														var marketNameThisMonth=marketStrListThisMonth[m].split('<fd>')[1]
+														var marketStatusThisMonth=marketStrListThisMonth[m].split('<fd>')[2]
+														
+														dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
+														//alert (checkId)
+													}
+													thisMonthTable=thisMonthTable+dayRoute+'<br>'
+													//thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'</font><br>'
+													var marketName
+													var status
+													//alert (dateRouteSingle)
+												}
+												
+												thisMonthTable=thisMonthTable+'</td> </tr>'
+												
+											}
+											thisMonthTable=thisMonthTable+'</table><br><br><br>'
+											$('#repPendingShow').html(thisMonthTable)
+											
+											
+											
+											
+											
+											$("#err_rep_pendingTour").text("");	
+											$("#wait_image_rep_pendingTour").hide();
+											if (localStorage.user_type=='rep'){
+												$("#tourButton").hide();
+											}
+											else{
+												$("#tourButton").show();
+											}
+											//alert (rep_id)
+											var repIdName=$("#"+rep_id).html();	
+											localStorage.repIdName=repIdName
+											$("#pendingRepShow").html(localStorage.repIdName);	
 										
 									
 										}
@@ -2559,13 +2651,83 @@ function showSubmitDocShow(){
 }
 
 
-function repCancelReqShow(){
+function repCancelReqShow(i){
+	$("#wait_image_tourCancel").hide();
+	$("#err_tourCancel").html('')
+	var editday=$("#"+i+"editday").html()
+	var editdayName=$("#"+i+"editdayName").html()
+	var editinfo=$("#"+i+"editinfo").html()
+	//alert (editinfo)
+	if (editinfo==undefined){
+		editinfo=''
+		}
+	$("#dayNameedit").html(editdayName)
+	$("#dayNumdit").html(editday)
+	$("#infoEdit").html(editinfo)
+
+	
+	var marketList=(localStorage.marketTourStr).split('<rd>')
+	var amndTable=''	
+	for (var m=0; m < marketList.length; m++){
+		
+		var marketId=marketList[m].split('<fd>')[0]
+		var marketName=marketList[m].split('<fd>')[1]
+		var checkId=m+'_'+marketId+'_amnd'
+		
+		if (marketId!=''){
+		amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+'['+marketId+']</br></br></td></tr></table>'
+		}
+		else{
+			amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"></br></td></tr></table>'
+		}
+		
+	}
+	amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
+	$("#amndReq").html(amndTable)
+	$("#amndLeave").html(amndLeave)
+	$.afui.loadContent("#page_tour_cancel",true,true,'right');
+
+}
+
+function repCancelReqSubmit(){
 	
 	$("#err_tourCancel").html('')
-	//alert (localStorage.base_url+'repCancelReqShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	var dayNameedit=$("#dayNameedit").html()
+	var dayNumdit=$("#dayNumdit").html()
+	var d = new Date();
+	var month = d.getMonth()+1;
+	var year =d.getFullYear();
+	var schDate=year+'-'+month+'-'+dayNameedit
+	
+	
+	var marketList=(localStorage.marketTourStr).split('<rd>')
+	var submitStr=''	
+	for (var m=0; m < marketList.length; m++){
+		
+		var marketId=marketList[m].split('<fd>')[0]
+		var marketName=marketList[m].split('<fd>')[1]
+		var checkId=m+'_'+marketId+'_amnd'
+		
+		check = $("#"+checkId).prop("checked");
+		if (check==true){
+			if (submitStr==''){
+				submitStr=marketId+'<fd>'+marketName
+			}
+			else{
+				submitStr=submitStr+'<rd>'+marketId+'<fd>'+marketName
+			}
+		}
+		
+		
+	}
+	submitStr=schDate+'<date>'+submitStr
+	checkLeave = $("#amndleav").prop("checked");
+
+
+	alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave)
 	
 
-	$.ajax(localStorage.base_url+'repCancelReqShow?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave,{
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
@@ -2591,9 +2753,9 @@ function repCancelReqShow(){
 										else if (resultArray[0]=='SUCCESS'){
 																			
 										//$('#tour_rep_pending_show_lv').empty()
-										$('#tourCancelShow').html(resultArray[1]);
+										$('#tourCancelShow').html('Submitted Successfully');
 										$("#wait_image_tourCancel").hide();
-										$.afui.loadContent("#page_tour_cancel",true,true,'right');
+										//$.afui.loadContent("#page_tour_cancel",true,true,'right');
 										
 										
 									
@@ -2610,7 +2772,7 @@ function repCancelReqShow(){
 						}
 						  
 				 });//end ajax
-			//$("#wait_image_route_pendingTour").hide();	 
+			$("#wait_image_route_pendingTour").hide();	 
 			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
 //	alert ('sdasf')
 	
@@ -2674,19 +2836,155 @@ function tourCReq_doc(i){
 //========================================================
 
 function addMarketListTour() {
-	//alert (localStorage.visitPlanMarketComb);
-	$("#tour_market_combo_id_lv").val('');
-	var visitPlanMarketComb=localStorage.visit_plan_marketlist_combo;
-	//alert (visitPlanMarketComb)
 	
-	$('#tour_market_combo_id_lv').empty();
-	$('#tour_market_combo_id_lv').append(visitPlanMarketComb);
-	$("#wait_image_retTour").hide();
-	
+	$("#wait_image_retTour").hide();	
+	$("#err_marketTour").html('');
 	//showSubmitDocShow()
-	
-	$.afui.loadContent("#page_tour_market",true,true,'right');
 
+	
+//	====================================================
+	var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+	var d = new Date();
+	var month = d.getMonth()+1;
+	var day = d.getDate();
+	var year =d.getFullYear();
+	
+	var monthThis=''
+	
+	if (month==1){monthThisShow='Jan'+'  '+year;}
+	if (month==2){monthThisShow='Feb'+'  '+year;}
+	if (month==3){monthThisShow='Mar'+'  '+year;}
+	if (month==4){monthThisShow='Apr'+'  '+year;}
+	if (month==5){monthThisShow='May'+'  '+year;}
+	if (month==6){monthThisShow='Jun'+'  '+year;}
+	if (month==7){monthThisShow='Jul'+'  '+year;}
+	if (month==8){monthThisShow='Aug'+'  '+year;}
+	if (month==9){monthThisShow='Sep'+'  '+year;}
+	if (month==10){monthThisShow='Oct'+'  '+year;}
+	if (month==11){monthThisShow='Nov'+'  '+year;}
+	if (month==12){monthThisShow='Dec'+'  '+year;}
+
+	var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
+	//alert (monthThisShow)
+	var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+	
+	docTThisMonthRow=localStorage.docTThisMonthRow
+	for (var i=0; i < days; i++){
+		var dayShow=i+1
+		var fulDate=year+'-'+month+'-'+day
+		
+		var a = new Date(month+'/'+dayShow+'/'+year);
+		var dayName=weekday[a.getDay()];
+		var monthCheck=''
+		var dayCheck=''
+		
+		if (month<10){monthCheck='0'+month}else{monthCheck=month}
+		if (dayShow<10){dayCheck='0'+dayShow}else{dayCheck=dayShow}
+		var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
+		
+		//alert (dayCheckFinal)
+		
+			
+		
+		
+		
+		
+		thisMonthTable=thisMonthTable+'<tr ><td><font id="'+i+'editday">'+dayName+'</font></td><td><font id="'+i+'editdayName">'+dayShow+'</font></td><td width="40%">'
+		//'Bashndhara<br> Nadda<br>'
+		if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
+			var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
+			//if (dayShow==21){alert (dateRouteSingle)}
+			var marketStrListThisMonth=dateRouteSingle.split('<rd>')
+			var dayRoute=''
+			for (var m=0; m < marketStrListThisMonth.length; m++){
+				var marketIdThisMonth=marketStrListThisMonth[m].split('<fd>')[0]
+				var marketNameThisMonth=marketStrListThisMonth[m].split('<fd>')[1]
+				var marketStatusThisMonth=marketStrListThisMonth[m].split('<fd>')[2]
+				
+				dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
+				//alert (checkId)
+			}
+			thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+dayRoute+'</font><br>'
+			//thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'</font><br>'
+			var marketName
+			var status
+			//alert (dateRouteSingle)
+		}
+		
+		thisMonthTable=thisMonthTable+'</td><td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow('+i+');"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td> </tr>'
+		
+	}
+	thisMonthTable=thisMonthTable+'</table><br><br><br>'
+	$('#thisMonth').html(thisMonthTable)
+	
+	
+//	====================================================
+	var d = new Date();
+	var monthNextGet = d.getMonth()+2;
+	var dayNext = d.getDate();
+	var yearNext =d.getFullYear();
+	
+	var monthThis=''
+	
+	if (monthNextGet==1){monthNext='Jan'+'  '+year;}
+	if (monthNextGet==2){monthNext='Feb'+'  '+year;}
+	if (monthNextGet==3){monthNext='Mar'+'  '+year;}
+	if (monthNextGet==4){monthNext='Apr'+'  '+year;}
+	if (monthNextGet==5){monthNext='May'+'  '+year;}
+	if (monthNextGet==6){monthNext='Jun'+'  '+year;}
+	if (monthNextGet==7){monthNext='Jul'+'  '+year;}
+	if (monthNextGet==8){monthNext='Aug'+'  '+year;}
+	if (monthNextGet==9){monthNext='Sep'+'  '+year;}
+	if (monthNextGet==10){monthNext='Oct'+'  '+year;}
+	if (monthNextGet==11){monthNext='Nov'+'  '+year;}
+	if (monthNextGet==12){monthNext='Dec'+'  '+year;}
+
+	var daysNext = Math.round(((new Date(yearNext, monthNextGet))-(new Date(yearNext, monthNextGet-1)))/86400000);
+	//alert (daysNext)
+	
+	
+	var nextMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">DRAFT/Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+	for (var i=0; i < daysNext; i++){
+		var dayShow=i+1
+		var aNext = new Date(monthNextGet+'/'+dayShow+'/'+yearNext);
+		//alert (aNext)
+		var dayNameNext=weekday[aNext.getDay()];
+		var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
+		//alert (dateShow)
+		nextMonthTable=nextMonthTable+'<tr ><td width="100px">'+dayNameNext+'</td><td>'+dayShow+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
+		nextMonthTable=nextMonthTable+'<td>'
+		
+		var marketList=(localStorage.marketTourStr).split('<rd>')
+		
+		for (var m=0; m < marketList.length; m++){
+			
+			var marketId=marketList[m].split('<fd>')[0]
+			var marketName=marketList[m].split('<fd>')[1]
+			var checkId=i+'n'+m+'_'+marketId
+			//alert (marketId)
+			if (marketId!=''){
+			nextMonthTable=nextMonthTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+'['+marketId+']</br></br></td></tr></table>'
+			//alert (checkId)
+			}
+			else{
+				nextMonthTable=nextMonthTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"></br></td></tr></table>'
+			}
+		}
+		
+		
+		
+	nextMonthTable=nextMonthTable+'</td></tr>'
+	}
+	nextMonthTable=nextMonthTable+'</table><input type="submit"  onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   /><br><br><br>'
+	$('#nextMonth').html(nextMonthTable)
+	
+	
+	
+	
+	
+	
+	nextMShow()
+	$.afui.loadContent("#page_tour_market",true,true,'right');
 }
 
 function addMarketListCteam() {
@@ -4492,35 +4790,53 @@ function getDocTour_keyup(docID){
 
 
 function tourSubmit_doc(){	
-	$("#errorChkVSubmit").text("");
+$("#wait_image_retTour").show();	
+$("#err_marketTour").html('');
+	var d = new Date();
+	var monthNextGet = d.getMonth()+2;
+	var dayNext = d.getDate();
+	var yearNext =d.getFullYear();
+	var daysNext = Math.round(((new Date(yearNext, monthNextGet))-(new Date(yearNext, monthNextGet-1)))/86400000);
+	var submitStr=''
 	
-	
-	
-	var tour_date=$("#tour_date").val();
-	var tour_doc_str=localStorage.tour_doc_str;
+	for (var i=0; i < daysNext; i++){
+		var dayShow=i+1
+		var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
 
-	if (tour_doc_str.indexOf('undefined')!=-1){
-		tour_doc_str=''
+
+		var marketList=(localStorage.marketTourStr).split('<rd>')
+		
+		for (var m=0; m < marketList.length; m++){
+			var dateGet=''
+			var marketId=marketList[m].split('<fd>')[0]
+			var marketName=marketList[m].split('<fd>')[1]
+			var checkId=i+'n'+m+"_"+marketId
+			check = $("#"+checkId).prop("checked");
+			if(check) {
+				dateGet=$("#"+i+"_date").val();
+				if (submitStr==''){
+					submitStr=dateGet+'<fd>'+marketId+'<fd>'+marketName
+				}
+				else{
+					submitStr=submitStr+'<rd>'+dateGet+'<fd>'+marketId+'<fd>'+marketName
+				}
+			} 
+			
+			
+		}
 	}
-	var errFlag=0;
-	if  (tour_date==''){
-		$("#err_marketTour").html('Select Tour Date');
-		errFlag=1
-	}
-	else if (tour_doc_str==''){
-		$("#err_marketTour").html('Select Route');
+	var errFlag=0
+	if (submitStr==''){
+		$("#err_marketTour").html('Select Market');
 		errFlag=1
 	}
 
 		
 		
 	if (errFlag==0){
-				var tour_date=$("#tour_date").val();
-				localStorage.tour_date=tour_date
+		//alert (localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr));		
 				
-				//$("#tourTxt").val(localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str);
-		//alert (localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str);		
-				$.ajax(localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_date='+localStorage.tour_date+'&tour_doc_str='+localStorage.tour_doc_str,{
+			   $.ajax(localStorage.base_url+'tourDocEntry?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr),{
 		
 										type: 'POST',
 										timeout: 30000,
@@ -4536,35 +4852,32 @@ function tourSubmit_doc(){
 											 }
 											 else{	
 											
-											 if (data=='SUCCESS'){
-													$("#err_marketTour").html("Submitted Successfully");
-													localStorage.tour_doc_str=''
-													showSubmitDocShow();
-											 }
-											 else{
-													$("#err_marketTour").html(data);
-													showSubmitDocShow();
-											 }
+													 if (data=='SUCCESS'){
+															$("#err_marketTour").html("Submitted Successfully");
+															localStorage.tour_doc_str=''
+															showSubmitDocShow();
+													 }
+													 else{
+															$("#err_marketTour").html(data);
+															showSubmitDocShow();
+													 }
 		
+											}
 									}
-								}
 							 
 					 });//end ajax
 				}//errorFlag
-		
-										
-		
-	//}//Sync date check
+
   }
 function tourConfirm_doc(){	
-	var confirmStr=localStorage.tour_route_str
+	var pendingRep=localStorage.pendingRep
 	
-	if (confirmStr==''){
+	if (pendingRep==''){
 		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
 	}
 	else{
-		//alert (localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str);
-		$.ajax(localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str,{
+		alert (localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
+		$.ajax(localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep,{
 
 								type: 'POST',
 								timeout: 30000,
@@ -4587,6 +4900,7 @@ function tourConfirm_doc(){
 											localStorage.tour_doc_str=''
 											//alert (localStorage.pendingRep)
 											repPendingDocShow(localStorage.pendingRep)
+											repPendingDocView(pendingRep)
 											
 											
 									 }
@@ -4604,14 +4918,173 @@ function tourConfirm_doc(){
 		
 	}//}//Sync date check
   }
+function repPendingDocView(rep_id){
+	
+	//localStorage.pendingRep=rep_id
+	localStorage.tour_route_str=''
+	$("#wait_image_rep_pendingTour").show();
+	//alert (localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id)
+	
+
+	$.ajax(localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+								$("#wait_image_rep_pendingTour").hide();
+								$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									
+									 if (status!='success'){
+										$("#err_rep_pendingTour").html('Network Timeout. Please check your Internet connection...');
+										$("#wait_image_rep_pendingTour").hide();
+										
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+											
+										if (resultArray[0]=='FAILED'){
+											$("#err_rep_pendingTour").text("Retailer not available");	
+											$("#wait_image_rep_pendingTour").hide();
+;
+										}
+										
+										else if (resultArray[0]=='SUCCESS'){
+										
+										localStorage.repDocPending=resultArray[1];
+										
+										
+										
+										var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+										var d = new Date();
+										var month = d.getMonth()+2;
+										var day = d.getDate();
+										var year =d.getFullYear();
+										
+										var monthThis=''
+										
+										if (month==1){monthThisShow='Jan'+'  '+year;}
+										if (month==2){monthThisShow='Feb'+'  '+year;}
+										if (month==3){monthThisShow='Mar'+'  '+year;}
+										if (month==4){monthThisShow='Apr'+'  '+year;}
+										if (month==5){monthThisShow='May'+'  '+year;}
+										if (month==6){monthThisShow='Jun'+'  '+year;}
+										if (month==7){monthThisShow='Jul'+'  '+year;}
+										if (month==8){monthThisShow='Aug'+'  '+year;}
+										if (month==9){monthThisShow='Sep'+'  '+year;}
+										if (month==10){monthThisShow='Oct'+'  '+year;}
+										if (month==11){monthThisShow='Nov'+'  '+year;}
+										if (month==12){monthThisShow='Dec'+'  '+year;}
+									
+										var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
+										//alert (monthThisShow)
+										var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+										
+										docTThisMonthRow=localStorage.repDocPending
+										//alert (docTThisMonthRow)
+										for (var i=0; i < days; i++){
+											var dayShow=i+1
+											var fulDate=year+'-'+month+'-'+day
+											
+											var a = new Date(month+'/'+dayShow+'/'+year);
+											var dayName=weekday[a.getDay()];
+											var monthCheck=''
+											var dayCheck=''
+											
+											if (month<10){monthCheck='0'+month}else{monthCheck=month}
+											if (dayShow<10){dayCheck='0'+dayShow}else{dayCheck=dayShow}
+											var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
+											
+											//alert (dayCheckFinal)
+											
+												
+											
+											
+											
+											
+											thisMonthTable=thisMonthTable+'<tr ><td >'+dayName+'</td><td>'+dayShow+'</td><td width="40%">'
+											//'Bashndhara<br> Nadda<br>'
+											if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
+												var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
+												//if (dayShow==21){alert (dateRouteSingle)}
+												var marketStrListThisMonth=dateRouteSingle.split('<rd>')
+												var dayRoute=''
+												for (var m=0; m < marketStrListThisMonth.length; m++){
+													var marketIdThisMonth=marketStrListThisMonth[m].split('<fd>')[0]
+													var marketNameThisMonth=marketStrListThisMonth[m].split('<fd>')[1]
+													var marketStatusThisMonth=marketStrListThisMonth[m].split('<fd>')[2]
+													
+													dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
+													//alert (checkId)
+												}
+												thisMonthTable=thisMonthTable+dayRoute+'<br>'
+												//thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'</font><br>'
+												var marketName
+												var status
+												//alert (dateRouteSingle)
+											}
+											
+											thisMonthTable=thisMonthTable+'</td> </tr>'
+											
+										}
+										thisMonthTable=thisMonthTable+'</table><br><br><br>'
+										$('#repPendingShow').html(thisMonthTable)
+										
+										
+										
+										
+										
+										$("#err_rep_pendingTour").text("");	
+										$("#wait_image_rep_pendingTour").hide();
+										if (localStorage.user_type=='rep'){
+											$("#tourButton").hide();
+										}
+										else{
+											$("#tourButton").show();
+										}
+										//alert (rep_id)
+										var repIdName=$("#"+rep_id).html();	
+										localStorage.repIdName=repIdName
+										$("#pendingRepShow").html(localStorage.repIdName);	
+										repPendingDocView(pendingRep)
+										//$('#tour_rep_pending_lv').empty()
+//										$('#tour_rep_pending_lv').append(localStorage.repDocPending);
+										
+										//tour_ob.listview("refresh");	
+										
+									
+										}
+									//------- 
+	
+									
+																
+								 //else if
+								
+								
+							} //else
+							
+						}
+						  
+				 });//end ajax
+			$("#wait_image_route_pendingTour").hide();
+			//alert (rep_id_pending)	 
+//			$("#pendingRepShow").html(rep_id_pending);	
+			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
+	
+}  
+  
 function tourCancel_doc(){	
-	var confirmStr=localStorage.tour_route_str
-	if (confirmStr==''){
+	var pendingRep=localStorage.pendingRep
+	
+	if (pendingRep==''){
 		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
 	}
 	else{
-		//alert (localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str);
-		$.ajax(localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&tour_route_str='+localStorage.tour_route_str,{
+		alert (localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
+		$.ajax(localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep,{
 
 								type: 'POST',
 								timeout: 30000,
@@ -8561,6 +9034,7 @@ function toggleentryDiv(){
 }
 function uncheckAll(divid) {
 	 // $("#err_marketTour").html('');
+	 //alert (divid)
 	 $('#'+divid).find('input[type=checkbox]:checked').attr("checked", false);
 	
 }
