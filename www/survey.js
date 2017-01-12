@@ -9468,6 +9468,7 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 }
 
 function cameraSuccess(uri){   
+	takePicture();
 	var picNo=localStorage.picFlag+1
 	var imageDiv="myImage"+"1"
 	var imageText="prPhoto"+"1"
@@ -9475,7 +9476,7 @@ function cameraSuccess(uri){
     image.src = imageURI;
 	imagePath = imageURI;
 	$("#"+imageText).val(imagePath);
-    takePicture();    
+        
 }
 
 function cameraError(message){
