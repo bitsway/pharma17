@@ -9472,7 +9472,7 @@ function cameraSuccess(uri){
 	var imageDiv="myImage"+picNo
 	var imageText="prPhoto"+picNo
 	localStorage.picFlag=picNo
-	alert (imageURI)
+	alert (Camera.DestinationType.FILE_URI)
 	takePicture();
 	
 	
