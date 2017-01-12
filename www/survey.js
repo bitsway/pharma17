@@ -490,8 +490,7 @@ function page_inbox() {
 						}
 					  }
 			 });//end ajax
-	
-	
+			 
 	$.afui.loadContent("#page_inbox",true,true,'right');
 }
 function page_promo_refresh() {
@@ -2461,7 +2460,7 @@ function repPendingDoc(rep_id){
 												
 												
 												
-												thisMonthTable=thisMonthTable+'<tr ><td >'+dayName+'</td><td>'+dayShow+'</td><td width="40%">'
+												thisMonthTable=thisMonthTable+'<tr ><td width="50px" >'+dayName+'</td><td width="30px">'+dayShow+'</td><td width="40%">'
 												//'Bashndhara<br> Nadda<br>'
 												if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 													var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -2682,7 +2681,8 @@ function repCancelReqShow(i){
 		}
 		
 	}
-	amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
+	amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndOthers" value="checkbox" id="amndOthers" ><label for="amndOthers"></br></label></td><td  style="text-align:left;"></br>Office Work / Training</br></br></td></tr></table>'
+	amndLeave=amndLeave+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
 	$("#amndReq").html(amndTable)
 	$("#amndLeave").html(amndLeave)
 	$.afui.loadContent("#page_tour_cancel",true,true,'right');
@@ -2722,12 +2722,13 @@ function repCancelReqSubmit(){
 	}
 	submitStr=schDate+'<date>'+submitStr
 	checkLeave = $("#amndleav").prop("checked");
+	checkOthers = $("#amndOthers").prop("checked");
 
 
-	alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave)
+	alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers)
 	
 
-	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave,{
+	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers,{
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
@@ -2889,7 +2890,7 @@ function addMarketListTour() {
 		
 		
 		
-		thisMonthTable=thisMonthTable+'<tr ><td><font id="'+i+'editday">'+dayName+'</font></td><td><font id="'+i+'editdayName">'+dayShow+'</font></td><td width="40%">'
+		thisMonthTable=thisMonthTable+'<tr ><td width="50px"><font id="'+i+'editday">'+dayName+'</font></td><td width="30px"><font id="'+i+'editdayName">'+dayShow+'</font></td><td width="40%">'
 		//'Bashndhara<br> Nadda<br>'
 		if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 			var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -2951,7 +2952,7 @@ function addMarketListTour() {
 		var dayNameNext=weekday[aNext.getDay()];
 		var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
 		//alert (dateShow)
-		nextMonthTable=nextMonthTable+'<tr ><td width="100px">'+dayNameNext+'</td><td>'+dayShow+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
+		nextMonthTable=nextMonthTable+'<tr ><td width="50px">'+dayNameNext+'</td><td width="30px">'+dayShow+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
 		nextMonthTable=nextMonthTable+'<td>'
 		
 		var marketList=(localStorage.marketTourStr).split('<rd>')
@@ -5004,7 +5005,7 @@ function repPendingDocView(rep_id){
 											
 											
 											
-											thisMonthTable=thisMonthTable+'<tr ><td >'+dayName+'</td><td>'+dayShow+'</td><td width="40%">'
+											thisMonthTable=thisMonthTable+'<tr ><td width="50px">'+dayName+'</td><td width="30px">'+dayShow+'</td><td width="40%">'
 											//'Bashndhara<br> Nadda<br>'
 											if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 												var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -9445,3 +9446,43 @@ function NearExpiaryCheck() {
 function page_Competitorsactivity() {	
 	$.afui.loadContent("#page_Competitorsactivity",true,true,'right');
 }
+
+function page_PrescriptionCapture() {	
+	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
+}
+
+
+function setPicture(){
+localStorage.picFlag=0;
+alert (localStorage.picFlag)
+}
+function takePicture(){
+navigator.camera.getPicture( cameraSuccess, cameraError, {
+		quality: 90,
+		targetWidth: 400,
+        destinationType: Camera.DestinationType.FILE_URI,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    }); 
+	
+}
+
+function cameraSuccess(uri){   
+	var picNo=localStorage.picFlag+1
+	var imageDiv="myImage"+"1"
+	var imageText="prPhoto"+"1"
+    var image = document.getElementById(imageDiv);
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#"+imageText).val(imagePath);
+    takePicture();    
+}
+
+function cameraError(message){
+    alert("Canceled!"); 
+	
+}
+
+$('#ThumbnailTest_buttonTakePhotosNow').click(function(){
+    takePicture();
+});
