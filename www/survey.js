@@ -9454,7 +9454,13 @@ function page_PrescriptionCapture() {
 
 function setPicture(){
 localStorage.picFlag=0;
-alert (localStorage.picFlag)
+//alert (localStorage.picFlag)
+}
+function cancelPicture(i){
+	var imageDiv="myImage"+i
+	var imageText="prPhoto"+i
+	$("#"+imageDiv).html('');
+	$("#"+imageText).val('');
 }
 function takePicture(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
