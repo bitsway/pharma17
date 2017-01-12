@@ -9460,7 +9460,8 @@ function takePicture(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
 		quality: 90,
 		targetWidth: 400,
-        destinationType: Camera.DestinationType.FILE_URI,
+        //destinationType: Camera.DestinationType.FILE_URI,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
         correctOrientation: true,
         saveToPhotoAlbum: true
     }); 
@@ -9473,13 +9474,14 @@ function cameraSuccess(uri){
 	var imageText="prPhoto"+picNo
 	localStorage.picFlag=picNo
 	var image = document.getElementById(imageDiv);
+	image.src = imageURI;
+	imagePath = imageURI;
 	alert (image)
 	takePicture();
 	
 	
    
-    image.src = imageURI;
-	imagePath = imageURI;
+    
 	$("#"+imageText).val(imagePath);
         
 }
