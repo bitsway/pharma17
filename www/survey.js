@@ -9472,11 +9472,12 @@ function cameraSuccess(uri){
 	var imageDiv="myImage"+picNo
 	var imageText="prPhoto"+picNo
 	localStorage.picFlag=picNo
-	alert (Camera.DestinationType.FILE_URI)
+	var image = document.getElementById(imageDiv);
+	alert (image)
 	takePicture();
 	
 	
-    var image = document.getElementById(imageDiv);
+   
     image.src = imageURI;
 	imagePath = imageURI;
 	$("#"+imageText).val(imagePath);
