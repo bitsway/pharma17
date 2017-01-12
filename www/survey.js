@@ -9472,12 +9472,12 @@ function cameraSuccess(uri){
 	var picNo=parseInt(localStorage.picFlag)+1 
 	var imageDiv="myImage"+picNo
 	var imageText="prPhoto"+picNo
-	//localStorage.picFlag=picNo
+	localStorage.picFlag=picNo
 	var image = document.getElementById(imageDiv);
 	image.src = uri;
 	imagePath = uri;
 	
-	alert (uri)
+	//alert (uri)
 	takePicture();
 	
 	
