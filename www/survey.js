@@ -1488,7 +1488,7 @@ function check_user() {
 													//alert (localStorage.menu)
 													//alert (localStorage.cTeam)
 													
-													//localStorage.client_depot_name=resultArray[27];
+													//localStorage.clie nt_depot_name=resultArray[27];
 													
 													
 													//
@@ -2421,18 +2421,18 @@ function repPendingDoc(rep_id){
 											
 											var monthThis=''
 											
-											if (month==1){monthThisShow='Jan'+'  '+year;}
-											if (month==2){monthThisShow='Feb'+'  '+year;}
-											if (month==3){monthThisShow='Mar'+'  '+year;}
-											if (month==4){monthThisShow='Apr'+'  '+year;}
+											if (month==1){monthThisShow='January'+'  '+year;}
+											if (month==2){monthThisShow='February'+'  '+year;}
+											if (month==3){monthThisShow='March'+'  '+year;}
+											if (month==4){monthThisShow='April'+'  '+year;}
 											if (month==5){monthThisShow='May'+'  '+year;}
-											if (month==6){monthThisShow='Jun'+'  '+year;}
-											if (month==7){monthThisShow='Jul'+'  '+year;}
-											if (month==8){monthThisShow='Aug'+'  '+year;}
-											if (month==9){monthThisShow='Sep'+'  '+year;}
-											if (month==10){monthThisShow='Oct'+'  '+year;}
-											if (month==11){monthThisShow='Nov'+'  '+year;}
-											if (month==12){monthThisShow='Dec'+'  '+year;}
+											if (month==6){monthThisShow='June'+'  '+year;}
+											if (month==7){monthThisShow='Juyl'+'  '+year;}
+											if (month==8){monthThisShow='Augusr'+'  '+year;}
+											if (month==9){monthThisShow='September'+'  '+year;}
+											if (month==10){monthThisShow='October'+'  '+year;}
+											if (month==11){monthThisShow='November'+'  '+year;}
+											if (month==12){monthThisShow='December'+'  '+year;}
 										
 											var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
 											//alert (monthThisShow)
@@ -2844,7 +2844,7 @@ function addMarketListTour() {
 
 	
 //	====================================================
-	var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+	var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saterday"];
 	var d = new Date();
 	var month = d.getMonth()+1;
 	var day = d.getDate();
@@ -2852,22 +2852,22 @@ function addMarketListTour() {
 	
 	var monthThis=''
 	
-	if (month==1){monthThisShow='Jan'+'  '+year;}
-	if (month==2){monthThisShow='Feb'+'  '+year;}
-	if (month==3){monthThisShow='Mar'+'  '+year;}
-	if (month==4){monthThisShow='Apr'+'  '+year;}
+	if (month==1){monthThisShow='January'+'  '+year;}
+	if (month==2){monthThisShow='February'+'  '+year;}
+	if (month==3){monthThisShow='March'+'  '+year;}
+	if (month==4){monthThisShow='April'+'  '+year;}
 	if (month==5){monthThisShow='May'+'  '+year;}
-	if (month==6){monthThisShow='Jun'+'  '+year;}
-	if (month==7){monthThisShow='Jul'+'  '+year;}
-	if (month==8){monthThisShow='Aug'+'  '+year;}
-	if (month==9){monthThisShow='Sep'+'  '+year;}
-	if (month==10){monthThisShow='Oct'+'  '+year;}
-	if (month==11){monthThisShow='Nov'+'  '+year;}
-	if (month==12){monthThisShow='Dec'+'  '+year;}
+	if (month==6){monthThisShow='June'+'  '+year;}
+	if (month==7){monthThisShow='Juyl'+'  '+year;}
+	if (month==8){monthThisShow='Augusr'+'  '+year;}
+	if (month==9){monthThisShow='September'+'  '+year;}
+	if (month==10){monthThisShow='October'+'  '+year;}
+	if (month==11){monthThisShow='November'+'  '+year;}
+	if (month==12){monthThisShow='December'+'  '+year;}
 
 	var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
 	//alert (monthThisShow)
-	var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+	var thisMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-color:#096;background-color:#EDFEED; border-style:hidden" width="100%" border="1" cellspacing="0">'
 	
 	docTThisMonthRow=localStorage.docTThisMonthRow
 	for (var i=0; i < days; i++){
@@ -2890,7 +2890,7 @@ function addMarketListTour() {
 		
 		
 		
-		thisMonthTable=thisMonthTable+'<tr ><td width="50px"><font id="'+i+'editday">'+dayName+'</font></td><td width="30px"><font id="'+i+'editdayName">'+dayShow+'</font></td><td width="40%">'
+		thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayName">'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font id="'+i+'editday">'+dayName+'</font></td><td  style="border-left:hidden; "><table style="border-color:#096;background-color:#E7F5FE " width="100%" border="0" cellspacing="0"  ><tr><td >'
 		//'Bashndhara<br> Nadda<br>'
 		if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 			var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -2901,21 +2901,18 @@ function addMarketListTour() {
 				var marketIdThisMonth=marketStrListThisMonth[m].split('<fd>')[0]
 				var marketNameThisMonth=marketStrListThisMonth[m].split('<fd>')[1]
 				var marketStatusThisMonth=marketStrListThisMonth[m].split('<fd>')[2]
-				
-				dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
+				dayRoute=dayRoute+marketNameThisMonth+' ['+marketIdThisMonth+']'+'<br>'
+				//dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'  '+marketStatusThisMonth+'<br>'
 				//alert (checkId)
 			}
 			thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+dayRoute+'</font><br>'
-			//thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'</font><br>'
-			var marketName
-			var status
-			//alert (dateRouteSingle)
+
 		}
-		
-		thisMonthTable=thisMonthTable+'</td><td width="8%"><input type="submit" id="btn_submit_tour" onClick="repCancelReqShow('+i+');"   style="background-color:#09C; color:#FFF; font-size:11px" value="  Edit  "   /></td> </tr>'
-		
+
+		thisMonthTable=thisMonthTable+'</td></tr><tr><td style="border-style:hidden" width="8%" align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></td> </tr>'
+		thisMonthTable=thisMonthTable+'</table>'
 	}
-	thisMonthTable=thisMonthTable+'</table><br><br><br>'
+	thisMonthTable=thisMonthTable+'</td></tr></table><br><br><br>'
 	$('#thisMonth').html(thisMonthTable)
 	
 	
@@ -2927,18 +2924,18 @@ function addMarketListTour() {
 	
 	var monthThis=''
 	
-	if (monthNextGet==1){monthNext='Jan'+'  '+year;}
-	if (monthNextGet==2){monthNext='Feb'+'  '+year;}
-	if (monthNextGet==3){monthNext='Mar'+'  '+year;}
-	if (monthNextGet==4){monthNext='Apr'+'  '+year;}
+	if (monthNextGet==1){monthNext='January'+'  '+year;}
+	if (monthNextGet==2){monthNext='February'+'  '+year;}
+	if (monthNextGet==3){monthNext='March'+'  '+year;}
+	if (monthNextGet==4){monthNext='April'+'  '+year;}
 	if (monthNextGet==5){monthNext='May'+'  '+year;}
-	if (monthNextGet==6){monthNext='Jun'+'  '+year;}
-	if (monthNextGet==7){monthNext='Jul'+'  '+year;}
-	if (monthNextGet==8){monthNext='Aug'+'  '+year;}
-	if (monthNextGet==9){monthNext='Sep'+'  '+year;}
-	if (monthNextGet==10){monthNext='Oct'+'  '+year;}
-	if (monthNextGet==11){monthNext='Nov'+'  '+year;}
-	if (monthNextGet==12){monthNext='Dec'+'  '+year;}
+	if (monthNextGet==6){monthNext='June'+'  '+year;}
+	if (monthNextGet==7){monthNext='Juyl'+'  '+year;}
+	if (monthNextGet==8){monthNext='Augusr'+'  '+year;}
+	if (monthNextGet==9){monthNext='September'+'  '+year;}
+	if (monthNextGet==10){monthNext='October'+'  '+year;}
+	if (monthNextGet==11){monthNext='November'+'  '+year;}
+	if (monthNextGet==12){monthNext='December'+'  '+year;}
 
 	var daysNext = Math.round(((new Date(yearNext, monthNextGet))-(new Date(yearNext, monthNextGet-1)))/86400000);
 	//alert (daysNext)
@@ -4966,18 +4963,18 @@ function repPendingDocView(rep_id){
 										
 										var monthThis=''
 										
-										if (month==1){monthThisShow='Jan'+'  '+year;}
-										if (month==2){monthThisShow='Feb'+'  '+year;}
-										if (month==3){monthThisShow='Mar'+'  '+year;}
-										if (month==4){monthThisShow='Apr'+'  '+year;}
+										if (month==1){monthThisShow='January'+'  '+year;}
+										if (month==2){monthThisShow='February'+'  '+year;}
+										if (month==3){monthThisShow='March'+'  '+year;}
+										if (month==4){monthThisShow='April'+'  '+year;}
 										if (month==5){monthThisShow='May'+'  '+year;}
-										if (month==6){monthThisShow='Jun'+'  '+year;}
-										if (month==7){monthThisShow='Jul'+'  '+year;}
-										if (month==8){monthThisShow='Aug'+'  '+year;}
-										if (month==9){monthThisShow='Sep'+'  '+year;}
-										if (month==10){monthThisShow='Oct'+'  '+year;}
-										if (month==11){monthThisShow='Nov'+'  '+year;}
-										if (month==12){monthThisShow='Dec'+'  '+year;}
+										if (month==6){monthThisShow='June'+'  '+year;}
+										if (month==7){monthThisShow='Juyl'+'  '+year;}
+										if (month==8){monthThisShow='Augusr'+'  '+year;}
+										if (month==9){monthThisShow='September'+'  '+year;}
+										if (month==10){monthThisShow='October'+'  '+year;}
+										if (month==11){monthThisShow='November'+'  '+year;}
+										if (month==12){monthThisShow='December'+'  '+year;}
 									
 										var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
 										//alert (monthThisShow)

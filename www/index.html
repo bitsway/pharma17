@@ -2892,7 +2892,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  <header> 
  <table width="100%" border="0">
           <tr>
-            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td width="10%" align="left" onClick="nextMShow()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
             <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Tour Plan</td>
             <td width="10%" ></td> 
           </tr>
@@ -2900,49 +2900,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 </header> 
     <div class="panel" id="page_tour_market">
     </br>
-        <!--<div class="card">-->
-            <!--<h1>Sync</h1>-->
-             
-        
-    
-        
-        <!--<div><span class="market" style="font-size:16px"></span></div>  -->
-
-       <!-- <br/> 
-             <div id="tourErep" hidden="true" >
-        	  	
-              <input name="tour_date" id="tour_date"  value="" type="date" placeholder="Tour Date">
-                
-                
-                <ul class="list" id="tour_market_combo_id_lv" >				
-               
-                </ul>
-                
-                
-                <div align="center">
-                <img id="wait_image_retTour" style="width:50px" src="loading.gif" alt="">
-               </div>
-               
-                <input name="tourTxt" id="tourTxt"  value="" type="hidden" placeholder="Tour Date ">
-               <input type="submit" id="btn_submit_tour" onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />
-               </div>-->
-               
-               
-                <!--<input id="Tdiv"   type="submit" onClick="toggleentryDiv();"   style=" background-color:#09C; color:#FFF; font-size:20px; width:50px;" value=" + "    />-->
-                
-               <!-- <div id="schedule_show"></div>-->
-                
-                <!--<ul class="list" id="tour_rep_pending_show_lv" >				
-               
-                </ul>-->
+       
                 <br><br>
-<table width="100%" border="0">
+<!-- <table width="100%" border="0">
 <tr>
     <td><input type="submit" id="btn_submit_tour" onClick="thisMShow();"   style="width:100%; height:30px; background-color:#09C; color:#FFF; font-size:20px" value="This Month"   /></td>
     <td><input type="submit" id="btn_submit_tour" onClick="nextMShow();"   style="width:100%; height:30px; background-color:#09C; color:#FFF; font-size:20px" value="Next Month"   /></td>
   </tr>
-</table>
-
+</table>-->
+		
 		<div id="thisMonth">
         
          					
@@ -2976,8 +2942,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <footer>
 <a onClick="homePage()" class="icon home" ></a>
-<!--<a id="dBlank" name="dBlank" onClick="repCancelReqShow()()" style="font-size:18px; color:#FFF; ">Cancel Tour</a>
---><a id="dBlank" name="dBlank"  style="font-size:18px; color:#FFF; "></a>
+<a  name="dBlank"  style="font-size:18px; color:#FFF; " onClick="thisMShow();">This Month</a>
 
  </footer>
 
@@ -3102,12 +3067,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="page_tour_market()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Edit</td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Amendment Request</td>
             <td width="10%" ></td> 
           </tr>
         </table>
 </header> 
-    <div class="panel" id="page_tour_cancel">
+    <div class="panel" id="page_tour_cancel" style="background-color:#EDFEED">
     </br></br></br></br>
         <!--<div class="card">-->
             <!--<h1>Sync</h1>-->
@@ -3122,22 +3087,28 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
                 
                 <input name="tourpendingTxt" id="tourpendingTxt"  value="" type="hidden" placeholder="Tour Date">-->
+                <font style="font-size:18px; color:#589BDE" id="dayNameedit"></font>&nbsp;&nbsp;<font id="dayNumdit" style="font-size:18px; color:#589BDE"></font></br></br> 
                 <table width="100%" border="0">
                 		 <tr>
-                      <td ><font id="dayNameedit"></font> </td>
-                       <td ><font id="dayNumdit"></font>  </td>
-
-                       <td width="70%" >
+                     
                        
-                       <font style="font-size:16px; color:#603">Approved Plan</font></br></br>
-                       <font id="infoEdit"></font>     </br></br></br></br>                
+                       <td  style="color:#933;" >
+                       
+                       <font style="font-size:16px; ">Approved Plan</font></br></br>
+                       <font id="infoEdit" ></font>     </br>             
                        </td>
                        </tr>
                       
+                       <tr style="font-size:1; background-color:#008080; height:1px">
+                       <td  >
+               			
+                       </td>
+                        <tr>
+                                           
                        <tr>
-                       <td > </td>
-                       <td > </td>
-                       <td >
+                      
+                      
+                       <td  style="color:#933;" >
                         <font style="font-size:16px; color:#603">Amendment Request</font></br>
                        <div id="amndReq"></div>
                        <div id="amndLeave" onClick="uncheckAll('amndReq')"></div>
