@@ -2672,19 +2672,20 @@ function repCancelReqShow(i){
 		var marketId=marketList[m].split('<fd>')[0]
 		var marketName=marketList[m].split('<fd>')[1]
 		var checkId=m+'_'+marketId+'_amnd'
-		
+		var marketIdShow='['+marketId+']'
+		if (marketName==''){marketIdShow=marketId}
 		if (marketId!=''){
-		amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+'['+marketId+']</br></br></td></tr></table>'
+		amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+marketIdShow+'</br></br></td></tr></table>'
 		}
 		else{
 			amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"></br></td></tr></table>'
 		}
 		
 	}
-	amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndOthers" value="checkbox" id="amndOthers" ><label for="amndOthers"></br></label></td><td  style="text-align:left;"></br>Office Work / Training</br></br></td></tr></table>'
-	amndLeave=amndLeave+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
+	//amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndOthers" value="checkbox" id="amndOthers" ><label for="amndOthers"></br></label></td><td  style="text-align:left;"></br>Office Work / Training</br></br></td></tr></table>'
+	//amndLeave=amndLeave+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
 	$("#amndReq").html(amndTable)
-	$("#amndLeave").html(amndLeave)
+	//$("#amndLeave").html(amndLeave)
 	$.afui.loadContent("#page_tour_cancel",true,true,'right');
 
 }
@@ -2725,7 +2726,7 @@ function repCancelReqSubmit(){
 	checkOthers = $("#amndOthers").prop("checked");
 
 
-	alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers)
+	//alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers)
 	
 
 	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers,{
@@ -2835,16 +2836,57 @@ function tourCReq_doc(i){
 	
 }
 //========================================================
-
-function addMarketListTour() {
-	
+function tourCheckFirst(){
 	$("#wait_image_retTour").hide();	
 	$("#err_marketTour").html('');
 	//showSubmitDocShow()
+//===================================================================
+	//alert (localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	
+	
+	$.ajax(localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+			type: 'POST',
+			timeout: 30000,
+			error: function(xhr) {
+			//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
+			$("#wait_image_retTour").hide();
+			$("#err_marketTour").html('Network Timeout. Please check your Internet connection..');
+								},
+			success:function(data, status,xhr){	
+				
+				 if (status!='success'){
+					$("#err_marketTour").html('Network Timeout. Please check your Internet connection...');
+					$("#wait_image_tourCancel").hide();
+				 }
+				 else{	
+					var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+					//alert (data)	
+					if (resultArray[0]=='FAILED'){
+						$("#err_marketTour").text("Retailer not available");	
+						localStorage.docTThisMonthRow="";
+					}
+					else if (resultArray[0]=='SUCCESS'){
+						localStorage.docTThisMonthRow=resultArray[3];
+						localStorage.marketTourStr=resultArray[2];
+						localStorage.docNextMonthRow=resultArray[4];
+						
+						localStorage.appFlag=resultArray[5];
+						
+												//alert (NextStatus)
+						
+						
+					}
+				//------- 
+		} //else
+	}
+});//end ajax
 
 	
+	var NextStatus='Draft'
+	if (localStorage.appFlag==1){NextStatus='Approved'}
 //	====================================================
-	var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saterday"];
+	//var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+	var weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 	var d = new Date();
 	var month = d.getMonth()+1;
 	var day = d.getDate();
@@ -2883,13 +2925,7 @@ function addMarketListTour() {
 		if (dayShow<10){dayCheck='0'+dayShow}else{dayCheck=dayShow}
 		var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
 		
-		//alert (dayCheckFinal)
-		
-			
-		
-		
-		
-		
+		//alert (dayCheckFinal)		
 		thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayName">'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font id="'+i+'editday">'+dayName+'</font></td><td  style="border-left:hidden; "><table style="border-color:#096;background-color:#E7F5FE " width="100%" border="0" cellspacing="0"  ><tr><td >'
 		//'Bashndhara<br> Nadda<br>'
 		if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
@@ -2905,11 +2941,11 @@ function addMarketListTour() {
 				//dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'  '+marketStatusThisMonth+'<br>'
 				//alert (checkId)
 			}
-			thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+dayRoute+'</font><br>'
+			thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+dayRoute+'</font>'
 
 		}
-
-		thisMonthTable=thisMonthTable+'</td></tr><tr><td style="border-style:hidden" width="8%" align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></td> </tr>'
+		thisMonthTable=thisMonthTable+'<div align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></div></td></tr>'	
+		//thisMonthTable=thisMonthTable+'</td></tr><tr><td style="border-style:hidden" width="8%" align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></td> </tr>'
 		thisMonthTable=thisMonthTable+'</table>'
 	}
 	thisMonthTable=thisMonthTable+'</td></tr></table><br><br><br>'
@@ -2938,48 +2974,99 @@ function addMarketListTour() {
 	if (monthNextGet==12){monthNext='December'+'  '+year;}
 
 	var daysNext = Math.round(((new Date(yearNext, monthNextGet))-(new Date(yearNext, monthNextGet-1)))/86400000);
-	//alert (daysNext)
-	
-	
-	var nextMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">DRAFT/Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
-	for (var i=0; i < daysNext; i++){
-		var dayShow=i+1
-		var aNext = new Date(monthNextGet+'/'+dayShow+'/'+yearNext);
-		//alert (aNext)
-		var dayNameNext=weekday[aNext.getDay()];
-		var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
-		//alert (dateShow)
-		nextMonthTable=nextMonthTable+'<tr ><td width="50px">'+dayNameNext+'</td><td width="30px">'+dayShow+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
-		nextMonthTable=nextMonthTable+'<td>'
-		
-		var marketList=(localStorage.marketTourStr).split('<rd>')
-		
-		for (var m=0; m < marketList.length; m++){
+	//alert (localStorage.docNextMonthRow)
+	var nextMonthTable=''
+	if (localStorage.docNextMonthRow==''){
 			
-			var marketId=marketList[m].split('<fd>')[0]
-			var marketName=marketList[m].split('<fd>')[1]
-			var checkId=i+'n'+m+'_'+marketId
-			//alert (marketId)
-			if (marketId!=''){
-			nextMonthTable=nextMonthTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+'['+marketId+']</br></br></td></tr></table>'
-			//alert (checkId)
+			nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+			
+			for (var i=0; i < daysNext; i++){
+				var dayShow=i+1
+				var aNext = new Date(monthNextGet+'/'+dayShow+'/'+yearNext);
+				//alert (aNext)
+				var dayNameNext=weekday[aNext.getDay()];
+				var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
+				//alert (dateNextMonth)
+				
+				nextMonthTable=nextMonthTable+'<tr ><td width="50px" height="14px">'+'<font >'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font >'+dayNameNext+'</font>'+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
+				nextMonthTable=nextMonthTable+'<td>'
+		
+				var marketList=(localStorage.marketTourStr).split('<rd>')
+				
+				for (var m=0; m < marketList.length; m++){
+					
+					var marketId=marketList[m].split('<fd>')[0]
+					var marketName=marketList[m].split('<fd>')[1]
+					var checkId=i+'n'+m+'_'+marketId
+					var marketIdShow='['+marketId+']'
+					if (marketName==''){ marketIdShow=''+marketId}
+					if (marketId!=''){
+					nextMonthTable=nextMonthTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+marketIdShow+'</br></td></tr></table>'
+					
+					//alert (checkId)
+					}
+					
+				}
+				
+				
+				
+			nextMonthTable=nextMonthTable+'</br></td></tr>'
 			}
-			else{
-				nextMonthTable=nextMonthTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"></br></td></tr></table>'
-			}
-		}
-		
-		
-		
-	nextMonthTable=nextMonthTable+'</td></tr>'
+			nextMonthTable=nextMonthTable+'</table><input type="submit" id="nextMonthSubmitButton"  onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   />'
+			
 	}
-	nextMonthTable=nextMonthTable+'</table><input type="submit"  onClick="tourSubmit_doc();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit      "   /><br><br><br>'
+	else{
+		//alert ('sdsfsd')
+		nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+			var docNextMonthRow=localStorage.docNextMonthRow
+			
+			for (var i=0; i < daysNext; i++){
+				var dayShow=i+1
+				var aNext = new Date(monthNextGet+'/'+dayShow+'/'+yearNext);
+				//alert (aNext)
+				var dayNameNext=weekday[aNext.getDay()];
+				var monthNextCheck=''
+				var dayShowNextCheck=''
+				if (monthNextGet<10){monthNextCheck='0'+monthNextGet}else{monthNextCheck=monthNextGet}
+				if (dayShow<10){dayShowNextCheck='0'+dayShow}else{dayShowNextCheck=dayShow}
+				var dateNextMonth = yearNext+'-'+monthNextCheck+'-'+dayShowNextCheck;
+				//alert (dateNextMonth)
+				nextMonthTable=nextMonthTable+'<tr ><td width="10%">'+'<font >'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font >'+dayNameNext+'</font></td>'
+				nextMonthTable=nextMonthTable+'<td style="border-color:#096;background-color:#E7F5FE ">'
+		//'Bashndhara<br> Nadda<br>'
+					//alert (dateNextMonth)
+					//alert (docNextMonthRow.indexOf('<'+dateNextMonth+'>'))
+				if (docNextMonthRow.indexOf('<'+dateNextMonth+'>')!=-1){
+					var dateRouteSingleNext=docNextMonthRow.split('<'+dateNextMonth+'>')[1].split('</'+dayCheckFinal+'>')[0]
+					//if (dayShow==21){alert (dateRouteSingle)}
+					var marketStrListNextMonth=dateRouteSingleNext.split('<rd>')
+					var dayRouteNext=''
+					for (var m=0; m < marketStrListNextMonth.length; m++){
+						var marketIdNextMonth=marketStrListNextMonth[m].split('<fd>')[0]
+						var marketNameNextMonth=marketStrListNextMonth[m].split('<fd>')[1]
+						var marketStatusNextMonth=marketStrListNextMonth[m].split('<fd>')[2]
+						var marketIdShowNext='['+marketIdNextMonth+']'
+						if (marketName==''){ marketIdShowNext=''}
+						dayRouteNext=dayRouteNext+marketNameNextMonth+marketIdShowNext+'<br>'
+						//dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'  '+marketStatusThisMonth+'<br>'
+						//alert (checkId)
+					}
+					nextMonthTable=nextMonthTable+'<font >'+dayRouteNext+'</font>'
+
+		}
+		nextMonthTable=nextMonthTable+'</td></tr>'	
+		//thisMonthTable=thisMonthTable+'</td></tr><tr><td style="border-style:hidden" width="8%" align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></td> </tr>'
+		//nextMonthTable=nextMonthTable+'</table>'
+	}
+	nextMonthTable=nextMonthTable+'</td></tr></table><br><br><br>'
+	}
+	//alert (nextMonthTable)
 	$('#nextMonth').html(nextMonthTable)
+	}
+function addMarketListTour() {
 	
-	
-	
-	
-	
+	tourCheckFirst()
+	//-----------------------------------------------------------
 	
 	nextMShow()
 	$.afui.loadContent("#page_tour_market",true,true,'right');
@@ -4851,19 +4938,33 @@ $("#err_marketTour").html('');
 											 else{	
 											
 													 if (data=='SUCCESS'){
-															$("#err_marketTour").html("Submitted Successfully");
+														 	//localStorage.marketTourStr='';
+															localStorage.docNextMonthRow='';
+															
+															//localStorage.appFlag=''; 
+															$("#nextMonth").html('<div style="font-size:20px;color:#C00" > Submitted Successfully </div>');
+															//$("#nextMonthSubmitButton").hide();
+															
+														 	//tourCheckFirst();
+															
+															
+															//$("#err_marketTour").html("Submitted Successfully");
 															localStorage.tour_doc_str=''
 															showSubmitDocShow();
+															
 													 }
 													 else{
 															$("#err_marketTour").html(data);
 															showSubmitDocShow();
+															
 													 }
 		
 											}
 									}
 							 
 					 });//end ajax
+					 
+					 
 				}//errorFlag
 
   }
@@ -9432,10 +9533,12 @@ function chemist_cancelSubmit() {
 function thisMShow() {	
 	$("#thisMonth").show();
 	$("#nextMonth").hide();
+	
 }
 function nextMShow() {	
 	$("#nextMonth").show();
 	$("#thisMonth").hide();
+	
 }
 function NearExpiaryCheck() {	
 	$.afui.loadContent("#page_NearExpiaryCheck",true,true,'right');
