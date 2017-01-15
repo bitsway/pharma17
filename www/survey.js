@@ -1412,7 +1412,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -2378,6 +2378,8 @@ function repPendingDoc(rep_id){
 	localStorage.tour_route_str=''
 	$("#wait_image_rep_pendingTour").show();
 	$("#err_pendingRouteTour").html('');
+	$('#repPendingShow').html('')
+	$("#pendingRepShow").html('');
 	
 	//alert (localStorage.base_url+'repPendingDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&rep_id_pending='+rep_id)
 	
@@ -2436,7 +2438,8 @@ function repPendingDoc(rep_id){
 										
 											var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
 											//alert (monthThisShow)
-											var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+											//var thisMonthTable='<table width="100%" border="0">  <tr>    <td>'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+											var thisMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right" style="font-size:16px; color:#039">Draft</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
 											
 											docTThisMonthRow=localStorage.repDocPending
 											//alert (docTThisMonthRow)
@@ -2453,39 +2456,46 @@ function repPendingDoc(rep_id){
 												if (dayShow<10){dayCheck='0'+dayShow}else{dayCheck=dayShow}
 												var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
 												
-												//alert (dayCheckFinal)
+												
 												
 													
+												//thisMonthTable=thisMonthTable+'<tr ><td width="50px" >'+dayName+'</td><td width="30px">'+dayShow+'</td><td width="40%">'
 												
-												
-												
-												
-												thisMonthTable=thisMonthTable+'<tr ><td width="50px" >'+dayName+'</td><td width="30px">'+dayShow+'</td><td width="40%">'
+												thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+dayShow+'&nbsp;&nbsp;'+dayName+'</font></td>'
+												thisMonthTable=thisMonthTable+'<td style="border-color:#096;background-color:#E7F5FE ">'
+				
 												//'Bashndhara<br> Nadda<br>'
+												var dayRoute=''
 												if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 													var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
 													//if (dayShow==21){alert (dateRouteSingle)}
 													var marketStrListThisMonth=dateRouteSingle.split('<rd>')
-													var dayRoute=''
+													
 													for (var m=0; m < marketStrListThisMonth.length; m++){
 														var marketIdThisMonth=marketStrListThisMonth[m].split('<fd>')[0]
 														var marketNameThisMonth=marketStrListThisMonth[m].split('<fd>')[1]
 														var marketStatusThisMonth=marketStrListThisMonth[m].split('<fd>')[2]
+														//alert ('trst')
+														var marketIdShow='['+marketIdThisMonth+']'
+														if (marketNameThisMonth==''){ marketIdShow=''}
 														
-														dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
-														//alert (checkId)
+														//dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'<br>'
+														dayRoute=dayRoute+marketNameThisMonth+marketIdShow+'<br>'
+														
+														//alert (dayRoute)
 													}
-													thisMonthTable=thisMonthTable+dayRoute+'<br>'
+													//thisMonthTable=thisMonthTable+dayRoute+'<br>'
 													//thisMonthTable=thisMonthTable+'<font id="'+i+'editinfo">'+marketNameThisMonth+'['+marketIdThisMonth+']'+'----'+marketStatusThisMonth+'</font><br>'
-													var marketName
-													var status
+													
 													//alert (dateRouteSingle)
 												}
 												
-												thisMonthTable=thisMonthTable+'</td> </tr>'
-												
+												thisMonthTable=thisMonthTable+'<font>'+dayRoute+'</font>'
+												thisMonthTable=thisMonthTable+'</td></tr>'
 											}
-											thisMonthTable=thisMonthTable+'</table><br><br><br>'
+																						
+											
+											thisMonthTable=thisMonthTable+'</td></tr></table>'	
 											$('#repPendingShow').html(thisMonthTable)
 											
 											
@@ -2656,12 +2666,57 @@ function repCancelReqShow(i){
 	var editday=$("#"+i+"editday").html()
 	var editdayName=$("#"+i+"editdayName").html()
 	var editinfo=$("#"+i+"editinfo").html()
+	var monthShow=$("#thisMonthShow").html()
+	$("#tourMonth").val('This')
 	//alert (editinfo)
 	if (editinfo==undefined){
 		editinfo=''
 		}
 	$("#dayNameedit").html(editdayName)
-	$("#dayNumdit").html(editday)
+	//$("#dayNumdit").html(editday)
+	$("#dayNumdit").html(editday+' '+monthShow)
+	$("#infoEdit").html(editinfo)
+	
+
+	
+	var marketList=(localStorage.marketTourStr).split('<rd>')
+	var amndTable=''	
+	for (var m=0; m < marketList.length; m++){
+		
+		var marketId=marketList[m].split('<fd>')[0]
+		var marketName=marketList[m].split('<fd>')[1]
+		var checkId=m+'_'+marketId+'_amnd'
+		var marketIdShow='['+marketId+']'
+		if (marketName==''){marketIdShow=marketId}
+		if (marketId!=''){
+		amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="'+checkId+'" value="checkbox" id="'+checkId+'"><label for="'+checkId+'"></br></label></td><td  style="text-align:left;"></br>'+marketName+marketIdShow+'</br></br></td></tr></table>'
+		}
+		else{
+			amndTable=amndTable+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"></br></td></tr></table>'
+		}
+		
+	}
+	//amndLeave='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndOthers" value="checkbox" id="amndOthers" ><label for="amndOthers"></br></label></td><td  style="text-align:left;"></br>Office Work / Training</br></br></td></tr></table>'
+	//amndLeave=amndLeave+'<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox"  name="amndleav" value="checkbox" id="amndleav" ><label for="amndleav"></br></label></td><td  style="text-align:left;"></br>Leave</br></br></td></tr></table>'
+	$("#amndReq").html(amndTable)
+	//$("#amndLeave").html(amndLeave)
+	$.afui.loadContent("#page_tour_cancel",true,true,'right');
+
+}
+function repCancelReqShowNext(i){
+	$("#wait_image_tourCancel").hide();
+	$("#err_tourCancel").html('')
+	var editday=$("#"+i+"editdayNext").html()
+	var editdayName=$("#"+i+"editdayNameNext").html()
+	var editinfo=$("#"+i+"editinfoNext").html()
+	var monthShow=$("#nextMonthShow").html()
+	$("#tourMonth").val('Next')
+	//alert (editinfo)
+	if (editinfo==undefined){
+		editinfo=''
+		}
+	$("#dayNameedit").html(editdayName)
+	$("#dayNumdit").html(editday+' '+monthShow)
 	$("#infoEdit").html(editinfo)
 
 	
@@ -2689,18 +2744,25 @@ function repCancelReqShow(i){
 	$.afui.loadContent("#page_tour_cancel",true,true,'right');
 
 }
-
 function repCancelReqSubmit(){
 	
 	$("#err_tourCancel").html('')
 	var dayNameedit=$("#dayNameedit").html()
 	var dayNumdit=$("#dayNumdit").html()
+	var monthGet=$("#tourMonth").val()
 	var d = new Date();
-	var month = d.getMonth()+1;
+	var month =''
+	var month=''
+	if (monthGet =='This'){
+		month = d.getMonth()+1;
+	}
+	if (monthGet =='Next'){
+		month = d.getMonth()+2;
+	}
 	var year =d.getFullYear();
 	var schDate=year+'-'+month+'-'+dayNameedit
 	
-	
+	//alert (month)
 	var marketList=(localStorage.marketTourStr).split('<rd>')
 	var submitStr=''	
 	for (var m=0; m < marketList.length; m++){
@@ -2722,14 +2784,14 @@ function repCancelReqSubmit(){
 		
 	}
 	submitStr=schDate+'<date>'+submitStr
-	checkLeave = $("#amndleav").prop("checked");
-	checkOthers = $("#amndOthers").prop("checked");
+	//checkLeave = $("#amndleav").prop("checked");
+	//checkOthers = $("#amndOthers").prop("checked");
 
 
-	//alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers)
+	//alert (localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr))
 	
 
-	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr)+'&checkLeave='+checkLeave+'&checkOthers='+checkOthers,{
+	$.ajax(localStorage.base_url+'tourCReq_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&submitStr='+encodeURI(submitStr),{
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
@@ -2909,7 +2971,7 @@ function tourCheckFirst(){
 
 	var days = Math.round(((new Date(year, month))-(new Date(year, month-1)))/86400000);
 	//alert (monthThisShow)
-	var thisMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">Approved</td>  </tr></table><table style="border-color:#096;background-color:#EDFEED; border-style:hidden" width="100%" border="1" cellspacing="0">'
+	var thisMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td id="thisMonthShow">'+monthThisShow+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right" style="font-size:16px; color:#039">Approved</td>  </tr></table><table style="border-color:#096;background-color:#EDFEED; border-style:hidden" width="100%" border="1" cellspacing="0">'
 	
 	docTThisMonthRow=localStorage.docTThisMonthRow
 	for (var i=0; i < days; i++){
@@ -2978,7 +3040,7 @@ function tourCheckFirst(){
 	var nextMonthTable=''
 	if (localStorage.docNextMonthRow==''){
 			
-			nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+			nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right" style="font-size:16px; color:#039">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
 			
 			for (var i=0; i < daysNext; i++){
 				var dayShow=i+1
@@ -3017,7 +3079,7 @@ function tourCheckFirst(){
 	}
 	else{
 		//alert ('sdsfsd')
-		nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td >'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
+		nextMonthTable='<table width="100%" border="0">  <tr style="font-size:24px; color:#039">    <td id="nextMonthShow">'+monthNext+'</td><td>&nbsp;</td> <td>&nbsp;</td>    <td align="right" style="font-size:16px; color:#039">'+NextStatus+'</td>  </tr></table><table style="border-style:solid; border-width:thin; border-color:#096;background-color:#EDFEED" width="100%" border="1" cellspacing="0">'
 			var docNextMonthRow=localStorage.docNextMonthRow
 			
 			for (var i=0; i < daysNext; i++){
@@ -3031,7 +3093,7 @@ function tourCheckFirst(){
 				if (dayShow<10){dayShowNextCheck='0'+dayShow}else{dayShowNextCheck=dayShow}
 				var dateNextMonth = yearNext+'-'+monthNextCheck+'-'+dayShowNextCheck;
 				//alert (dateNextMonth)
-				nextMonthTable=nextMonthTable+'<tr ><td width="10%">'+'<font >'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font >'+dayNameNext+'</font></td>'
+				nextMonthTable=nextMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayNameNext">'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font id="'+i+'editdayNext">'+dayNameNext+'</font></td>'
 				nextMonthTable=nextMonthTable+'<td style="border-color:#096;background-color:#E7F5FE ">'
 		//'Bashndhara<br> Nadda<br>'
 					//alert (dateNextMonth)
@@ -3051,9 +3113,11 @@ function tourCheckFirst(){
 						//dayRoute=dayRoute+marketNameThisMonth+'['+marketIdThisMonth+']'+'  '+marketStatusThisMonth+'<br>'
 						//alert (checkId)
 					}
-					nextMonthTable=nextMonthTable+'<font >'+dayRouteNext+'</font>'
+					nextMonthTable=nextMonthTable+'<font id="'+i+'editinfoNext">'+dayRouteNext+'</font>'
+					
 
 		}
+		nextMonthTable=nextMonthTable+'<div align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShowNext('+i+');"  src="editProfile.png" alt=""></div></td></tr>'
 		nextMonthTable=nextMonthTable+'</td></tr>'	
 		//thisMonthTable=thisMonthTable+'</td></tr><tr><td style="border-style:hidden" width="8%" align="right"><img  style="width:30px; height:30px" onClick="repCancelReqShow('+i+');"  src="editProfile.png" alt=""></td> </tr>'
 		//nextMonthTable=nextMonthTable+'</table>'
@@ -9532,11 +9596,16 @@ function chemist_cancelSubmit() {
 }
 function thisMShow() {	
 	$("#thisMonth").show();
+	$("#TShow").hide();
+	$("#NShow").show();
+	
 	$("#nextMonth").hide();
 	
 }
 function nextMShow() {	
 	$("#nextMonth").show();
+	$("#TShow").show();
+	$("#NShow").hide();
 	$("#thisMonth").hide();
 	
 }

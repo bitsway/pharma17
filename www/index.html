@@ -132,7 +132,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                       </tr>
                  
                        <tr>
-                        <td align="center"><div align="center"  style="width:100%; background-color:#09C; "><img onClick="doctor_visit_plan();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="doctor_visit_plan.png"> </div>
+                        <td align="center"><div align="center"  style="width:100%; background-color:#09C; "><img onClick="doctor_visit_plan();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="unSchedule.png"> </div>
                         
                         
                         </td>
@@ -147,7 +147,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         
                         </td>
                         <td>
-                        <div align="center"  style="width:100%; background-color:#09C; "><img onClick="doctor_visit();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="unSchedule.png"> </div>
+                        <div align="center"  style="width:100%; background-color:#09C; "><img onClick="doctor_visit();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="doctor_visit_plan.png"> </div>
                         
                        </td>
                       </tr>
@@ -2893,7 +2893,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  <header> 
  <table width="100%" border="0">
           <tr>
-            <td width="10%" align="left" onClick="nextMShow()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
+            <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
             <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Tour Plan</td>
             <td width="10%" ></td> 
           </tr>
@@ -2933,7 +2933,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <footer>
 <a onClick="homePage()" class="icon home" ></a>
-<a  name="dBlank"  style="font-size:18px; color:#FFF; " onClick="thisMShow();">This Month</a>
+<a id="TShow" style="font-size:18px; color:#FFF;" onClick="thisMShow();">This Month</a>
+<a id="NShow" style="font-size:18px; color:#FFF;" onClick="nextMShow();">Next Month</a>
 
  </footer>
 
@@ -3113,6 +3114,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <img id="wait_image_tourCancel" style="width:50px" src="loading.gif" alt="">
                </div>
                     <div id="tourCancelShow" ></div>
+                     <input name="tourMonth" id="tourMonth"  value="" type="hidden" placeholder="Tour Month">
                     <input type="submit"     style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit" onClick="repCancelReqSubmit()"   />
                 <br>
                 <br>
