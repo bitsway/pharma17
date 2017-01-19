@@ -3075,7 +3075,7 @@ function tourCheckFirst(){
 	$("#err_marketTour").html('');
 	//showSubmitDocShow()
 //===================================================================
-	alert (localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	//alert (localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 	
 	
 	$.ajax(localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -5220,7 +5220,7 @@ function tourConfirm_doc(){
 		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
 	}
 	else{
-		alert (localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
+		//alert (localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
 		$.ajax(localStorage.base_url+'tourConfirm_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep,{
 
 								type: 'POST',
@@ -9477,15 +9477,16 @@ function getDocppmDataPlan(){
 		
 	}
 
+
 function getDocImage() {
 	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
 		//destinationType: Camera.DestinationType.FILE_URI });
-   navigator.camera.getPicture(onSuccess_getDocImage, onFail_getDocImage, { quality: 90,
+   navigator.camera.getPicture(onSuccess_docVisitImage, onFail_docVisitImage, { quality: 90,
 		targetWidth: 400,
 		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
 		
 }
-function onSuccess_getDocImage(imageURI) {
+function onSuccess_docVisitImage(imageURI) {
 	//alert ('Success')
     var image = document.getElementById('myImageDoc');
     image.src = imageURI;
@@ -9495,7 +9496,7 @@ function onSuccess_getDocImage(imageURI) {
 
 		
 }
-function onFail_getDocImage(message) {
+function onFail_docVisitImage(message) {
 	//alert ('Fail')
 	imagePath="";
     alert('Failed because: ' + message);
@@ -10345,7 +10346,7 @@ function getDocPrData_keyup(product_id,status){
 		localStorage.prProdID_Str=campaign_doc_str;
 		//alert (localStorage.campaign_doc_str)
 	}
-	alert (localStorage.prProdID_Str)
+	//alert (localStorage.prProdID_Str)
 	}
 	
 function getDocDatapr(){
