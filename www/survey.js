@@ -385,11 +385,11 @@ function homePage() {
 	if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
 		$.afui.loadContent("#pageHome",true,true,'right');
 	}
+	
 	//$("#error_login").html('');
 	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
-	//alert (localStorage.tourFlag)
 	if (localStorage.tourFlag==1){
 		addMarketListTour();
 		
@@ -398,7 +398,7 @@ function page_market() {
 		doctor_visit_plan();
 	}
 	else{
-	
+		
 		if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {
 			addMarketListCteam();}
 		else{
@@ -1040,7 +1040,7 @@ function set_doc_all(){
 	// $('#doctor_campaign_list_tbl :checkbox').each(function () {    
 //		 $(this).attr('checked', false);  //This will uncheck the current checkbox            
 //	 });
-	 $('#doc_campaign').html('');
+	$('#doc_campaign').html('');
 	$('#doc_gift').html('');
 	$('#doc_ppm').html('');
 	$('#doc_sample').html('');
@@ -1176,6 +1176,7 @@ function clear_autho(){
 		localStorage.payment_mode_get='';
 		
 		localStorage.location_detail=''
+		
 		$.afui.loadContent("#login",true,true,'right');
 
 	};
@@ -1195,7 +1196,10 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+	
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 
@@ -1339,6 +1343,9 @@ function check_user() {
 		localStorage.marketTourStr=''
 		localStorage.docTThisMonthRow=''
 		localStorage.docMarketComb=''
+		localStorage.prProdID_Str=''
+		
+		localStorage.picFlag=0;
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1483,7 +1490,8 @@ function check_user() {
 													localStorage.marketStrDoc=resultArray[31]
 													localStorage.marketTourStr=resultArray[32]
 													localStorage.docTThisMonthRow=resultArray[33]
-													//alert (localStorage.docTThisMonthRow)
+													localStorage.prProductStr=resultArray[34]
+													//alert (localStorage.prProductStr)
 													
 													//alert (localStorage.menu)
 													//alert (localStorage.cTeam)
@@ -1892,6 +1900,149 @@ localStorage.report_button=' <input type="submit" id="loginButton" onClick="s_or
 
 //													===========================ppm end===============
 
+//											=================prItemStart
+														
+											localStorage.pr_A=''
+											localStorage.pr_B=''
+											localStorage.pr_C=''
+											localStorage.pr_D=''
+											localStorage.pr_E=''
+											localStorage.pr_F=''
+											localStorage.pr_G=''
+											localStorage.pr_H=''
+											localStorage.pr_I=''
+											localStorage.pr_J=''
+											localStorage.pr_K=''
+											localStorage.pr_L=''
+											localStorage.pr_M=''
+											localStorage.pr_N=''
+											localStorage.pr_O=''
+											localStorage.pr_P=''
+											localStorage.pr_Q=''
+											localStorage.pr_R=''
+											localStorage.pr_S=''
+											localStorage.pr_T=''
+											localStorage.pr_U=''
+											localStorage.pr_V=''
+											localStorage.pr_W=''
+											localStorage.pr_X=''
+											localStorage.pr_Y=''
+											localStorage.pr_Z=''
+											
+											
+											var pr_A=localStorage.prProductStr.split('<AEND>')[0].replace('<ASTART>','');
+											var pr_after_A=localStorage.prProductStr.split('<AEND>')[1]
+										
+											var pr_B=pr_after_A.split('<BEND>')[0].replace('<BSTART>','');
+											var pr_after_B=pr_after_A.split('<BEND>')[1]
+											
+											var pr_C=pr_after_B.split('<CEND>')[0].replace('<CSTART>','');
+											var pr_after_C=pr_after_B.split('<CEND>')[1]
+											
+											var pr_D=pr_after_C.split('<DEND>')[0].replace('<DSTART>','');
+											var pr_after_D=pr_after_C.split('<DEND>')[1]
+											
+											var pr_E=pr_after_D.split('<EEND>')[0].replace('<ESTART>','');
+											var pr_after_E=pr_after_D.split('<EEND>')[1]
+											
+											var pr_F=pr_after_E.split('<FEND>')[0].replace('<FSTART>','');
+											var pr_after_F=pr_after_E.split('<FEND>')[1]
+											
+											var pr_G=pr_after_F.split('<GEND>')[0].replace('<GSTART>','');
+											var pr_after_G=pr_after_F.split('<GEND>')[1]
+											
+											var pr_H=pr_after_G.split('<HEND>')[0].replace('<HSTART>','');
+											var pr_after_H=pr_after_G.split('<HEND>')[1]
+											
+											var pr_I=pr_after_H.split('<IEND>')[0].replace('<ISTART>','');
+											var pr_after_I=pr_after_H.split('<IEND>')[1]
+											
+											var pr_J=pr_after_I.split('<JEND>')[0].replace('<JSTART>','');
+											var pr_after_J=pr_after_I.split('<JEND>')[1]
+											
+											var pr_K=pr_after_J.split('<KEND>')[0].replace('<KSTART>','');
+											var pr_after_K=pr_after_J.split('<KEND>')[1]
+											
+											var pr_L=pr_after_K.split('<LEND>')[0].replace('<LSTART>','');
+											var pr_after_L=pr_after_K.split('<LEND>')[1]
+											
+											var pr_M=pr_after_L.split('<MEND>')[0].replace('<MSTART>','');
+											var pr_after_M=pr_after_L.split('<MEND>')[1]
+											
+											var pr_N=pr_after_M.split('<NEND>')[0].replace('<NSTART>','');
+											var pr_after_N=pr_after_M.split('<NEND>')[1]
+											
+											var pr_O=pr_after_N.split('<OEND>')[0].replace('<OSTART>','');
+											var pr_after_O=pr_after_N.split('<OEND>')[1]
+											
+											var pr_P=pr_after_O.split('<PEND>')[0].replace('<PSTART>','');
+											var pr_after_P=pr_after_O.split('<PEND>')[1]
+											
+											var pr_Q=pr_after_P.split('<QEND>')[0].replace('<QSTART>','');
+											var pr_after_Q=pr_after_P.split('<QEND>')[1]
+											
+											var pr_R=pr_after_Q.split('<REND>')[0].replace('<RSTART>','');
+											var pr_after_R=pr_after_Q.split('<REND>')[1]
+											//alert (pr_after_R)
+											var pr_S=pr_after_R.split('<SEND>')[0].replace('<SSTART>','');
+											var pr_after_S=pr_after_R.split('<SEND>')[1]
+											//alert ('fsdg')
+											var pr_T=pr_after_S.split('<TEND>')[0].replace('<TSTART>','');
+											var pr_after_T=pr_after_S.split('<TEND>')[1]
+											
+											var pr_U=pr_after_T.split('<UEND>')[0].replace('<USTART>','');
+											var pr_after_U=pr_after_T.split('<UEND>')[1]
+											
+											var pr_V=pr_after_U.split('<VEND>')[0].replace('<VSTART>','');
+											var pr_after_V=pr_after_U.split('<VEND>')[1]
+											
+											var pr_W=pr_after_V.split('<WEND>')[0].replace('<WSTART>','');
+											var pr_after_W=pr_after_V.split('<WEND>')[1]
+											
+											var pr_X=pr_after_W.split('<XEND>')[0].replace('<XSTART>','');
+											var pr_after_X=pr_after_W.split('<XEND>')[1]
+											
+											var pr_Y=pr_after_X.split('<YEND>')[0].replace('<YSTART>','');
+											var pr_after_Y=pr_after_X.split('<YEND>')[1]
+											
+											var pr_Z=pr_after_Y.split('<ZEND>')[0].replace('<ZSTART>','');
+											//var productListStr_after_E=productListStr_after_D.split('</Z>')[1]
+											
+											
+											
+											localStorage.pr_A=pr_A
+											localStorage.pr_B=pr_B
+											localStorage.pr_C=pr_C
+											localStorage.pr_D=pr_D
+											localStorage.pr_E=pr_E
+											localStorage.pr_F=pr_F
+											localStorage.pr_G=pr_G
+											localStorage.pr_H=pr_H
+											localStorage.pr_I=pr_I
+											localStorage.pr_J=pr_J
+											localStorage.pr_K=pr_K
+											localStorage.pr_L=pr_L
+											localStorage.pr_M=pr_M
+											localStorage.pr_N=pr_N
+											localStorage.pr_O=pr_O
+											localStorage.pr_P=pr_P
+											localStorage.pr_Q=pr_Q
+											localStorage.pr_R=pr_R											
+											localStorage.pr_S=pr_S
+											localStorage.pr_T=pr_T
+											localStorage.pr_U=pr_U
+											localStorage.pr_V=pr_V
+											localStorage.pr_W=pr_W
+											localStorage.pr_X=pr_X
+											localStorage.pr_Y=pr_Y
+											localStorage.pr_Z=pr_Z
+
+											$("#pr_id_lv").empty()
+											
+											setPrProduct()
+
+
+//				=========================================prend==============
 
 													localStorage.visit_page=""
 													$("#se_mpo").val(localStorage.user_id);
@@ -2027,8 +2178,45 @@ function doctor_visit() {
 	//$("#doc_start").html('Visit > Market > Doctor');
 	localStorage.doctor_flag=1;
 	localStorage.doctor_plan_flag=1;
+	localStorage.doctor_pr=0;
+	localStorage.saved_data_submit=0;
+	localStorage.visit_page="NO";
+	//addMarketList();
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
+	$("#dPending").show();
+	$("#dBlank").hide();
+	
+}
+function doctor_visit() {
+	
+	$("#ret_cat").hide();
+	$("#d_visit").html("Doctors");
+	//$("#doc_start").html('Visit > Market > Doctor');
+	localStorage.doctor_flag=1;
+	localStorage.doctor_plan_flag=0;
+	localStorage.doctor_pr=0;
+	localStorage.saved_data_submit=0;
+	localStorage.visit_page="NO";
+	//addMarketList();
+	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
+	$("#addDocanc").show();
+	$("#blankAnc").hide();
+	$("#dPending").show();
+	$("#dBlank").hide();
+	
+}
+function doctor_visitPr() {
+	
+	$("#ret_cat").hide();
+	$("#d_visit").html("Doctors");
+	//$("#doc_start").html('Visit > Market > Doctor');
+	localStorage.doctor_flag=1;
+	localStorage.doctor_plan_flag=0;
 	
 	localStorage.saved_data_submit=0;
+	localStorage.doctor_pr=1;
 	localStorage.visit_page="NO";
 	//addMarketList();
 	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
@@ -2066,7 +2254,7 @@ function tour(){
 	localStorage.tour_doc_str=''
 	//alert (localStorage.user_type)
 	//if (localStorage.user_type=='rep'){
-		showSubmitDocShow()
+		//showSubmitDocShow()
 		addMarketListTour()
 	
 	$("#err_marketTour").html('');
@@ -2903,7 +3091,7 @@ function tourCheckFirst(){
 	$("#err_marketTour").html('');
 	//showSubmitDocShow()
 //===================================================================
-	//alert (localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	alert (localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 	
 	
 	$.ajax(localStorage.base_url+'check_this_n_next_month?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -4442,81 +4630,90 @@ function marketNext_doc() {
 //==============================Doctor==========
 
 function marketRetailerNext_doc() {
-	localStorage.saveSubmitDocFlag=0;
-	localStorage.saveSubmitDocI=''
-	$("#err_m_retailer_next").text("");
-	visit_client=$("#unscheduled_m_client_combo_id").val();		
 	
-	if(visit_client=='' || visit_client==0){
-			$("#err_m_retailer_next").text("Retailer required");
+		localStorage.saveSubmitDocFlag=0;
+		localStorage.saveSubmitDocI=''
+		$("#err_m_retailer_next").text("");
+		visit_client=$("#unscheduled_m_client_combo_id").val();		
+		
+		if(visit_client=='' || visit_client==0){
+				$("#err_m_retailer_next").text("Retailer required");
+				
+		}else{
+			$("#btn_unschedule_market_ret").hide();
+			$("#unscheduled_m_client_combo_id_lv").hide();
 			
-	}else{
-		$("#btn_unschedule_market_ret").hide();
-		$("#unscheduled_m_client_combo_id_lv").hide();
-		
-		//alert ('nn');
-		$("#wait_image_ret").show();		
-		
-		$(".visit_client").html(visit_client);
-		
-		localStorage.visit_client_show=visit_client
-		if (visit_client!=localStorage.visit_client){
+			//alert ('nn');
+			$("#wait_image_ret").show();		
 			
-			localStorage.productGiftStr=''
-			localStorage.campaign_doc_str=''
-			localStorage.productSampleStr=''
+			$(".visit_client").html(visit_client);
 			
-			localStorage.productppmStr='';
+			localStorage.visit_client_show=visit_client
+			if (visit_client!=localStorage.visit_client){
+				
+				localStorage.productGiftStr=''
+				localStorage.campaign_doc_str=''
+				localStorage.productSampleStr=''
+				
+				localStorage.productppmStr='';
+				
+				localStorage.campaign_show_1='';
+				localStorage.gift_show_1='';
+				localStorage.sample_show_1='';
+				localStorage.ppm_show_1='';
+				
+				//alert (localStorage.productGiftStr='');
+	//			alert (localStorage.gift_show_1);
+	//			==========================
+	
 			
-			localStorage.campaign_show_1='';
-			localStorage.gift_show_1='';
-			localStorage.sample_show_1='';
-			localStorage.ppm_show_1='';
 			
-			//alert (localStorage.productGiftStr='');
-//			alert (localStorage.gift_show_1);
-//			==========================
-
-		
-		
-		set_doc_all();
-		
-
-//			===============================
-		}
-		
-			
-		localStorage.visit_client=visit_client
-
-		localStorage.visit_page="YES"
-		
-		//--------
-		$("#wait_image_unschedule_market_ret").hide();		
-		
-		$("#unscheduled_m_client_combo_id_lv").show();
-		$("#wait_image_ret").hide();
-		
-		$("#errorChkVSubmit").html('');
-		$("#errorConfiProfileUpdate").html('');
-		$("#errorChkVSubmit_doc").html('');
-		
-		$("#wait_image_visit_submit_doc").hide();
-		
-		if (localStorage.doctor_plan_flag==1){
-			$("#visit_submit_save_doc").show();		
-			
-		}
-		else{
-			$("#visit_submit_save_doc").hide();		
-		}
-		
-		$.afui.loadContent("#page_visit_doc",true,true,'right');
-		//location.reload();
-							
+			set_doc_all();
 			
 	
+	//			===============================
+			}
+			
+				
+			localStorage.visit_client=visit_client
+	
+			localStorage.visit_page="YES"
+			
+			//--------
+			$("#wait_image_unschedule_market_ret").hide();		
+			
+			$("#unscheduled_m_client_combo_id_lv").show();
+			$("#wait_image_ret").hide();
+			
+			$("#errorChkVSubmit").html('');
+			$("#errorConfiProfileUpdate").html('');
+			$("#errorChkVSubmit_doc").html('');
+			
+			$("#wait_image_visit_submit_doc").hide();
+			
+			if (localStorage.doctor_pr1=1){
+				$("#wait_image_prescription").hide();
+				$.afui.loadContent("#page_prescription",true,true,'right');
+			}
+	
+			else if (localStorage.doctor_plan_flag==1){
+				$("#visit_submit_save_doc").show();		
+				$.afui.loadContent("#page_visit_doc",true,true,'right');
+				
+			}
+			else{
+				$("#visit_submit_save_doc").hide();		
+				$.afui.loadContent("#page_visit_doc",true,true,'right');
+			}
+			
+			
+			//location.reload();
+								
+				
+		
+		}
 	}
-}
+
 
 
 
@@ -7372,6 +7569,24 @@ function searchProductChar(char) {
 	$("#item_combo_id").focus();
 	
 }
+function searchPrChar(char) {
+	var filter  = char;
+	
+	var lis =document.getElementById("pr_id_lv").getElementsByTagName("li");
+	//alert (filter);
+	for (var i = 0; i < lis.length; i++) {
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+		//alert (name)
+		if (name.toUpperCase().indexOf(filter) == 0) 
+			lis[i].style.display = 'list-item';
+		else
+			lis[i].style.display = 'none';
+		//$("#item_combo_id_lv").find(lis[0]).first().focus()
+	}
+	$("#item_combo_id").val('');
+	$("#item_combo_id").focus();
+	
+}
 function searchCampaignChar(char) {
 	var filter  = char;
 	
@@ -9514,7 +9729,7 @@ function chemist_submit() {
 	chemist_name=chemist_name.replace(",","").replace("'","").replace(";","").replace('"','')
 		// ajax-------
 	if ((chemist_name !='') && (chemist_ph !='' )){
-		alert (localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&chemist_name='+encodeURI(chemist_name)+'&chemist_add='+encodeURI(chemist_name)+'&chemist_ph='+encodeURI(chemist_ph)+'&trade_license_no='+encodeURI(trade_license_no)+'&vat_registration_no='+encodeURI(vat_registration_no)+'&chemist_dob='+encodeURI(chemist_dob));
+		//alert (localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&chemist_name='+encodeURI(chemist_name)+'&chemist_add='+encodeURI(chemist_name)+'&chemist_ph='+encodeURI(chemist_ph)+'&trade_license_no='+encodeURI(trade_license_no)+'&vat_registration_no='+encodeURI(vat_registration_no)+'&chemist_dob='+encodeURI(chemist_dob));
 		
 		// ajax-------
 				$.ajax({
@@ -9564,7 +9779,7 @@ function chemist_cancelSubmit() {
 	
 		// ajax-------
 
-		alert (localStorage.base_url+'chemist_cancelSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&visit_client='+visit_client+'&inactive_reason='+inactive_reason);
+		//alert (localStorage.base_url+'chemist_cancelSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+marketId+'&visit_client='+visit_client+'&inactive_reason='+inactive_reason);
 		
 		// ajax-------
 				$.ajax({
@@ -9631,6 +9846,774 @@ function cancelPicture(i){
 	$("#"+imageDiv).html('');
 	$("#"+imageText).val('');
 }
+function setPrProduct(){
+	prProdID_Str=''
+		if (localStorage.pr_A.length != '') {
+			pr_A=localStorage.pr_A
+			var prList_A=pr_A.split('<rd>');
+			var prLength_A=prList_A.length;
+			var pr_tbl_A=''
+			for (j=0; j < prLength_A; j++){
+				var prArray_A = prList_A[j].split('<fd>');
+				var pr_id_A=prArray_A[0];	
+				var pr_name_A=prArray_A[1];
+				pr_tbl_A=pr_tbl_A+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_A+'\')"  class="name"><font id="prName'+ pr_id_A +'" class="name" >'+ pr_name_A+'</font><input type="hidden" id="doc_pr_id'+pr_id_A+'" value="'+pr_id_A+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_A+'<rd>'
+				}
+		localStorage.pr_tbl_A=pr_tbl_A		
+		$("#pr_id_lv").append(localStorage.pr_tbl_A);	
+		
+	}
+	
+	
+	if (localStorage.pr_B.length != '') {
+			pr_B=localStorage.pr_B
+			var prList_B=pr_B.split('<rd>');
+			var prLength_B=prList_B.length;
+			var pr_tbl_B=''
+			for (j=0; j < prLength_B; j++){
+				var prArray_B = prList_B[j].split('<fd>');
+				var pr_id_B=prArray_B[0];	
+				var pr_name_B=prArray_B[1];
+				pr_tbl_B=pr_tbl_B+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_B+'\')"  class="name"><font id=prName"'+ pr_id_B +'" class="name" >'+ pr_name_B+'</font><input type="hidden" id="doc_pr_id'+pr_id_B+'" value="'+pr_id_B+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_B+'<rd>'
+				}
+		localStorage.pr_tbl_B=pr_tbl_B		
+		$("#pr_id_lv").append(localStorage.pr_tbl_B);	
+	}
+	
+	
+	if (localStorage.pr_C.length != '') {
+			pr_C=localStorage.pr_C
+			var prList_C=pr_C.split('<rd>');
+			var prLength_C=prList_C.length;
+			var pr_tbl_C=''
+			for (j=0; j < prLength_C; j++){
+				var prArray_C = prList_C[j].split('<fd>');
+				var pr_id_C=prArray_C[0];	
+				var pr_name_C=prArray_C[1];
+				pr_tbl_C=pr_tbl_C+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_C+'\')"  class="name"><font id=prName"'+ pr_id_C +'" class="name" >'+ pr_name_C+'</font><input type="hidden" id="doc_pr_id'+pr_id_C+'" value="'+pr_id_C+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_C+'<rd>'
+				}
+		localStorage.pr_tbl_C=pr_tbl_C		
+		$("#pr_id_lv").append(localStorage.pr_tbl_C);	
+	}
+	
+	
+	if (localStorage.pr_D.length != '') {
+			pr_D=localStorage.pr_D
+			var prList_D=pr_D.split('<rd>');
+			var prLength_D=prList_D.length;
+			var pr_tbl_D=''
+			for (j=0; j < prLength_D; j++){
+				var prArray_D = prList_D[j].split('<fd>');
+				var pr_id_D=prArray_D[0];	
+				var pr_name_D=prArray_D[1];
+				pr_tbl_D=pr_tbl_D+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_D+'\')"  class="name"><font id=prName"'+ pr_id_D +'" class="name" >'+ pr_name_D+'</font><input type="hidden" id="doc_pr_id'+pr_id_D+'" value="'+pr_id_D+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_D+'<rd>'
+				}
+		localStorage.pr_tbl_D=pr_tbl_D		
+		$("#pr_id_lv").append(localStorage.pr_tbl_D);	
+	}
+	
+	
+	if (localStorage.pr_E.length != '') {
+			pr_E=localStorage.pr_E
+			var prList_E=pr_E.split('<rd>');
+			var prLength_E=prList_E.length;
+			var pr_tbl_E=''
+			for (j=0; j < prLength_E; j++){
+				var prArray_E = prList_E[j].split('<fd>');
+				var pr_id_E=prArray_E[0];	
+				var pr_name_E=prArray_E[1];
+				pr_tbl_E=pr_tbl_E+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_E+'\')"  class="name"><font id=prName"'+ pr_id_E +'" class="name" >'+ pr_name_E+'</font><input type="hidden" id="doc_pr_id'+pr_id_E+'" value="'+pr_id_E+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_E+'<rd>'	
+				}
+		localStorage.pr_tbl_E=pr_tbl_E		
+		$("#pr_id_lv").append(localStorage.pr_tbl_E);	
+	}
+	
+	
+		if (localStorage.pr_F.length != '') {
+			pr_F=localStorage.pr_F
+			var prList_F=pr_F.split('<rd>');
+			var prLength_F=prList_F.length;
+			var pr_tbl_F=''
+			for (j=0; j < prLength_F; j++){
+				var prArray_F = prList_F[j].split('<fd>');
+				var pr_id_F=prArray_F[0];	
+				var pr_name_F=prArray_F[1];
+				pr_tbl_F=pr_tbl_F+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_F+'\')"  class="name"><font id=prName"'+ pr_id_F +'" class="name" >'+ pr_name_F+'</font><input type="hidden" id="doc_pr_id'+pr_id_F+'" value="'+pr_id_F+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_F+'<rd>'
+				}
+		localStorage.pr_tbl_F=pr_tbl_F		
+		$("#pr_id_lv").append(localStorage.pr_tbl_F);	
+	}
+	
+	if (localStorage.pr_G.length != '') {
+			pr_G=localStorage.pr_G
+			var prList_G=pr_G.split('<rd>');
+			var prLength_G=prList_G.length;
+			var pr_tbl_G=''
+			for (j=0; j < prLength_G; j++){
+				var prArray_G = prList_G[j].split('<fd>');
+				var pr_id_G=prArray_G[0];	
+				var pr_name_G=prArray_G[1];
+				pr_tbl_G=pr_tbl_G+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_G+'\')"  class="name"><font id=prName"'+ pr_id_G +'" class="name" >'+ pr_name_G+'</font><input type="hidden" id="doc_pr_id'+pr_id_G+'" value="'+pr_id_G+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_G+'<rd>'
+				}
+		localStorage.pr_tbl_G=pr_tbl_G		
+		$("#pr_id_lv").append(localStorage.pr_tbl_G);	
+	}
+	
+	
+	if (localStorage.pr_H.length != '') {
+			pr_H=localStorage.pr_H
+			var prList_H=pr_H.split('<rd>');
+			var prLength_H=prList_H.length;
+			var pr_tbl_H=''
+			for (j=0; j < prLength_H; j++){
+				var prArray_H = prList_H[j].split('<fd>');
+				var pr_id_H=prArray_H[0];	
+				var pr_name_H=prArray_H[1];
+				pr_tbl_H=pr_tbl_H+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_H+'\')"  class="name"><font id=prName"'+ pr_id_H +'" class="name" >'+ pr_name_H+'</font><input type="hidden" id="doc_pr_id'+pr_id_H+'" value="'+pr_id_H+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_H+'<rd>'
+				}
+		localStorage.pr_tbl_H=pr_tbl_H		
+		$("#pr_id_lv").append(localStorage.pr_tbl_H);	
+	}
+	
+	
+	
+	if (localStorage.pr_I.length != '') {
+			pr_I=localStorage.pr_I
+			var prList_I=pr_I.split('<rd>');
+			var prLength_I=prList_I.length;
+			var pr_tbl_I=''
+			for (j=0; j < prLength_I; j++){
+				var prArray_I = prList_I[j].split('<fd>');
+				var pr_id_I=prArray_I[0];	
+				var pr_name_I=prArray_I[1];
+				pr_tbl_I=pr_tbl_I+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_I+'\')"  class="name"><font id=prName"'+ pr_id_I +'" class="name" >'+ pr_name_I+'</font><input type="hidden" id="doc_pr_id'+pr_id_I+'" value="'+pr_id_I+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_I+'<rd>'	
+				}
+		localStorage.pr_tbl_I=pr_tbl_I		
+		$("#pr_id_lv").append(localStorage.pr_tbl_I);	
+	}
+	
+	
+	if (localStorage.pr_J.length != '') {
+			pr_J=localStorage.pr_J
+			var prList_J=pr_J.split('<rd>');
+			var prLength_J=prList_J.length;
+			var pr_tbl_J=''
+			for (j=0; j < prLength_j; j++){
+				var prArray_J = prList_J[j].split('<fd>');
+				var pr_id_J=prArray_J[0];	
+				var pr_name_J=prArray_J[1];
+				pr_tbl_J=pr_tbl_J+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_J+'\')"  class="name"><font id=prName"'+ pr_id_J +'" class="name" >'+ pr_name_J+'</font><input type="hidden" id="doc_pr_id'+pr_id_J+'" value="'+pr_id_J+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_J+'<rd>'	
+				}
+		localStorage.pr_tbl_J=pr_tbl_J		
+		$("#pr_id_lv").append(localStorage.pr_tbl_J);	
+	}
+	
+	
+	if (localStorage.pr_K.length != '') {
+			pr_K=localStorage.pr_K
+			var prList_K=pr_K.split('<rd>');
+			var prLength_K=prList_K.length;
+			var pr_tbl_K=''
+			for (j=0; j < prLength_K; j++){
+				var prArray_K = prList_K[j].split('<fd>');
+				var pr_id_K=prArray_K[0];	
+				var pr_name_K=prArray_K[1];
+				pr_tbl_K=pr_tbl_K+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_K+'\')"  class="name"><font id=prName"'+ pr_id_K +'" class="name" >'+ pr_name_K+'</font><input type="hidden" id="doc_pr_id'+pr_id_K+'" value="'+pr_id_K+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_K+'<rd>'	
+				}
+		localStorage.pr_tbl_K=pr_tbl_K		
+		$("#pr_id_lv").append(localStorage.pr_tbl_K);	
+	}
+	
+	
+	if (localStorage.pr_L.length != '') {
+			pr_L=localStorage.pr_L
+			var prList_L=pr_L.split('<rd>');
+			var prLength_L=prList_L.length;
+			var pr_tbl_L=''
+			for (j=0; j < prLength_L; j++){
+				var prArray_L = prList_L[j].split('<fd>');
+				var pr_id_L=prArray_L[0];	
+				var pr_name_L=prArray_L[1];
+				pr_tbl_L=pr_tbl_L+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_L+'\')"  class="name"><font id=prName"'+ pr_id_L +'" class="name" >'+ pr_name_L+'</font><input type="hidden" id="doc_pr_id'+pr_id_L+'" value="'+pr_id_L+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_L+'<rd>'	
+				}
+		localStorage.pr_tbl_L=pr_tbl_L	
+		$("#pr_id_lv").append(localStorage.pr_tbl_L);	
+	}
+	
+	if (localStorage.pr_M.length != '') {
+			pr_M=localStorage.pr_M
+			var prList_M=pr_M.split('<rd>');
+			var prLength_M=prList_M.length;
+			var pr_tbl_M=''
+			for (j=0; j < prLength_M; j++){
+				var prArray_M = prList_M[j].split('<fd>');
+				var pr_id_M=prArray_M[0];	
+				var pr_name_M=prArray_M[1];
+				pr_tbl_M=pr_tbl_M+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_M+'\')"  class="name"><font id=prName"'+ pr_id_M +'" class="name" >'+ pr_name_M+'</font><input type="hidden" id="doc_pr_id'+pr_id_M+'" value="'+pr_id_M+'" > '+'</li>';		
+				prProdID_Str=prProdID_Str+pr_id_M+'<rd>'
+				}
+		localStorage.pr_tbl_M=pr_tbl_M	
+		$("#pr_id_lv").append(localStorage.pr_tbl_M);	
+	}
+	
+	
+	if (localStorage.pr_N.length != '') {
+			pr_N=localStorage.pr_N
+			var prList_N=pr_N.split('<rd>');
+			var prLength_N=prList_N.length;
+			var pr_tbl_N=''
+			for (j=0; j < prLength_N; j++){
+				var prArray_N = prList_N[j].split('<fd>');
+				var pr_id_N=prArray_N[0];	
+				var pr_name_N=prArray_N[1];
+				pr_tbl_N=pr_tbl_N+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_N+'\')"  class="name"><font id=prName"'+ pr_id_N +'" class="name" >'+ pr_name_N+'</font><input type="hidden" id="doc_pr_id'+pr_id_N+'" value="'+pr_id_N+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_N+'<rd>'	
+				}
+		localStorage.pr_tbl_N=pr_tbl_N	
+		$("#pr_id_lv").append(localStorage.pr_tbl_N);	
+	}
+	
+	if (localStorage.pr_O.length != '') {
+			pr_O=localStorage.pr_O
+			var prList_O=pr_O.split('<rd>');
+			var prLength_O=prList_O.length;
+			var pr_tbl_O=''
+			for (j=0; j < prLength_O; j++){
+				var prArray_O = prList_O[j].split('<fd>');
+				var pr_id_O=prArray_O[0];	
+				var pr_name_O=prArray_O[1];
+				pr_tbl_O=pr_tbl_O+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_O+'\')"  class="name"><font id=prName"'+ pr_id_O +'" class="name" >'+ pr_name_O+'</font><input type="hidden" id="doc_pr_id'+pr_id_O+'" value="'+pr_id_O+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_O+'<rd>'
+				}
+		localStorage.pr_tbl_O=pr_tbl_O
+		$("#pr_id_lv").append(localStorage.pr_tbl_O);	
+	}
+	
+	if (localStorage.pr_P.length != '') {
+			pr_P=localStorage.pr_P
+			var prList_P=pr_P.split('<rd>');
+			var prLength_P=prList_P.length;
+			var pr_tbl_P=''
+			for (j=0; j < prLength_P; j++){
+				var prArray_P = prList_P[j].split('<fd>');
+				var pr_id_P=prArray_P[0];	
+				var pr_name_P=prArray_P[1];
+				pr_tbl_P=pr_tbl_P+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_P+'\')"  class="name"><font id=prName"'+ pr_id_P +'" class="name" >'+ pr_name_P+'</font><input type="hidden" id="doc_pr_id'+pr_id_P+'" value="'+pr_id_P+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_P+'<rd>'	
+				}
+		localStorage.pr_tbl_P=pr_tbl_P
+		$("#pr_id_lv").append(localStorage.pr_tbl_P);	
+	}
+	
+	if (localStorage.pr_Q.length != '') {
+			pr_Q=localStorage.pr_Q
+			var prList_Q=pr_Q.split('<rd>');
+			var prLength_Q=prList_Q.length;
+			var pr_tbl_Q=''
+			for (j=0; j < prLength_Q; j++){
+				var prArray_Q = prList_Q[j].split('<fd>');
+				var pr_id_Q=prArray_Q[0];	
+				var pr_name_Q=prArray_Q[1];
+				pr_tbl_Q=pr_tbl_Q+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Q+'\')"  class="name"><font id=prName"'+ pr_id_Q +'" class="name" >'+ pr_name_Q+'</font><input type="hidden" id="doc_pr_id'+pr_id_Q+'" value="'+pr_id_Q+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_Q+'<rd>'	
+				}
+		localStorage.pr_tbl_Q=pr_tbl_Q
+		$("#pr_id_lv").append(localStorage.pr_tbl_Q);	
+	}
+	
+	if (localStorage.pr_R.length != '') {
+			pr_R=localStorage.pr_R
+			var prList_R=pr_R.split('<rd>');
+			var prLength_R=prList_R.length;
+			var pr_tbl_R=''
+			for (j=0; j < prLength_R; j++){
+				var prArray_R = prList_R[j].split('<fd>');
+				var pr_id_R=prArray_R[0];	
+				var pr_name_R=prArray_R[1];
+				pr_tbl_R=pr_tbl_R+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_R+'\')"  class="name"><font id=prName"'+ pr_id_R +'" class="name" >'+ pr_name_R+'</font><input type="hidden" id="doc_pr_id'+pr_id_R+'" value="'+pr_id_R+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_R+'<rd>'
+				}
+		localStorage.pr_tbl_R=pr_tbl_R
+		$("#pr_id_lv").append(localStorage.pr_tbl_R);	
+	}
+	
+	if (localStorage.pr_S.length != '') {
+			pr_S=localStorage.pr_S
+			var prList_S=pr_S.split('<rd>');
+			var prLength_S=prList_S.length;
+			var pr_tbl_S=''
+			for (j=0; j < prLength_S; j++){
+				var prArray_S = prList_S[j].split('<fd>');
+				var pr_id_S=prArray_S[0];	
+				var pr_name_S=prArray_S[1];
+				pr_tbl_S=pr_tbl_S+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_S+'\')"  class="name"><font id=prName"'+ pr_id_S +'" class="name" >'+ pr_name_S+'</font><input type="hidden" id="doc_pr_id'+pr_id_S+'" value="'+pr_id_S+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_S+'<rd>'	
+				}
+		localStorage.pr_tbl_S=pr_tbl_S
+		$("#pr_id_lv").append(localStorage.pr_tbl_S);	
+	}
+	
+	if (localStorage.pr_T.length != '') {
+			pr_T=localStorage.pr_T
+			var prList_T=pr_T.split('<rd>');
+			var prLength_T=prList_T.length;
+			var pr_tbl_T=''
+			for (j=0; j < prLength_T; j++){
+				var prArray_T = prList_T[j].split('<fd>');
+				var pr_id_T=prArray_T[0];	
+				var pr_name_T=prArray_T[1];
+				pr_tbl_T=pr_tbl_T+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_T+'\')"  class="name"><font id=prName"'+ pr_id_T +'" class="name" >'+ pr_name_T+'</font><input type="hidden" id="doc_pr_id'+pr_id_T+'" value="'+pr_id_T+'" > '+'</li>';		
+				//prProdID_Str=prProdID_Str+pr_id_T+'<rd>'
+				}
+		localStorage.pr_tbl_T=pr_tbl_T
+		$("#pr_id_lv").append(localStorage.pr_tbl_T);	
+	}
+	
+	if (localStorage.pr_U.length != '') {
+			pr_U=localStorage.pr_U
+			var prList_U=pr_U.split('<rd>');
+			var prLength_U=prList_U.length;
+			var pr_tbl_U=''
+			for (j=0; j < prLength_U; j++){
+				var prArray_U = prList_U[j].split('<fd>');
+				var pr_id_U=prArray_U[0];	
+				var pr_name_U=prArray_U[1];
+				pr_tbl_U=pr_tbl_U+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_U+'\')"  class="name"><font id=prName"'+ pr_id_U +'" class="name" >'+ pr_name_U+'</font><input type="hidden" id="doc_pr_id'+pr_id_U+'" value="'+pr_id_U+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_U+'<rd>'	
+				}
+		localStorage.pr_tbl_U=pr_tbl_U
+		$("#pr_id_lv").append(localStorage.pr_tbl_U);	
+	}
+	
+	if (localStorage.pr_V.length != '') {
+			pr_V=localStorage.pr_V
+			var prList_V=pr_V.split('<rd>');
+			var prLength_V=prList_V.length;
+			var pr_tbl_V=''
+			for (j=0; j < prLength_V; j++){
+				var prArray_V = prList_V[j].split('<fd>');
+				var pr_id_V=prArray_V[0];	
+				var pr_name_V=prArray_V[1];
+				pr_tbl_V=pr_tbl_V+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_V+'\')"  class="name"><font id=prName"'+ pr_id_V +'" class="name" >'+ pr_name_V+'</font><input type="hidden" id="doc_pr_id'+pr_id_V+'" value="'+pr_id_V+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_V+'<rd>'	
+				}
+		localStorage.pr_tbl_V=pr_tbl_V
+		$("#pr_id_lv").append(localStorage.pr_tbl_V);	
+	}
+	
+	if (localStorage.pr_W.length != '') {
+			pr_W=localStorage.pr_W
+			var prList_W=pr_W.split('<rd>');
+			var prLength_W=prList_W.length;
+			var pr_tbl_W=''
+			for (j=0; j < prLength_W; j++){
+				var prArray_W = prList_W[j].split('<fd>');
+				var pr_id_W=prArray_W[0];	
+				var pr_name_W=prArray_W[1];
+				pr_tbl_W=pr_tbl_W+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_W+'\')"  class="name"><font id=prName"'+ pr_id_W +'" class="name" >'+ pr_name_W+'</font><input type="hidden" id="doc_pr_id'+pr_id_W+'" value="'+pr_id_W+'" > '+'</li>';	
+				prProdID_Str=prProdID_Str+pr_id_W+'<rd>'	
+				}
+		//localStorage.pr_tbl_W=pr_tbl_W
+		$("#pr_id_lv").append(localStorage.pr_tbl_W);	
+	}
+
+	
+	if (localStorage.pr_X.length != '') {
+			pr_X=localStorage.pr_X
+			var prList_X=pr_X.split('<rd>');
+			var prLength_X=prList_X.length;
+			var pr_tbl_X=''
+			for (j=0; j < prLength_X; j++){
+				var prArray_X = prList_X[j].split('<fd>');
+				var pr_id_X=prArray_X[0];	
+				var pr_name_X=prArray_X[1];
+				pr_tbl_X=pr_tbl_X+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_X+'\')"  class="name"><font id=prName"'+ pr_id_X +'" class="name" >'+ pr_name_X+'</font><input type="hidden" id="doc_pr_id'+pr_id_X+'" value="'+pr_id_X+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_X+'<rd>'	
+				}
+		localStorage.pr_tbl_X=pr_tbl_X
+		$("#pr_id_lv").append(localStorage.pr_tbl_Y);	
+	}
+
+	
+	if (localStorage.pr_Y.length != '') {
+			pr_Y=localStorage.pr_Y
+			var prList_Y=pr_Y.split('<rd>');
+			var prLength_Y=prList_Y.length;
+			var pr_tbl_Y=''
+			for (j=0; j < prLength_Y; j++){
+				var prArray_Y = prList_Y[j].split('<fd>');
+				var pr_id_Y=prArray_Y[0];	
+				var pr_name_Y=prArray_Y[1];
+				pr_tbl_Y=pr_tbl_Y+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Y+'\')"  class="name"><font id=prName"'+ pr_id_Y +'" class="name" >'+ pr_name_Y+'</font><input type="hidden" id="doc_pr_id'+pr_id_Y+'" value="'+pr_id_Y+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_Y+'<rd>'	
+				}
+		localStorage.pr_tbl_Y=pr_tbl_Y
+		$("#pr_id_lv").append(localStorage.pr_tbl_Y);	
+	}
+	
+	if (localStorage.pr_Z.length != '') {
+			pr_Z=localStorage.pr_Z
+			var prList_Z=pr_Z.split('<rd>');
+			var prLength_Z=prList_Z.length;
+			var pr_tbl_Z=''
+			for (j=0; j < prLength_Z; j++){
+				var prArray_Z = prList_Z[j].split('<fd>');
+				var pr_id_Z=prArray_Z[0];	
+				var pr_name_Z=prArray_Z[1];
+				pr_tbl_Z=pr_tbl_Z+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Z+'\')"  class="name"><font id=prName"'+ pr_id_Z +'" class="name" >'+ pr_name_Z+'</font><input type="hidden" id="doc_pr_id'+pr_id_Z+'" value="'+pr_id_Z+'" > '+'</li>';	
+				//prProdID_Str=prProdID_Str+pr_id_Z+'<rd>'	
+				}
+		localStorage.pr_tbl_Z=pr_tbl_Z
+		$("#pr_id_lv").append(localStorage.pr_tbl_Z);	
+	}
+	//localStorage.prProdID_Str=prProdID_Str;
+}
+function check_boxTrue_pr(product_id){	
+	var camp_combo="#doc_pr_id"+product_id
+	getDocPrData_keyup(product_id,'true')
+	$('li').click(function(){
+		$(this).css('color','red');	
+	});
+
+	}
+function getDocPrData_keyup(product_id,status){
+	//alert (status)
+	var pid=$("#doc_pr_id"+product_id).val();
+	var camp_combo_val=status
+//	alert (pid)
+
+	var campaign_doc_str=localStorage.prProdID_Str
+	var campaign_docShowStr='';
+	var campaign_doc_strList="";
+        var campaign_doc_strListLength=0;
+        var campaign_docProductId="";
+	//alert (camp_combo_val)
+	if (camp_combo_val == 'true' ){
+	//	alert (campaign_doc_str.indexOf(pid))
+		if (campaign_doc_str.indexOf(pid)==-1){
+			if (campaign_doc_str==''){
+				campaign_doc_str=pid
+			}else{
+				campaign_doc_str=campaign_doc_str+'<rd>'+pid
+			}	
+		}
+		else{
+			campaign_doc_strList=localStorage.prProdID_Str.split('<rd>');
+			campaign_doc_strListLength=campaign_doc_strList.length;
+			for (j=0; j < orderProductLength; j++){
+					campaign_docProductId=campaign_doc_strList[j];
+
+					if (campaign_docProductId==pid){
+						campaign_doc_str=campaign_doc_str.replace(campaign_docProductId, "")
+						if (campaign_doc_str==''){
+							campaign_doc_str=pid							
+						}else{
+							campaign_doc_str=campaign_doc_str+'<rd>'+pid
+							}		
+					}
+			}
+		}
+		localStorage.prProdID_Str=campaign_doc_str;
+		
+		
+	}
+	else{
+		campaign_doc_strList=localStorage.prProdID_Str.split('<rd>');
+		campaign_doc_strListLength=campaign_doc_strList.length;
+		for (j=0; j < campaign_doc_strListLength; j++){
+		  campaign_docProductId=campaign_doc_strList[j].split('<fd>')[0]
+				//alert (campaign_docProductId)
+				product_index=campaign_doc_str.indexOf(campaign_docProductId)
+				
+				if (campaign_docProductId==pid){
+					
+					if (campaign_doc_strListLength>1){
+						
+						if (product_index==0){
+							
+							campaign_doc_str=campaign_doc_str.replace(campaign_doc_strList[j]+'<rd>', "")
+						}
+						if (product_index > 0){
+							//alert ('2')
+							campaign_doc_str=campaign_doc_str.replace('<rd>'+campaign_doc_strList[j], "")
+						}
+					}
+					if (campaign_doc_strListLength==1){
+							campaign_doc_str=campaign_doc_str.replace(campaign_doc_strList[j], "")
+						
+					}
+			}
+		}
+		localStorage.prProdID_Str=campaign_doc_str;
+		//alert (localStorage.campaign_doc_str)
+	}
+	alert (localStorage.prProdID_Str)
+	}
+	
+function getDocDatapr(){
+	getDocDataprCart();
+	$.afui.loadContent("#doctorprCartPage",true,true,'right');;
+}
+function getDocDataprCart(){	
+	//alert (localStorage.prProdID_Str)
+	$('#prCart').empty();
+	campaign_doc_str=localStorage.prProdID_Str
+	
+	var campaignList = campaign_doc_str.split('<rd>');
+	var campaignListLength=campaignList.length
+	cart_list=''
+	for ( i=0; i < campaignListLength; i++){
+	var pID=campaignList[i];
+	$("#campCart").empty();
+	//alert (pID)
+	if(pID!=''){
+		var pName=$("#prName"+pID).html();
+		//alert ('#cartPr_'+pID)
+		cart_list+='<tr style="font-size:14px" id="cartPr_'+pID+'"><td > </br>'+pName+'</br></td><td style="background-color:#E7F1FE"  align="center" width="10%" onClick="removeCarItemPr('+pID+')"><input type="submit" style=" height:50px; background-color:#09C; color:#FFF; font-size:20px" value="  X  " onClick="removeCarItemPr('+pID+')"  /></td></tr>';
+		
+		}	
+	}
+	//alert (cart_list)
+	$('#prCart').append(cart_list);
+}
+function getDocDatapr(){	
+	getDocDataprCart();
+	$.afui.loadContent("#doctorprCartPage",true,true,'right');
+
+}
+function doctorprCartPage(){	
+	$.afui.loadContent("#doctorprCartPage",true,true,'right');
+
+}
+function page_PrescriptionCapture(){	
+	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
+}
+function page_imageSingle(){	
+	$.afui.loadContent("#imageSinglePage",true,true,'right');
+}
+function page_prItemPage(){	
+	$.afui.loadContent("#page_prItemPage",true,true,'right');
+}
+function removeCarItemPr(product_idGet){	
+	//alert (product_idGet)
+	//product_id=product_idGet.replace('/','')
+	//alert (localStorage.prProdID_Str)
+	campaign_doc_str=localStorage.prProdID_Str
+	
+	cartLength=campaign_doc_str.split('<rd>').length
+	
+	$('#cartPr_'+product_id).remove();
+	
+	//alert (campaign_doc_str)
+	//alert (campaign_doc_str.indexOf(product_id))
+	if (campaign_doc_str.indexOf(product_id)==0 & cartLength == 1){
+		campaign_doc_str=campaign_doc_str.replace(product_id,'')
+	}
+	else if (campaign_doc_str.indexOf(product_id)==0 & cartLength > 1){
+		campaign_doc_str=campaign_doc_str.replace(product_id+"<rd>",'')
+	}
+	else if (campaign_doc_str.indexOf(product_id)>0 & cartLength > 1){
+		campaign_doc_str=campaign_doc_str.replace("<rd>"+product_id,'')
+	}
+		
+	localStorage.prProdID_Str=campaign_doc_str
+}
+function prescription_submit(){
+	//$("#error_prescription_submit").html("")		
+//	$("#wait_image_prescription").show();
+//	$("#btn_prescription_submit").hide();
+//	
+//	var doctorId=localStorage.visit_client.split('|')[1]	
+//	var doctor_name=localStorage.visit_client.split('|')[0]
+//	
+//	var areaId=localStorage.visit_market_show.split('|')[1]
+//	
+//	var checkOther=$("#checkOther").attr("checked") ? 1 : 0;
+//	
+//	//alert (checkOther)
+//	if (doctor_name==''){		
+//		$("#error_prescription_submit").text("Required Doctor");
+//		$("#wait_image_prescription").show();
+//		$("#btn_prescription_submit").hide();
+//	}else{
+//		
+//		var latitude=$("#lat").val();
+//		var longitude=$("#long").val();		
+//		var pic_no = localStorage.pic_no
+//		var prescriptionPhoto_1=$("#prescriptionPhoto_1").val();
+//		
+//		
+//		localStorage.prescriptionPhoto_1 = prescriptionPhoto_1;
+//		
+//		
+//		
+//		
+//		if (localStorage.pic_no==1){
+//			prescriptionPhoto=$("#prescriptionPhoto_1").val();
+//		}
+//		
+//		
+//		
+//		//prescriptionPhoto='dasdfadf'
+//		//if (prescriptionPhoto==''){
+////			$("#error_prescription_submit").html('Required picture');
+////			$("#wait_image_prescription").hide();
+////			$("#btn_prescription_submit").show();
+////		}else{		
+//			var medicine_1=$("#medicine_1").val();
+//			var medicine_2=$("#medicine_2").val();
+//			var medicine_3=$("#medicine_3").val();
+//			var medicine_4=$("#medicine_4").val();
+//			var medicine_5=$("#medicine_5").val();	
+//			var now = $.now();
+//			var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
+//			//alert (imageName);
+//				
+//				
+//				$("#error_prescription_submittxt").val(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther)							
+//
+//				 $.ajax(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther,{
+//								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+//								type: 'POST',
+//								timeout: 30000,
+//								error: function(xhr) {
+//											var resultArray = data.split('<SYNCDATA>');
+//											$("#error_prescription_submit").html(resultArray[1]);
+//											$("#wait_image_prescription").hide();
+//											$("#btn_prescription_submit").show();
+//											
+//								},
+//							success:function(data, status,xhr){				
+//
+//								if (status!='success'){
+//									
+//									$("#error_prescription_submit").html('Network timeout. Please ensure you have active internet connection.');
+//									$("#wait_image_prescription").hide();
+//									$("#btn_prescription_submit").show();
+//								}
+//								else{
+//									   var resultArray = data.split('<SYNCDATA>');	
+//										if (resultArray[0]=='FAILED'){						
+//											$("#error_prescription_submit").html(resultArray[1]);
+//											$("#wait_image_prescription").hide();
+//											$("#btn_prescription_submit").show();
+//										}else if (resultArray[0]=='SUCCESS'){									
+//											//var result_string=resultArray[1];
+//											
+//											
+//											//alert (result_string)
+//										
+//											//image upload function									
+//											uploadPhoto(prescriptionPhoto, imageName);
+//											//alert ('0')
+//											//alert (localStorage.pic_no)
+//											if (localStorage.pic_no==1){								
+//												var image2 = document.getElementById('myImagePrescription_2');
+//    											image2.src = localStorage.prescriptionPhoto_2;
+//												$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
+//												
+//												
+//												
+//												//alert (localStorage.pic_no)
+//												localStorage.prescriptionPhoto_1=''
+//												var image1 = document.getElementById('myImagePrescription_1');
+//    											image1.src = localStorage.prescriptionPhoto_1;
+//												$("#prescriptionPhoto_1").val(localStorage.prescriptionPhoto_1)
+//												//$("#prescriptionPhoto_1").val('');
+//												//localStorage.prescriptionPhoto_1=''
+//												
+//											}
+//											
+//											//localStorage.pic_no='';
+//											//$("#campaign_combo_id_lv").empty()
+////											$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
+//											
+//											$("#campCart").empty();
+//											localStorage.campaign_doc_str=""; 
+//											$('#market_combo_id_lv').empty();
+//											$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
+//											$("#itemSearch").val('A')
+//											setProduct();
+//											//searchItem()
+//											
+//											
+//											//alert (localStorage.pic_no)
+//											//localStorage.campaign_doc_str=''
+//											
+//											//alert ('aaaa')
+//											$("#lat").val("");
+//											$("#long").val("");
+//											//alert ('1')
+//											//$("#prescriptionPhoto").val("");
+//											
+//											
+//											$("#medicine_1").val('');
+//											$("#medicine_2").val('');
+//											$("#medicine_3").val('');
+//											$("#medicine_4").val('');
+//											$("#medicine_5").val('');
+//											$("#wait_image_prescription").hide();
+//											$("#btn_prescription_submit").show();
+//
+//											//--------------------------
+//	
+//											
+//
+//											$.afui.loadContent("#page_success",true,true,'right');
+//											
+//											
+//										}else{						
+//											$("#error_prescription_submit").html('Authentication error. Please register and sync to retry.');
+//											$("#wait_image_prescription").hide();
+//											$("#btn_prescription_submit").show();
+//											}
+//								}
+//}
+//						});			 
+//				
+//						
+////		}pic else
+//	}
+$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
+}
+//============================================
+function gotoPic(picNo) {
+	var imageDiv="myImage"+picNo
+	var imageText="prPhoto"+picNo
+	
+	//if (pic_no!=localStorage.pic_no){
+//		$("#campaign_combo_id_lv").empty()
+//		setProduct()
+//	}
+	//alert (imageText)
+	localStorage.picNo=picNo
+	
+	var prPic=$("#"+imageText).val();
+	
+	var image_show = document.getElementById('myImagePrescription_show');
+	image_show.src = prPic;
+	$("#myImagePrescription_show").val(prPic)
+	
+			
+	$.afui.loadContent("#imageSinglePage",true,true,'right');
+}
+function page_prItemPage(){
+	setPrProduct()
+	$.afui.loadContent("#page_prItemPage",true,true,'right');
+}
+//========================================
 function takePicture(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
 		quality: 90,
