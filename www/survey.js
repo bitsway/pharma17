@@ -2189,24 +2189,7 @@ function doctor_visit() {
 	$("#dBlank").hide();
 	
 }
-function doctor_visit() {
-	
-	$("#ret_cat").hide();
-	$("#d_visit").html("Doctors");
-	//$("#doc_start").html('Visit > Market > Doctor');
-	localStorage.doctor_flag=1;
-	localStorage.doctor_plan_flag=0;
-	localStorage.doctor_pr=0;
-	localStorage.saved_data_submit=0;
-	localStorage.visit_page="NO";
-	//addMarketList();
-	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
-	$("#addDocanc").show();
-	$("#blankAnc").hide();
-	$("#dPending").show();
-	$("#dBlank").hide();
-	
-}
+
 function doctor_visitPr() {
 	
 	$("#ret_cat").hide();
@@ -2217,6 +2200,7 @@ function doctor_visitPr() {
 	
 	localStorage.saved_data_submit=0;
 	localStorage.doctor_pr=1;
+	//alert (localStorage.doctor_pr)
 	localStorage.visit_page="NO";
 	//addMarketList();
 	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
@@ -4690,8 +4674,8 @@ function marketRetailerNext_doc() {
 			$("#errorChkVSubmit_doc").html('');
 			
 			$("#wait_image_visit_submit_doc").hide();
-			
-			if (localStorage.doctor_pr1=1){
+			//alert (localStorage.doctor_pr)
+			if (localStorage.doctor_pr==1){
 				$("#wait_image_prescription").hide();
 				$.afui.loadContent("#page_prescription",true,true,'right');
 			}
@@ -9832,6 +9816,8 @@ function page_Competitorsactivity() {
 }
 
 function page_PrescriptionCapture() {	
+	localStorage.doctor_pr=1;
+	//alert (localStorage.doctor_pr)
 	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
 }
 
@@ -10397,9 +10383,7 @@ function doctorprCartPage(){
 	$.afui.loadContent("#doctorprCartPage",true,true,'right');
 
 }
-function page_PrescriptionCapture(){	
-	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
-}
+
 function page_imageSingle(){	
 	$.afui.loadContent("#imageSinglePage",true,true,'right');
 }
