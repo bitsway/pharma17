@@ -98,8 +98,7 @@ $.afui.useOSThemes=false;
 		searchProduct()
 		//bonusCombo()
 		 page_stock()
-		
-		
+				
 		$('#campaign_combo_id_lv').empty();
 		$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
 		$('#sample_combo_id_lv').empty();
