@@ -390,6 +390,7 @@ function homePage() {
 	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 function page_market() {
+	//alert (localStorage.tourFlag)
 	if (localStorage.tourFlag==1){
 		addMarketListTour();
 		
@@ -410,9 +411,14 @@ function page_market() {
 function page_market_ret() {
 	
 	if (localStorage.doctor_flag==1) {addMarketListCteam();}else{addMarketList();}
-	
-	$("#addDocanc").hide();
-	$("#blankAnc").show();
+	if (localStorage.doctor_flag==1){
+		$("#addDocanc").show();
+		$("#blankAnc").hide();
+	}
+	else{
+		$("#addDocanc").hide();
+		$("#blankAnc").show();
+	}
 	$.afui.loadContent("#page_market_ret",true,true,'right');
 }
 function page_market_ret_doc() {
@@ -2160,7 +2166,7 @@ function doctor_visit_plan() {
 	//$("#doc_start").html('Visit > Market > Doctor');
 	localStorage.doctor_flag=1;
 	localStorage.doctor_plan_flag=1;
-	
+	localStorage.tourFlag=0
 	localStorage.saved_data_submit=0;
 	localStorage.visit_page="NO";
 	//addMarketList();
@@ -2177,8 +2183,9 @@ function doctor_visit() {
 	$("#d_visit").html("Doctors");
 	//$("#doc_start").html('Visit > Market > Doctor');
 	localStorage.doctor_flag=1;
-	localStorage.doctor_plan_flag=1;
+	localStorage.doctor_plan_flag=0;
 	localStorage.doctor_pr=0;
+	localStorage.tourFlag=0
 	localStorage.saved_data_submit=0;
 	localStorage.visit_page="NO";
 	//addMarketList();

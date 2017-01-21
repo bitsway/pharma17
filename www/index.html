@@ -309,7 +309,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
        
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
-        <a id="dPending" name="dPending"  onClick="#" >	</a>
+       
+        <a id="dPending" name="dPending" onClick="page_dList()" style="font-size:18px;"   > Pending </a>
         <a id="dBlank" name="dBlank" onClick="homePage()"></a>
          </footer>
 
@@ -361,8 +362,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
         
 		<a onClick="homePage()" class="icon home" ></a>
-        <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"   >
-        <img style="height:50px; width:50px" src="doctor_add.png"></a>
+        <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"  > <img style="height:50px; width:50px" src="doctor_add.png"></a>
+         
       
         <a href="#" id="blankAnc" name="blankAnc" onclick="$.afui.drawer.show('#rightD','right','push')"  ><img style="height:40px; width:40px" src="menu.png"></a>
        
@@ -375,7 +376,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </header>
                 <br>
                 
-               <div onClick="chemist_add()" align="center"> <img style="height:70px; width:70px" src="add.png"></div>
+               <div  onClick="chemist_add()" align="center"> <img style="height:70px; width:70px" src="add.png"></div>
                 </br></br>
                  <div  align="center" onClick="chemist_pending()"> <img style="height:150px; width:150px" src="PendingCustomerApproval.png"></div>
             </div>
