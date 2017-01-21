@@ -10500,7 +10500,7 @@ function prescription_submit(){
 											//alert (result_string)
 										
 											//image upload function									
-											//uploadPhoto(prescriptionPhoto, imageName);
+											uploadPhoto(prescriptionPhoto, imageName);
 											//var picNo=parseInt(localStorage.picFlag)+1 
 											
 										
