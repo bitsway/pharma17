@@ -162,7 +162,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                        </td>
                       </tr>
                        <tr>
-                        <td align="center"><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="inbox.png"> </div>
+                        <td align="center"><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="60px" width="30px" src="inbox.png"> </div>
                         
                         
                         </td>
@@ -175,7 +175,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     
                      
 					  <tr>
-                        <td align="center"><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="page_PrescriptionCapture();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="PrescriptionCapture.png"> </div>
+                        <td align="center"  style="background-color:#09C; "><div id="inboxShow" align="center"  style="width:100%; background-color:#09C; "><img onClick="page_PrescriptionCapture();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="PrescriptionCapture.png"> </div>
                         
                         
                         </td>
@@ -3836,10 +3836,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <div class="pages">
          <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Prescription Capture</h1></header> 
             <div class="panel" id="page_PrescriptionCapture">
-            </br></br></br></br>
-            <input type="submit"  onClick="setPicture();"   style="width:100px; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Rfresh"   /> 
+            
             <!--<img src="refresh.png" width="70" height="70" alt="TakePic" onClick="setPicture()">-->
-            </br></br>
+            </br></br></br>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td ><img src="camera.png" width="70" height="70" alt="TakePic" onClick="takePicture()"></td>
@@ -4195,8 +4194,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         
                     </table>
                     
-                
-				
+                 </br></br></br></br>
+            <input type="submit"  onClick="setPicture();"   style=" height:50px; background-color:#C03; color:#FFF; font-size:20px" value="  Clear all image  "   /> 
+				</br></br>
                         <div   style="color:#2232BD; overflow:scroll ; overflow-style:auto; height:500px" ></div>
                     </div>
                     
@@ -4616,7 +4616,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         <input type="hidden" name="lat" id="lat" value="" readonly>
                         <input type="hidden" name="long" id="long" value="" readonly><!--readonly-->
                         
-                        <input type="hidden" name="error_prescription_submittxt" id="error_prescription_submittxt" value="" >
+                        <input type="text" name="error_prescription_submittxt" id="error_prescription_submittxt" value="" >
                          <div id="error_prescription_submit" style="color:#B70000"></div>   
                         <br><br>
                         <div  id="btn_loc_submit" style="display:none">
