@@ -1195,9 +1195,9 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1399,7 +1399,7 @@ function check_user() {
 							localStorage.photo_url=photo_url;
 							localStorage.photo_submit_url=photo_submit_url;
 							localStorage.report_url=report_url;
-							//alert (localStorage.report_url)
+							//alert (localStorage.photo_submit_url)
 							
 							localStorage.cid=cid;
 							localStorage.user_id=user_id;
@@ -8803,9 +8803,9 @@ function page_notice() {
 	$("#wait_image_notice").show();
 	$("#error_notice").html('');
 	//alert (client);
-	$("#error_noticeTxt").val(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
+	$("#error_noticeTxt").val(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccodlocalStore);
 	// ajax-------
-	
+	//alert (localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccodlocalStore)
 			$.ajax(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
@@ -9825,13 +9825,25 @@ function page_PrescriptionCapture() {
 
 function setPicture(){
 localStorage.picFlag=0;
-//alert (localStorage.picFlag)
+for (j=0; j < 50; j++){
+		var picNo=parseInt(j)+1 
+		var imageDiv="myImage"+picNo
+		var imageText="prPhoto"+picNo
+		var imageSource=''
+		var image = document.getElementById(imageDiv);
+		image.src = imageSource;
+		imagePath = imageSource;
+		$("#"+imageText).val(imagePath);
+	}
 }
 function cancelPicture(i){
 	var imageDiv="myImage"+i
 	var imageText="prPhoto"+i
-	$("#"+imageDiv).html('');
-	$("#"+imageText).val('');
+	var imageSource=''
+	var image = document.getElementById(imageDiv);
+	image.src = imageSource;
+	imagePath = imageSource;
+	$("#"+imageText).val(imagePath);
 }
 function setPrProduct(){
 	prProdID_Str=''
@@ -10368,7 +10380,7 @@ function getDocDataprCart(){
 	if(pID!=''){
 		var pName=$("#prName"+pID).html();
 		//alert ('#cartPr_'+pID)
-		cart_list+='<tr style="font-size:14px" id="cartPr_'+pID+'"><td > </br>'+pName+'</br></td><td style="background-color:#E7F1FE"  align="center" width="10%" onClick="removeCarItemPr('+pID+')"><input type="submit" style=" height:50px; background-color:#09C; color:#FFF; font-size:20px" value="  X  " onClick="removeCarItemPr('+pID+')"  /></td></tr>';
+		cart_list+='<tr style="font-size:14px" id="cartPr_'+pID+'"><td > </br>'+pName+'</br></td><td style="background-color:#E7F1FE"  align="center" width="10%" onClick="removeCarItemPr(\''+pID+'\');"><input type="submit" style=" height:50px; background-color:#09C; color:#FFF; font-size:20px" value="  X  " onClick="removeCarItemPr(\''+pID+'\');" /></td></tr>';
 		
 		}	
 	}
@@ -10392,17 +10404,9 @@ function page_prItemPage(){
 	$.afui.loadContent("#page_prItemPage",true,true,'right');
 }
 function removeCarItemPr(product_idGet){	
-	//alert (product_idGet)
-	//product_id=product_idGet.replace('/','')
-	//alert (localStorage.prProdID_Str)
 	campaign_doc_str=localStorage.prProdID_Str
-	
 	cartLength=campaign_doc_str.split('<rd>').length
-	
-	$('#cartPr_'+product_id).remove();
-	
-	//alert (campaign_doc_str)
-	//alert (campaign_doc_str.indexOf(product_id))
+	$("#cartPr_"+product_idGet).remove();
 	if (campaign_doc_str.indexOf(product_id)==0 & cartLength == 1){
 		campaign_doc_str=campaign_doc_str.replace(product_id,'')
 	}
@@ -10416,161 +10420,141 @@ function removeCarItemPr(product_idGet){
 	localStorage.prProdID_Str=campaign_doc_str
 }
 function prescription_submit(){
-	//$("#error_prescription_submit").html("")		
-//	$("#wait_image_prescription").show();
-//	$("#btn_prescription_submit").hide();
-//	
-//	var doctorId=localStorage.visit_client.split('|')[1]	
-//	var doctor_name=localStorage.visit_client.split('|')[0]
-//	
-//	var areaId=localStorage.visit_market_show.split('|')[1]
-//	
-//	var checkOther=$("#checkOther").attr("checked") ? 1 : 0;
-//	
-//	//alert (checkOther)
-//	if (doctor_name==''){		
-//		$("#error_prescription_submit").text("Required Doctor");
-//		$("#wait_image_prescription").show();
-//		$("#btn_prescription_submit").hide();
-//	}else{
-//		
-//		var latitude=$("#lat").val();
-//		var longitude=$("#long").val();		
-//		var pic_no = localStorage.pic_no
-//		var prescriptionPhoto_1=$("#prescriptionPhoto_1").val();
-//		
-//		
-//		localStorage.prescriptionPhoto_1 = prescriptionPhoto_1;
-//		
-//		
-//		
-//		
-//		if (localStorage.pic_no==1){
-//			prescriptionPhoto=$("#prescriptionPhoto_1").val();
-//		}
-//		
-//		
-//		
-//		//prescriptionPhoto='dasdfadf'
-//		//if (prescriptionPhoto==''){
-////			$("#error_prescription_submit").html('Required picture');
-////			$("#wait_image_prescription").hide();
-////			$("#btn_prescription_submit").show();
-////		}else{		
-//			var medicine_1=$("#medicine_1").val();
-//			var medicine_2=$("#medicine_2").val();
-//			var medicine_3=$("#medicine_3").val();
-//			var medicine_4=$("#medicine_4").val();
-//			var medicine_5=$("#medicine_5").val();	
-//			var now = $.now();
-//			var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
-//			//alert (imageName);
-//				
-//				
-//				$("#error_prescription_submittxt").val(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther)							
-//
-//				 $.ajax(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther,{
-//								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
-//								type: 'POST',
-//								timeout: 30000,
-//								error: function(xhr) {
-//											var resultArray = data.split('<SYNCDATA>');
-//											$("#error_prescription_submit").html(resultArray[1]);
-//											$("#wait_image_prescription").hide();
-//											$("#btn_prescription_submit").show();
-//											
-//								},
-//							success:function(data, status,xhr){				
-//
-//								if (status!='success'){
-//									
-//									$("#error_prescription_submit").html('Network timeout. Please ensure you have active internet connection.');
-//									$("#wait_image_prescription").hide();
-//									$("#btn_prescription_submit").show();
-//								}
-//								else{
-//									   var resultArray = data.split('<SYNCDATA>');	
-//										if (resultArray[0]=='FAILED'){						
-//											$("#error_prescription_submit").html(resultArray[1]);
-//											$("#wait_image_prescription").hide();
-//											$("#btn_prescription_submit").show();
-//										}else if (resultArray[0]=='SUCCESS'){									
-//											//var result_string=resultArray[1];
-//											
-//											
-//											//alert (result_string)
-//										
-//											//image upload function									
-//											uploadPhoto(prescriptionPhoto, imageName);
-//											//alert ('0')
-//											//alert (localStorage.pic_no)
-//											if (localStorage.pic_no==1){								
-//												var image2 = document.getElementById('myImagePrescription_2');
-//    											image2.src = localStorage.prescriptionPhoto_2;
-//												$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
-//												
-//												
-//												
-//												//alert (localStorage.pic_no)
-//												localStorage.prescriptionPhoto_1=''
-//												var image1 = document.getElementById('myImagePrescription_1');
-//    											image1.src = localStorage.prescriptionPhoto_1;
-//												$("#prescriptionPhoto_1").val(localStorage.prescriptionPhoto_1)
-//												//$("#prescriptionPhoto_1").val('');
-//												//localStorage.prescriptionPhoto_1=''
-//												
-//											}
-//											
-//											//localStorage.pic_no='';
-//											//$("#campaign_combo_id_lv").empty()
-////											$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
-//											
-//											$("#campCart").empty();
-//											localStorage.campaign_doc_str=""; 
-//											$('#market_combo_id_lv').empty();
-//											$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
-//											$("#itemSearch").val('A')
-//											setProduct();
-//											//searchItem()
-//											
-//											
-//											//alert (localStorage.pic_no)
-//											//localStorage.campaign_doc_str=''
-//											
-//											//alert ('aaaa')
-//											$("#lat").val("");
-//											$("#long").val("");
-//											//alert ('1')
-//											//$("#prescriptionPhoto").val("");
-//											
-//											
-//											$("#medicine_1").val('');
-//											$("#medicine_2").val('');
-//											$("#medicine_3").val('');
-//											$("#medicine_4").val('');
-//											$("#medicine_5").val('');
-//											$("#wait_image_prescription").hide();
-//											$("#btn_prescription_submit").show();
-//
-//											//--------------------------
-//	
-//											
-//
-//											$.afui.loadContent("#page_success",true,true,'right');
-//											
-//											
-//										}else{						
-//											$("#error_prescription_submit").html('Authentication error. Please register and sync to retry.');
-//											$("#wait_image_prescription").hide();
-//											$("#btn_prescription_submit").show();
-//											}
-//								}
-//}
-//						});			 
-//				
-//						
-////		}pic else
-//	}
+	$("#error_prescription_submit").html("")		
+	$("#wait_image_prescription").show();
+	$("#btn_prescription_submit").hide();
+	
+	var doctorId=localStorage.visit_client.split('|')[1]	
+	var doctor_name=localStorage.visit_client.split('|')[0]
+	
+	var areaId=localStorage.visit_market_show.split('|')[1]
+	
+	var checkOther=$("#checkOther").attr("checked") ? 1 : 0;
+	
+	//alert (checkOther)
+	if (doctor_name==''){		
+		$("#error_prescription_submit").text("Required Doctor");
+		$("#wait_image_prescription").show();
+		$("#btn_prescription_submit").hide();
+	}else{
+		
+		var latitude=$("#lat").val();
+		var longitude=$("#long").val();		
+		var picNo = localStorage.picNo
+		var imageDiv="myImage"+picNo
+		var imageText="prPhoto"+picNo
+		var prescriptionPhoto=$("#"+imageText).val();
+		
+		
+		
+		
+		
+		
+		//prescriptionPhoto='dasdfadf'
+		//if (prescriptionPhoto==''){
+//			$("#error_prescription_submit").html('Required picture');
+//			$("#wait_image_prescription").hide();
+//			$("#btn_prescription_submit").show();
+//		}else{		
+			var medicine_1=$("#medicine_1").val();
+			var medicine_2=$("#medicine_2").val();
+			var medicine_3=$("#medicine_3").val();
+			var medicine_4=$("#medicine_4").val();
+			var medicine_5=$("#medicine_5").val();	
+			var now = $.now();
+			var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
+			//alert (imageName);
+				
+				
+				$("#error_prescription_submittxt").val(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther)							
+
+				 $.ajax(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&medicine_1='+medicine_1+'&medicine_2='+medicine_2+'&medicine_3='+medicine_3+'&medicine_4='+medicine_4+'&medicine_5='+medicine_5+'&checkOther='+checkOther,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+											var resultArray = data.split('<SYNCDATA>');
+											$("#error_prescription_submit").html(resultArray[1]);
+											$("#wait_image_prescription").hide();
+											$("#btn_prescription_submit").show();
+											
+								},
+							success:function(data, status,xhr){				
+
+								if (status!='success'){
+									
+									$("#error_prescription_submit").html('Network timeout. Please ensure you have active internet connection.');
+									$("#wait_image_prescription").hide();
+									$("#btn_prescription_submit").show();
+								}
+								else{
+									   var resultArray = data.split('<SYNCDATA>');	
+										if (resultArray[0]=='FAILED'){						
+											$("#error_prescription_submit").html(resultArray[1]);
+											$("#wait_image_prescription").hide();
+											$("#btn_prescription_submit").show();
+										}else if (resultArray[0]=='SUCCESS'){									
+											//var result_string=resultArray[1];
+											
+											
+											//alert (result_string)
+										
+											//image upload function									
+											uploadPhoto(prescriptionPhoto, imageName);
+											//var picNo=parseInt(localStorage.picFlag)+1 
+											
+										
+											imageSource=''
+											var image = document.getElementById(imageDiv);
+											image.src = imageSource;
+											imagePath = imageSource;
+											$("#"+imageText).val(imagePath);
+
+				
+											
+											 
+											$('#market_combo_id_lv').empty();
+											$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
+
+											
+											//alert ('aaaa')
+											$("#lat").val("");
+											$("#long").val("");
+											//alert ('1')
+											//$("#prescriptionPhoto").val("");
+											
+											
+											$("#medicine_1").val('');
+											$("#medicine_2").val('');
+											$("#medicine_3").val('');
+											$("#medicine_4").val('');
+											$("#medicine_5").val('');
+											$("#wait_image_prescription").hide();
+											$("#btn_prescription_submit").show();
+											localStorage.prProdID_Str=''
+											getDocDataprCart()
+											$("#pr_id_lv").empty()
+											setPrProduct()
+
+											//--------------------------
+	
+											
+
+											$.afui.loadContent("#page_success",true,true,'right');
+											
+											
+										}else{						
+											$("#error_prescription_submit").html('Authentication error. Please register and sync to retry.');
+											$("#wait_image_prescription").hide();
+											$("#btn_prescription_submit").show();
+											}
+								}
+}
+						});			 
+				
+						
+//		}pic else
+	}
 $.afui.loadContent("#page_confirm_visit_success",true,true,'right');
 }
 //============================================
@@ -10578,11 +10562,12 @@ function gotoPic(picNo) {
 	var imageDiv="myImage"+picNo
 	var imageText="prPhoto"+picNo
 	
-	//if (pic_no!=localStorage.pic_no){
-//		$("#campaign_combo_id_lv").empty()
-//		setProduct()
-//	}
-	//alert (imageText)
+	if (picNo!=localStorage.picNo){
+		localStorage.prProdID_Str=''
+		getDocDataprCart()
+		$("#pr_id_lv").empty()
+		setPrProduct()
+	}
 	localStorage.picNo=picNo
 	
 	var prPic=$("#"+imageText).val();
@@ -10599,6 +10584,33 @@ function page_prItemPage(){
 	$.afui.loadContent("#page_prItemPage",true,true,'right');
 }
 //========================================
+function uploadPhoto(imageURI, imageName) {
+   // alert (localStorage.photo_submit_url)
+	var options = new FileUploadOptions();
+    options.fileKey="upload";
+    options.fileName=imageName;
+    options.mimeType="image/jpeg";
+	
+    var params = {};
+    params.value1 = "test";
+    params.value2 = "param";
+	
+    options.params = params;
+	options.chunkedMode = false;
+	
+    var ft = new FileTransfer();
+     ft.upload(imageURI, encodeURI(localStorage.photo_submit_url+"fileUploaderPrescription/"),winProfile,failProfile,options);
+	 
+}
+
+function winProfile(r) {
+}
+
+function failProfile(error) {
+	$("#error_prescription_submit").text('Memory Error. Please take new picture and Submit');
+}
+
+
 function takePicture(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
 		quality: 90,
