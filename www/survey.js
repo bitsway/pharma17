@@ -10523,7 +10523,7 @@ function prescription_submit(){
 											//alert ('1')
 											//$("#prescriptionPhoto").val("");
 											
-											
+											$(checkOther).prop('checked', false);
 											$("#medicine_1").val('');
 											$("#medicine_2").val('');
 											$("#medicine_3").val('');
@@ -10531,6 +10531,7 @@ function prescription_submit(){
 											$("#medicine_5").val('');
 											$("#wait_image_prescription").hide();
 											$("#btn_prescription_submit").show();
+											
 											localStorage.prProdID_Str=''
 											getDocDataprCart()
 											$("#pr_id_lv").empty()
