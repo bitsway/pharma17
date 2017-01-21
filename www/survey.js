@@ -10540,7 +10540,7 @@ function prescription_submit(){
 	
 											
 
-											$.afui.loadContent("#page_success",true,true,'right');
+											$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
 											
 											
 										}else{						
@@ -10555,7 +10555,7 @@ function prescription_submit(){
 						
 //		}pic else
 	}
-$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
+//$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
 }
 //============================================
 function gotoPic(picNo) {
