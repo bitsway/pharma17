@@ -98,7 +98,8 @@ $.afui.useOSThemes=false;
 		searchProduct()
 		//bonusCombo()
 		 page_stock()
-				
+		
+		
 		$('#campaign_combo_id_lv').empty();
 		$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
 		$('#sample_combo_id_lv').empty();
@@ -9073,6 +9074,7 @@ function docAddSubmit() {
 	dCAddress=$("#dCAddressAdd").val()
 	dDist=$("#dDistrictAdd").val()
 	dThana=$("#dThanaAdd").val()
+	dMicroUnion=$("#dMicrounion").val()
 	
 	//alert (dCategory)
 	if (dName=='' |  dCategory=='' | dMobile=='' | dCAddress==''){
@@ -9082,9 +9084,10 @@ function docAddSubmit() {
 		//alert ('Mandatory')
 	}
 	else{
-		//alert ('ASAD')
-	$("#doctor_add").val(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
-		$.ajax(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana,{
+	//alert (localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMicroUnion='+encodeURI(dMicroUnion))
+	
+	$("#doctor_add").val(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMicroUnion='+dMicroUnion)
+		$.ajax(localStorage.report_url+'doc_add_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&routeName='+market_name+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana+'&dMicroUnion='+encodeURI(dMicroUnion),{
 
 								type: 'POST',
 								timeout: 30000,
@@ -9862,6 +9865,7 @@ function setPrProduct(){
 				var prArray_A = prList_A[j].split('<fd>');
 				var pr_id_A=prArray_A[0];	
 				var pr_name_A=prArray_A[1];
+				
 				pr_tbl_A=pr_tbl_A+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_A+'\')"  class="name"><font id="prName'+ pr_id_A +'" class="name" >'+ pr_name_A+'</font><input type="hidden" id="doc_pr_id'+pr_id_A+'" value="'+pr_id_A+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_A+'<rd>'
 				}
@@ -9880,8 +9884,9 @@ function setPrProduct(){
 				var prArray_B = prList_B[j].split('<fd>');
 				var pr_id_B=prArray_B[0];	
 				var pr_name_B=prArray_B[1];
-				pr_tbl_B=pr_tbl_B+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_B+'\')"  class="name"><font id=prName"'+ pr_id_B +'" class="name" >'+ pr_name_B+'</font><input type="hidden" id="doc_pr_id'+pr_id_B+'" value="'+pr_id_B+'" > '+'</li>';		
-				//prProdID_Str=prProdID_Str+pr_id_B+'<rd>'
+				
+				pr_tbl_B=pr_tbl_B+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_B+'\')"  class="name"><font id="prName'+ pr_id_B +'" class="name" >'+ pr_name_B+'</font><input type="hidden" id="doc_pr_id'+pr_id_B+'" value="'+pr_id_B+'" > '+'</li>';		
+				//alert ('<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_B+'\')"  class="name"><font id=prName"'+ pr_id_B +'" class="name" >'+ pr_name_B+'</font><input type="hidden" id="doc_pr_id'+pr_id_B+'" value="'+pr_id_B+'" > '+'</li>')
 				}
 		localStorage.pr_tbl_B=pr_tbl_B		
 		$("#pr_id_lv").append(localStorage.pr_tbl_B);	
@@ -9897,8 +9902,10 @@ function setPrProduct(){
 				var prArray_C = prList_C[j].split('<fd>');
 				var pr_id_C=prArray_C[0];	
 				var pr_name_C=prArray_C[1];
-				pr_tbl_C=pr_tbl_C+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_C+'\')"  class="name"><font id=prName"'+ pr_id_C +'" class="name" >'+ pr_name_C+'</font><input type="hidden" id="doc_pr_id'+pr_id_C+'" value="'+pr_id_C+'" > '+'</li>';		
-				//prProdID_Str=prProdID_Str+pr_id_C+'<rd>'
+				
+				pr_tbl_C=pr_tbl_C+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_C+'\')"  class="name"><font id="prName'+ pr_id_C +'" class="name" >'+ pr_name_C+'</font><input type="hidden" id="doc_pr_id'+pr_id_C+'" value="'+pr_id_C+'" > '+'</li>';		
+				var pName=$("#prName"+pr_id_C).html();
+				
 				}
 		localStorage.pr_tbl_C=pr_tbl_C		
 		$("#pr_id_lv").append(localStorage.pr_tbl_C);	
@@ -9914,7 +9921,7 @@ function setPrProduct(){
 				var prArray_D = prList_D[j].split('<fd>');
 				var pr_id_D=prArray_D[0];	
 				var pr_name_D=prArray_D[1];
-				pr_tbl_D=pr_tbl_D+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_D+'\')"  class="name"><font id=prName"'+ pr_id_D +'" class="name" >'+ pr_name_D+'</font><input type="hidden" id="doc_pr_id'+pr_id_D+'" value="'+pr_id_D+'" > '+'</li>';		
+				pr_tbl_D=pr_tbl_D+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_D+'\')"  class="name"><font id="prName'+ pr_id_D +'" class="name" >'+ pr_name_D+'</font><input type="hidden" id="doc_pr_id'+pr_id_D+'" value="'+pr_id_D+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_D+'<rd>'
 				}
 		localStorage.pr_tbl_D=pr_tbl_D		
@@ -9931,7 +9938,7 @@ function setPrProduct(){
 				var prArray_E = prList_E[j].split('<fd>');
 				var pr_id_E=prArray_E[0];	
 				var pr_name_E=prArray_E[1];
-				pr_tbl_E=pr_tbl_E+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_E+'\')"  class="name"><font id=prName"'+ pr_id_E +'" class="name" >'+ pr_name_E+'</font><input type="hidden" id="doc_pr_id'+pr_id_E+'" value="'+pr_id_E+'" > '+'</li>';	
+				pr_tbl_E=pr_tbl_E+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_E+'\')"  class="name"><font id="prName'+ pr_id_E +'" class="name" >'+ pr_name_E+'</font><input type="hidden" id="doc_pr_id'+pr_id_E+'" value="'+pr_id_E+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_E+'<rd>'	
 				}
 		localStorage.pr_tbl_E=pr_tbl_E		
@@ -9948,7 +9955,7 @@ function setPrProduct(){
 				var prArray_F = prList_F[j].split('<fd>');
 				var pr_id_F=prArray_F[0];	
 				var pr_name_F=prArray_F[1];
-				pr_tbl_F=pr_tbl_F+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_F+'\')"  class="name"><font id=prName"'+ pr_id_F +'" class="name" >'+ pr_name_F+'</font><input type="hidden" id="doc_pr_id'+pr_id_F+'" value="'+pr_id_F+'" > '+'</li>';		
+				pr_tbl_F=pr_tbl_F+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_F+'\')"  class="name"><font id="prName'+ pr_id_F +'" class="name" >'+ pr_name_F+'</font><input type="hidden" id="doc_pr_id'+pr_id_F+'" value="'+pr_id_F+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_F+'<rd>'
 				}
 		localStorage.pr_tbl_F=pr_tbl_F		
@@ -9964,7 +9971,7 @@ function setPrProduct(){
 				var prArray_G = prList_G[j].split('<fd>');
 				var pr_id_G=prArray_G[0];	
 				var pr_name_G=prArray_G[1];
-				pr_tbl_G=pr_tbl_G+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_G+'\')"  class="name"><font id=prName"'+ pr_id_G +'" class="name" >'+ pr_name_G+'</font><input type="hidden" id="doc_pr_id'+pr_id_G+'" value="'+pr_id_G+'" > '+'</li>';		
+				pr_tbl_G=pr_tbl_G+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_G+'\')"  class="name"><font id="prName'+ pr_id_G +'" class="name" >'+ pr_name_G+'</font><input type="hidden" id="doc_pr_id'+pr_id_G+'" value="'+pr_id_G+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_G+'<rd>'
 				}
 		localStorage.pr_tbl_G=pr_tbl_G		
@@ -9981,7 +9988,7 @@ function setPrProduct(){
 				var prArray_H = prList_H[j].split('<fd>');
 				var pr_id_H=prArray_H[0];	
 				var pr_name_H=prArray_H[1];
-				pr_tbl_H=pr_tbl_H+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_H+'\')"  class="name"><font id=prName"'+ pr_id_H +'" class="name" >'+ pr_name_H+'</font><input type="hidden" id="doc_pr_id'+pr_id_H+'" value="'+pr_id_H+'" > '+'</li>';		
+				pr_tbl_H=pr_tbl_H+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_H+'\')"  class="name"><font id="prName'+ pr_id_H +'" class="name" >'+ pr_name_H+'</font><input type="hidden" id="doc_pr_id'+pr_id_H+'" value="'+pr_id_H+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_H+'<rd>'
 				}
 		localStorage.pr_tbl_H=pr_tbl_H		
@@ -9999,7 +10006,7 @@ function setPrProduct(){
 				var prArray_I = prList_I[j].split('<fd>');
 				var pr_id_I=prArray_I[0];	
 				var pr_name_I=prArray_I[1];
-				pr_tbl_I=pr_tbl_I+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_I+'\')"  class="name"><font id=prName"'+ pr_id_I +'" class="name" >'+ pr_name_I+'</font><input type="hidden" id="doc_pr_id'+pr_id_I+'" value="'+pr_id_I+'" > '+'</li>';	
+				pr_tbl_I=pr_tbl_I+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_I+'\')"  class="name"><font id="prName'+ pr_id_I +'" class="name" >'+ pr_name_I+'</font><input type="hidden" id="doc_pr_id'+pr_id_I+'" value="'+pr_id_I+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_I+'<rd>'	
 				}
 		localStorage.pr_tbl_I=pr_tbl_I		
@@ -10016,7 +10023,7 @@ function setPrProduct(){
 				var prArray_J = prList_J[j].split('<fd>');
 				var pr_id_J=prArray_J[0];	
 				var pr_name_J=prArray_J[1];
-				pr_tbl_J=pr_tbl_J+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_J+'\')"  class="name"><font id=prName"'+ pr_id_J +'" class="name" >'+ pr_name_J+'</font><input type="hidden" id="doc_pr_id'+pr_id_J+'" value="'+pr_id_J+'" > '+'</li>';	
+				pr_tbl_J=pr_tbl_J+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_J+'\')"  class="name"><font id="prName'+ pr_id_J +'" class="name" >'+ pr_name_J+'</font><input type="hidden" id="doc_pr_id'+pr_id_J+'" value="'+pr_id_J+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_J+'<rd>'	
 				}
 		localStorage.pr_tbl_J=pr_tbl_J		
@@ -10033,7 +10040,7 @@ function setPrProduct(){
 				var prArray_K = prList_K[j].split('<fd>');
 				var pr_id_K=prArray_K[0];	
 				var pr_name_K=prArray_K[1];
-				pr_tbl_K=pr_tbl_K+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_K+'\')"  class="name"><font id=prName"'+ pr_id_K +'" class="name" >'+ pr_name_K+'</font><input type="hidden" id="doc_pr_id'+pr_id_K+'" value="'+pr_id_K+'" > '+'</li>';	
+				pr_tbl_K=pr_tbl_K+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_K+'\')"  class="name"><font id="prName'+ pr_id_K +'" class="name" >'+ pr_name_K+'</font><input type="hidden" id="doc_pr_id'+pr_id_K+'" value="'+pr_id_K+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_K+'<rd>'	
 				}
 		localStorage.pr_tbl_K=pr_tbl_K		
@@ -10050,7 +10057,7 @@ function setPrProduct(){
 				var prArray_L = prList_L[j].split('<fd>');
 				var pr_id_L=prArray_L[0];	
 				var pr_name_L=prArray_L[1];
-				pr_tbl_L=pr_tbl_L+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_L+'\')"  class="name"><font id=prName"'+ pr_id_L +'" class="name" >'+ pr_name_L+'</font><input type="hidden" id="doc_pr_id'+pr_id_L+'" value="'+pr_id_L+'" > '+'</li>';	
+				pr_tbl_L=pr_tbl_L+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_L+'\')"  class="name"><font id="prName'+ pr_id_L +'" class="name" >'+ pr_name_L+'</font><input type="hidden" id="doc_pr_id'+pr_id_L+'" value="'+pr_id_L+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_L+'<rd>'	
 				}
 		localStorage.pr_tbl_L=pr_tbl_L	
@@ -10066,7 +10073,7 @@ function setPrProduct(){
 				var prArray_M = prList_M[j].split('<fd>');
 				var pr_id_M=prArray_M[0];	
 				var pr_name_M=prArray_M[1];
-				pr_tbl_M=pr_tbl_M+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_M+'\')"  class="name"><font id=prName"'+ pr_id_M +'" class="name" >'+ pr_name_M+'</font><input type="hidden" id="doc_pr_id'+pr_id_M+'" value="'+pr_id_M+'" > '+'</li>';		
+				pr_tbl_M=pr_tbl_M+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_M+'\')"  class="name"><font id="prName'+ pr_id_M +'" class="name" >'+ pr_name_M+'</font><input type="hidden" id="doc_pr_id'+pr_id_M+'" value="'+pr_id_M+'" > '+'</li>';		
 				prProdID_Str=prProdID_Str+pr_id_M+'<rd>'
 				}
 		localStorage.pr_tbl_M=pr_tbl_M	
@@ -10083,7 +10090,7 @@ function setPrProduct(){
 				var prArray_N = prList_N[j].split('<fd>');
 				var pr_id_N=prArray_N[0];	
 				var pr_name_N=prArray_N[1];
-				pr_tbl_N=pr_tbl_N+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_N+'\')"  class="name"><font id=prName"'+ pr_id_N +'" class="name" >'+ pr_name_N+'</font><input type="hidden" id="doc_pr_id'+pr_id_N+'" value="'+pr_id_N+'" > '+'</li>';	
+				pr_tbl_N=pr_tbl_N+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_N+'\')"  class="name"><font id="prName'+ pr_id_N +'" class="name" >'+ pr_name_N+'</font><input type="hidden" id="doc_pr_id'+pr_id_N+'" value="'+pr_id_N+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_N+'<rd>'	
 				}
 		localStorage.pr_tbl_N=pr_tbl_N	
@@ -10099,7 +10106,7 @@ function setPrProduct(){
 				var prArray_O = prList_O[j].split('<fd>');
 				var pr_id_O=prArray_O[0];	
 				var pr_name_O=prArray_O[1];
-				pr_tbl_O=pr_tbl_O+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_O+'\')"  class="name"><font id=prName"'+ pr_id_O +'" class="name" >'+ pr_name_O+'</font><input type="hidden" id="doc_pr_id'+pr_id_O+'" value="'+pr_id_O+'" > '+'</li>';		
+				pr_tbl_O=pr_tbl_O+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_O+'\')"  class="name"><font id="prName'+ pr_id_O +'" class="name" >'+ pr_name_O+'</font><input type="hidden" id="doc_pr_id'+pr_id_O+'" value="'+pr_id_O+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_O+'<rd>'
 				}
 		localStorage.pr_tbl_O=pr_tbl_O
@@ -10115,7 +10122,7 @@ function setPrProduct(){
 				var prArray_P = prList_P[j].split('<fd>');
 				var pr_id_P=prArray_P[0];	
 				var pr_name_P=prArray_P[1];
-				pr_tbl_P=pr_tbl_P+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_P+'\')"  class="name"><font id=prName"'+ pr_id_P +'" class="name" >'+ pr_name_P+'</font><input type="hidden" id="doc_pr_id'+pr_id_P+'" value="'+pr_id_P+'" > '+'</li>';	
+				pr_tbl_P=pr_tbl_P+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_P+'\')"  class="name"><font id="prName'+ pr_id_P +'" class="name" >'+ pr_name_P+'</font><input type="hidden" id="doc_pr_id'+pr_id_P+'" value="'+pr_id_P+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_P+'<rd>'	
 				}
 		localStorage.pr_tbl_P=pr_tbl_P
@@ -10131,7 +10138,7 @@ function setPrProduct(){
 				var prArray_Q = prList_Q[j].split('<fd>');
 				var pr_id_Q=prArray_Q[0];	
 				var pr_name_Q=prArray_Q[1];
-				pr_tbl_Q=pr_tbl_Q+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Q+'\')"  class="name"><font id=prName"'+ pr_id_Q +'" class="name" >'+ pr_name_Q+'</font><input type="hidden" id="doc_pr_id'+pr_id_Q+'" value="'+pr_id_Q+'" > '+'</li>';	
+				pr_tbl_Q=pr_tbl_Q+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Q+'\')"  class="name"><font id="prName'+ pr_id_Q +'" class="name" >'+ pr_name_Q+'</font><input type="hidden" id="doc_pr_id'+pr_id_Q+'" value="'+pr_id_Q+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_Q+'<rd>'	
 				}
 		localStorage.pr_tbl_Q=pr_tbl_Q
@@ -10147,7 +10154,7 @@ function setPrProduct(){
 				var prArray_R = prList_R[j].split('<fd>');
 				var pr_id_R=prArray_R[0];	
 				var pr_name_R=prArray_R[1];
-				pr_tbl_R=pr_tbl_R+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_R+'\')"  class="name"><font id=prName"'+ pr_id_R +'" class="name" >'+ pr_name_R+'</font><input type="hidden" id="doc_pr_id'+pr_id_R+'" value="'+pr_id_R+'" > '+'</li>';		
+				pr_tbl_R=pr_tbl_R+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_R+'\')"  class="name"><font id="prName'+ pr_id_R +'" class="name" >'+ pr_name_R+'</font><input type="hidden" id="doc_pr_id'+pr_id_R+'" value="'+pr_id_R+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_R+'<rd>'
 				}
 		localStorage.pr_tbl_R=pr_tbl_R
@@ -10163,7 +10170,7 @@ function setPrProduct(){
 				var prArray_S = prList_S[j].split('<fd>');
 				var pr_id_S=prArray_S[0];	
 				var pr_name_S=prArray_S[1];
-				pr_tbl_S=pr_tbl_S+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_S+'\')"  class="name"><font id=prName"'+ pr_id_S +'" class="name" >'+ pr_name_S+'</font><input type="hidden" id="doc_pr_id'+pr_id_S+'" value="'+pr_id_S+'" > '+'</li>';	
+				pr_tbl_S=pr_tbl_S+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_S+'\')"  class="name"><font id="prName'+ pr_id_S +'" class="name" >'+ pr_name_S+'</font><input type="hidden" id="doc_pr_id'+pr_id_S+'" value="'+pr_id_S+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_S+'<rd>'	
 				}
 		localStorage.pr_tbl_S=pr_tbl_S
@@ -10179,7 +10186,7 @@ function setPrProduct(){
 				var prArray_T = prList_T[j].split('<fd>');
 				var pr_id_T=prArray_T[0];	
 				var pr_name_T=prArray_T[1];
-				pr_tbl_T=pr_tbl_T+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_T+'\')"  class="name"><font id=prName"'+ pr_id_T +'" class="name" >'+ pr_name_T+'</font><input type="hidden" id="doc_pr_id'+pr_id_T+'" value="'+pr_id_T+'" > '+'</li>';		
+				pr_tbl_T=pr_tbl_T+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_T+'\')"  class="name"><font id="prName'+ pr_id_T +'" class="name" >'+ pr_name_T+'</font><input type="hidden" id="doc_pr_id'+pr_id_T+'" value="'+pr_id_T+'" > '+'</li>';		
 				//prProdID_Str=prProdID_Str+pr_id_T+'<rd>'
 				}
 		localStorage.pr_tbl_T=pr_tbl_T
@@ -10195,7 +10202,7 @@ function setPrProduct(){
 				var prArray_U = prList_U[j].split('<fd>');
 				var pr_id_U=prArray_U[0];	
 				var pr_name_U=prArray_U[1];
-				pr_tbl_U=pr_tbl_U+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_U+'\')"  class="name"><font id=prName"'+ pr_id_U +'" class="name" >'+ pr_name_U+'</font><input type="hidden" id="doc_pr_id'+pr_id_U+'" value="'+pr_id_U+'" > '+'</li>';	
+				pr_tbl_U=pr_tbl_U+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_U+'\')"  class="name"><font id="prName'+ pr_id_U +'" class="name" >'+ pr_name_U+'</font><input type="hidden" id="doc_pr_id'+pr_id_U+'" value="'+pr_id_U+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_U+'<rd>'	
 				}
 		localStorage.pr_tbl_U=pr_tbl_U
@@ -10211,7 +10218,7 @@ function setPrProduct(){
 				var prArray_V = prList_V[j].split('<fd>');
 				var pr_id_V=prArray_V[0];	
 				var pr_name_V=prArray_V[1];
-				pr_tbl_V=pr_tbl_V+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_V+'\')"  class="name"><font id=prName"'+ pr_id_V +'" class="name" >'+ pr_name_V+'</font><input type="hidden" id="doc_pr_id'+pr_id_V+'" value="'+pr_id_V+'" > '+'</li>';	
+				pr_tbl_V=pr_tbl_V+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_V+'\')"  class="name"><font id="prName'+ pr_id_V +'" class="name" >'+ pr_name_V+'</font><input type="hidden" id="doc_pr_id'+pr_id_V+'" value="'+pr_id_V+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_V+'<rd>'	
 				}
 		localStorage.pr_tbl_V=pr_tbl_V
@@ -10227,7 +10234,7 @@ function setPrProduct(){
 				var prArray_W = prList_W[j].split('<fd>');
 				var pr_id_W=prArray_W[0];	
 				var pr_name_W=prArray_W[1];
-				pr_tbl_W=pr_tbl_W+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_W+'\')"  class="name"><font id=prName"'+ pr_id_W +'" class="name" >'+ pr_name_W+'</font><input type="hidden" id="doc_pr_id'+pr_id_W+'" value="'+pr_id_W+'" > '+'</li>';	
+				pr_tbl_W=pr_tbl_W+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_W+'\')"  class="name"><font id="prName'+ pr_id_W +'" class="name" >'+ pr_name_W+'</font><input type="hidden" id="doc_pr_id'+pr_id_W+'" value="'+pr_id_W+'" > '+'</li>';	
 				prProdID_Str=prProdID_Str+pr_id_W+'<rd>'	
 				}
 		//localStorage.pr_tbl_W=pr_tbl_W
@@ -10244,7 +10251,7 @@ function setPrProduct(){
 				var prArray_X = prList_X[j].split('<fd>');
 				var pr_id_X=prArray_X[0];	
 				var pr_name_X=prArray_X[1];
-				pr_tbl_X=pr_tbl_X+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_X+'\')"  class="name"><font id=prName"'+ pr_id_X +'" class="name" >'+ pr_name_X+'</font><input type="hidden" id="doc_pr_id'+pr_id_X+'" value="'+pr_id_X+'" > '+'</li>';	
+				pr_tbl_X=pr_tbl_X+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_X+'\')"  class="name"><font id="prName'+ pr_id_X +'" class="name" >'+ pr_name_X+'</font><input type="hidden" id="doc_pr_id'+pr_id_X+'" value="'+pr_id_X+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_X+'<rd>'	
 				}
 		localStorage.pr_tbl_X=pr_tbl_X
@@ -10261,7 +10268,7 @@ function setPrProduct(){
 				var prArray_Y = prList_Y[j].split('<fd>');
 				var pr_id_Y=prArray_Y[0];	
 				var pr_name_Y=prArray_Y[1];
-				pr_tbl_Y=pr_tbl_Y+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Y+'\')"  class="name"><font id=prName"'+ pr_id_Y +'" class="name" >'+ pr_name_Y+'</font><input type="hidden" id="doc_pr_id'+pr_id_Y+'" value="'+pr_id_Y+'" > '+'</li>';	
+				pr_tbl_Y=pr_tbl_Y+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Y+'\')"  class="name"><font id="prName'+ pr_id_Y +'" class="name" >'+ pr_name_Y+'</font><input type="hidden" id="doc_pr_id'+pr_id_Y+'" value="'+pr_id_Y+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_Y+'<rd>'	
 				}
 		localStorage.pr_tbl_Y=pr_tbl_Y
@@ -10277,7 +10284,7 @@ function setPrProduct(){
 				var prArray_Z = prList_Z[j].split('<fd>');
 				var pr_id_Z=prArray_Z[0];	
 				var pr_name_Z=prArray_Z[1];
-				pr_tbl_Z=pr_tbl_Z+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Z+'\')"  class="name"><font id=prName"'+ pr_id_Z +'" class="name" >'+ pr_name_Z+'</font><input type="hidden" id="doc_pr_id'+pr_id_Z+'" value="'+pr_id_Z+'" > '+'</li>';	
+				pr_tbl_Z=pr_tbl_Z+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_Z+'\')"  class="name"><font id="prName'+ pr_id_Z +'" class="name" >'+ pr_name_Z+'</font><input type="hidden" id="doc_pr_id'+pr_id_Z+'" value="'+pr_id_Z+'" > '+'</li>';	
 				//prProdID_Str=prProdID_Str+pr_id_Z+'<rd>'	
 				}
 		localStorage.pr_tbl_Z=pr_tbl_Z
@@ -10385,8 +10392,8 @@ function getDocDataprCart(){
 	//alert (pID)
 	if(pID!=''){
 		var pName=$("#prName"+pID).html();
-		//alert ('#cartPr_'+pID)
-		cart_list+='<tr style="font-size:14px" id="cartPr_'+pID+'"><td > </br>'+pName+'</br></td><td style="background-color:#E7F1FE"  align="center" width="10%" onClick="removeCarItemPr(\''+pID+'\');"><input type="submit" style=" height:50px; background-color:#09C; color:#FFF; font-size:20px" value="  X  " onClick="removeCarItemPr(\''+pID+'\');" /></td></tr>';
+		//alert ("#prName"+pID)
+		cart_list+='<tr style="font-size:14px" id="cartPr_'+pID+'"><td > </br>'+pName+'</br></td><td style="background-color:#E7F1FE"  align="center" width="10%" onClick="removeCarItemPr(\''+pID+'\');"><img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="removeCarItemPr(\''+pID+'\');"> </td></tr>';
 		
 		}	
 	}
@@ -10413,17 +10420,20 @@ function removeCarItemPr(product_idGet){
 	campaign_doc_str=localStorage.prProdID_Str
 	cartLength=campaign_doc_str.split('<rd>').length
 	$("#cartPr_"+product_idGet).remove();
-	if (campaign_doc_str.indexOf(product_id)==0 & cartLength == 1){
-		campaign_doc_str=campaign_doc_str.replace(product_id,'')
+	//alert (localStorage.prProdID_Str)
+	if (campaign_doc_str.indexOf(product_idGet)==0 & cartLength == 1){
+		campaign_doc_str=campaign_doc_str.replace(product_idGet,'')
 	}
-	else if (campaign_doc_str.indexOf(product_id)==0 & cartLength > 1){
-		campaign_doc_str=campaign_doc_str.replace(product_id+"<rd>",'')
+	else if (campaign_doc_str.indexOf(product_idGet)==0 & cartLength > 1){
+		campaign_doc_str=campaign_doc_str.replace(product_idGet+"<rd>",'')
 	}
-	else if (campaign_doc_str.indexOf(product_id)>0 & cartLength > 1){
-		campaign_doc_str=campaign_doc_str.replace("<rd>"+product_id,'')
+	else if (campaign_doc_str.indexOf(product_idGet)>0 & cartLength > 1){
+		campaign_doc_str=campaign_doc_str.replace("<rd>"+product_idGet,'')
 	}
 		
 	localStorage.prProdID_Str=campaign_doc_str
+	
+	//alert (localStorage.prProdID_Str)
 }
 function prescription_submit(){
 	$("#error_prescription_submit").html("")		

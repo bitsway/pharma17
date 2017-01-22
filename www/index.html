@@ -1360,7 +1360,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                    </td>
                     <td ></td>
                   </tr>
-                  
+                  <tr>
+                    <td>MicroUnion</td>
+                     <td>:</td>
+                    <td><input type="text" name="dMicrounion"  maxlength="50"  id="dMicrounion" placeholder="MicroUnion"  >
+                   </td>
+                    <td ></td>
+                  </tr>
                 </table>
                 <img id="wait_image_docAdd" style="width:50px" src="loading.gif" alt="">	
 			<div id="myerror_doctor_add" style="color:#C00"></div>
@@ -3835,363 +3841,430 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
   <div class="view" id="page_PrescriptionCaptureView">
         <div class="pages">
-         <header> <h1 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Prescription Capture</h1></header> 
+         <header>  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td >&nbsp;&nbsp;<img src="camera.png" width="40" height="40" alt="TakePic" onClick="takePicture()"></td>
+                        <td align="center" >Prescription </td>
+                        </tr>
+                        </table>
+            </header> 
             <div class="panel" id="page_PrescriptionCapture">
             
             <!--<img src="refresh.png" width="70" height="70" alt="TakePic" onClick="setPicture()">-->
             </br></br></br>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td ><img src="camera.png" width="70" height="70" alt="TakePic" onClick="takePicture()"></td>
-                        <td > </td>
-                        </tr>
-                        <tr>
+                <table style="background-color:#EDFEED" width="100%" border="1" cellpadding="0" cellspacing="0" style=" border:hidden">
+                      
+                        <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage1"  onClick="gotoPic(1);">
+                        <img  width="100" height="100" alt="Image" id="myImage1"  onClick="gotoPic(1);">
                         <input name="prPhoto1" id="prPhoto1" type="hidden" value="" >
                         </td>
-                         <td >  <input type="submit"  onClick="cancelPicture(1);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   />
+                        <td width="10%" align="center" style="border-left:hidden" >   <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(1);">
+                         <!--<input type="submit"  onClick="cancelPicture(1);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   />-->
                          </td>
-                        <tr>
-                        <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage2" onClick="gotoPic(2);" >
+                         </tr>
+                        <tr height="50px"  >
+                        
+                        <td > 
+                        <img  width="100" height="100" alt="Image" id="myImage2" onClick="gotoPic(2);" >
                         <input name="prPhoto2" id="prPhoto2" type="hidden" value="" >
                          </td>
-                          <td > <input type="submit"  onClick="cancelPicture(2);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
-                        <tr>
-                        <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage3" onClick="gotoPic(3);">
+                          <td align="center" style="border-left:hidden"> 
+                          <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(2);">
+                          <!--<input type="submit"  onClick="cancelPicture(2);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>-->
+                        </tr>
+                        <tr height="50px"  >
+                        <td > 
+                        <img  width="100" height="100" alt="Image" id="myImage3" onClick="gotoPic(3);">
                         <input name="prPhoto3" id="prPhoto3" type="hidden" value="" >
                          </td>
-                          <td > <input type="submit"  onClick="cancelPicture(3);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
-                        <tr>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(3);"> <!--<input type="submit"  onClick="cancelPicture(3);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
+                        </tr>
+                        <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage4" onClick="gotoPic(4);">
+                        <img  width="100" height="100" alt="Image" id="myImage4" onClick="gotoPic(4);">
                         <input name="prPhoto4" id="prPhoto4" type="hidden" value="" >
                          </td>
-                          <td ><input type="submit"  onClick="cancelPicture(4);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
-                        <tr>
+                          <td align="center" style="border-left:hidden" > 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(4);">
+                         <!--<input type="submit"  onClick="cancelPicture(4);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
+                        </tr>
+                        <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage5" onClick="gotoPic(5);">
+                        <img  width="100" height="100" alt="Image" id="myImage5" onClick="gotoPic(5);">
                         <input name="prPhoto5" id="prPhoto5" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(5);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(5);">
+                         <!-- <input type="submit"  onClick="cancelPicture(5);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage6" onClick="gotoPic(6);">
+                        <img  width="100" height="100" alt="Image" id="myImage6" onClick="gotoPic(6);">
                         <input name="prPhoto6" id="prPhoto6" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(6);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(6);">
+                         <!-- <input type="submit"  onClick="cancelPicture(6);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage7" onClick="gotoPic(7);">
+                        <img  width="100" height="100" alt="Image" id="myImage7" onClick="gotoPic(7);">
                         <input name="prPhoto7" id="prPhoto7" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(7);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                        <td align="center" style="border-left:hidden" > 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(7);">
+                         <!--<input type="submit"  onClick="cancelPicture(7);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage8" onClick="gotoPic(8);">
+                        <img  width="100" height="100" alt="Image" id="myImage8" onClick="gotoPic(8);">
                         <input name="prPhoto8" id="prPhoto8" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(8);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(8);"> <!--<input type="submit"  onClick="cancelPicture(8);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage9" onClick="gotoPic(9);">
+                        <img  width="100" height="100" alt="Image" id="myImage9" onClick="gotoPic(9);">
                         <input name="prPhoto9" id="prPhoto9" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(9);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(9);"> <!--<input type="submit"  onClick="cancelPicture(9);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage10" onClick="gotoPic(10);">
+                        <img  width="100" height="100" alt="Image" id="myImage10" onClick="gotoPic(10);">
                         <input name="prPhoto10" id="prPhoto10" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(10);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(10);">
+                         <!--<input type="submit"  onClick="cancelPicture(10);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage11" onClick="gotoPic(11);">
+                        <img  width="100" height="100" alt="Image" id="myImage11" onClick="gotoPic(11);">
                         <input name="prPhoto11" id="prPhoto11" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(11);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(11);">
+                          <!--<input type="submit"  onClick="cancelPicture(11);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage12" onClick="gotoPic(12);">
+                        <img  width="100" height="100" alt="Image" id="myImage12" onClick="gotoPic(12);">
                         <input name="prPhoto1" id="prPhoto5" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(12);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(12);">
+                          <!--<input type="submit"  onClick="cancelPicture(12);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage13" onClick="gotoPic(13);">
+                        <img  width="100" height="100" alt="Image" id="myImage13" onClick="gotoPic(13);">
                         <input name="prPhoto13" id="prPhoto13" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(13);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(13);">
+                         <!--<input type="submit"  onClick="cancelPicture(13);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage14" onClick="gotoPic(14);">
+                        <img  width="100" height="100" alt="Image" id="myImage14" onClick="gotoPic(14);">
                         <input name="prPhoto14" id="prPhoto14" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(14);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(14);">
+                         <!-- <input type="submit"  onClick="cancelPicture(14);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage15" onClick="gotoPic(15);">
+                        <img  width="100" height="100" alt="Image" id="myImage15" onClick="gotoPic(15);">
                         <input name="prPhoto15" id="prPhoto15" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(15);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(15);"> 
+                         <!--<input type="submit"  onClick="cancelPicture(15);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage16" onClick="gotoPic(16);">
+                        <img  width="100" height="100" alt="Image" id="myImage16" onClick="gotoPic(16);">
                         <input name="prPhoto16" id="prPhoto16" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(16);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(16);">
+                          <!--<input type="submit"  onClick="cancelPicture(16);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                     <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage17" onClick="gotoPic(17);">
+                        <img  width="100" height="100" alt="Image" id="myImage17" onClick="gotoPic(17);">
                         <input name="prPhoto17" id="prPhoto17" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(17);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(17);">
+                         <!--<input type="submit"  onClick="cancelPicture(17);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage18" onClick="gotoPic(18);">
+                        <img  width="100" height="100" alt="Image" id="myImage18" onClick="gotoPic(18);">
                         <input name="prPhoto18" id="prPhoto18" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(18);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture18);">
+                          <!--<input type="submit"  onClick="cancelPicture(18);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage19" onClick="gotoPic(19);">
+                        <img  width="100" height="100" alt="Image" id="myImage19" onClick="gotoPic(19);">
                         <input name="prPhoto19" id="prPhoto9" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(19);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(19);">
+                         <!--<input type="submit"  onClick="cancelPicture(19);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage20" onClick="gotoPic(20);">
+                        <img  width="100" height="100" alt="Image" id="myImage20" onClick="gotoPic(20);">
                         <input name="prPhoto20" id="prPhoto20" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(20);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(20);">
+                         <!-- <input type="submit"  onClick="cancelPicture(20);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /--></td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage21" onClick="gotoPic(21);">
+                        <img  width="100" height="100" alt="Image" id="myImage21" onClick="gotoPic(21);">
                         <input name="prPhoto21" id="prPhoto21" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(21);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:21px" value=" X "   /</td>
+                         
+                          <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(21);">
+                         <!--<input type="submit"  onClick="cancelPicture(21);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:21px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage22" onClick="gotoPic(22);">
+                        <img  width="100" height="100" alt="Image" id="myImage22" onClick="gotoPic(22);">
                         <input name="prPhoto22" id="prPhoto22" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(22);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                        
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(22);">
+                         <!--<input type="submit"  onClick="cancelPicture(22);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   >-->
+                         
+                         </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage23" onClick="gotoPic(23);">
+                        <img  width="100" height="100" alt="Image" id="myImage23" onClick="gotoPic(23);">
                         <input name="prPhoto23" id="prPhoto23" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(23);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(23);">
+                          <!--<input type="submit"  onClick="cancelPicture(23);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   >-->
+                          </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage24" onClick="gotoPic(24);">
+                        <img  width="100" height="100" alt="Image" id="myImage24" onClick="gotoPic(24);">
                         <input name="prPhoto24" id="prPhoto24" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(24);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(24);">
+                         <!--<input type="submit"  onClick="cancelPicture(24);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                         </td>
                       </tr>
-                      <tr>
+                      <tr height="50px"  >
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage25" onClick="gotoPic(25);">
+                        <img  width="100" height="100" alt="Image" id="myImage25" onClick="gotoPic(25);">
                         <input name="prPhoto25" id="prPhoto25" type="hidden" value="" >
                         </td>
-                         <td > <input type="submit"  onClick="cancelPicture(25);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
+                         <td align="center" style="border-left:hidden"> 
+                         <img  src="cancel.png" width="20" height="20" alt="X" id="myImage1"  onClick="cancelPicture(25);">
+                        <!-- <input type="submit"  onClick="cancelPicture(25);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /-->
+                        </td>
                       </tr>
-                      <tr>
+                      <!--<tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage26" onClick="gotoPic(26);">
+                        <img  width="100" height="100" alt="Image" id="myImage26" onClick="gotoPic(26);">
                         <input name="prPhoto26" id="prPhoto26" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(26);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage27" onClick="gotoPic(27);">
+                        <img  width="100" height="100" alt="Image" id="myImage27" onClick="gotoPic(27);">
                         <input name="prPhoto1" id="prPhoto5" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(27);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage28" onClick="gotoPic(28);">
+                        <img  width="100" height="100" alt="Image" id="myImage28" onClick="gotoPic(28);">
                         <input name="prPhoto28" id="prPhoto28" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(28);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage29" onClick="gotoPic(29);">
+                        <img  width="100" height="100" alt="Image" id="myImage29" onClick="gotoPic(29);">
                         <input name="prPhoto29" id="prPhoto29" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(29);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage30" onClick="gotoPic(30);">
+                        <img  width="100" height="100" alt="Image" id="myImage30" onClick="gotoPic(30);">
                         <input name="prPhoto30" id="prPhoto30" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(30);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage31" onClick="gotoPic(31);">
+                        <img  width="100" height="100" alt="Image" id="myImage31" onClick="gotoPic(31);">
                         <input name="prPhoto31" id="prPhoto31" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(31);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage32" onClick="gotoPic(32);">
+                        <img  width="100" height="100" alt="Image" id="myImage32" onClick="gotoPic(32);">
                         <input name="prPhoto32" id="prPhoto32" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(32);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage33" onClick="gotoPic(33);">
+                        <img  width="100" height="100" alt="Image" id="myImage33" onClick="gotoPic(33);">
                         <input name="prPhoto33" id="prPhoto33" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(33);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage34" onClick="gotoPic(34);">
+                        <img  width="100" height="100" alt="Image" id="myImage34" onClick="gotoPic(34);">
                         <input name="prPhoto34" id="prPhoto34" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(34);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage35" onClick="gotoPic(35);">
+                        <img  width="100" height="100" alt="Image" id="myImage35" onClick="gotoPic(35);">
                         <input name="prPhoto35" id="prPhoto35" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(35);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage36" onClick="gotoPic(36);">
+                        <img  width="100" height="100" alt="Image" id="myImage36" onClick="gotoPic(36);">
                         <input name="prPhoto36" id="prPhoto36" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(36);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage37" onClick="gotoPic(37);">
+                        <img  width="100" height="100" alt="Image" id="myImage37" onClick="gotoPic(37);">
                         <input name="prPhoto37" id="prPhoto37" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(37);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage38" onClick="gotoPic(38);">
+                        <img  width="100" height="100" alt="Image" id="myImage38" onClick="gotoPic(38);">
                         <input name="prPhoto38" id="prPhoto38" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(38);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage39" onClick="gotoPic(39);">
+                        <img  width="100" height="100" alt="Image" id="myImage39" onClick="gotoPic(39);">
                         <input name="prPhoto39" id="prPhoto39" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(39);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage40" onClick="gotoPic(40);">
+                        <img  width="100" height="100" alt="Image" id="myImage40" onClick="gotoPic(40);">
                         <input name="prPhoto40" id="prPhoto40" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(40);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage41" onClick="gotoPic(41);">
+                        <img  width="100" height="100" alt="Image" id="myImage41" onClick="gotoPic(41);">
                         <input name="prPhoto41" id="prPhoto41" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(41);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage42" onClick="gotoPic(42);">
+                        <img  width="100" height="100" alt="Image" id="myImage42" onClick="gotoPic(42);">
                         <input name="prPhoto42" id="prPhoto42" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(42);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr><tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage43" onClick="gotoPic(43);">
+                        <img  width="100" height="100" alt="Image" id="myImage43" onClick="gotoPic(43);">
                         <input name="prPhoto43" id="prPhoto43" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(43);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage44"  onClick="gotoPic(44);">
+                        <img  width="100" height="100" alt="Image" id="myImage44"  onClick="gotoPic(44);">
                         <input name="prPhoto44" id="prPhoto44" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(44);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage45"  onClick="gotoPic(45);">
+                        <img  width="100" height="100" alt="Image" id="myImage45"  onClick="gotoPic(45);">
                         <input name="prPhoto45" id="prPhoto45" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(45);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage46"  onClick="gotoPic(46);">
+                        <img  width="100" height="100" alt="Image" id="myImage46"  onClick="gotoPic(46);">
                         <input name="prPhoto46" id="prPhoto46" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(46);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage47"  onClick="gotoPic(47);">
+                        <img  width="100" height="100" alt="Image" id="myImage47"  onClick="gotoPic(47);">
                         <input name="prPhoto47" id="prPhoto47" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(47);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage48" onClick="gotoPic(48);">
+                        <img  width="100" height="100" alt="Image" id="myImage48" onClick="gotoPic(48);">
                         <input name="prPhoto48" id="prPhoto48" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(48);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage49" onClick="gotoPic(49);">
+                        <img  width="100" height="100" alt="Image" id="myImage49" onClick="gotoPic(49);">
                         <input name="prPhoto49" id="prPhoto49" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(49);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
                       </tr>
                       <tr>
                         <td >
-                        <img src="images.png" width="100" height="100" alt="Image" id="myImage50" onClick="gotoPic(50);">
+                        <img  width="100" height="100" alt="Image" id="myImage50" onClick="gotoPic(50);">
                         <input name="prPhoto50" id="prPhoto50" type="hidden" value="" >
                         </td>
                          <td > <input type="submit"  onClick="cancelPicture(50);"   style="width:40px; height:40px; background-color:#09C; color:#FFF; font-size:20px" value=" X "   /</td>
-                      </tr>
-                      <tr>
+                      </tr>-->
+                     
                         
                     </table>
                     
@@ -4446,8 +4519,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <table width="100%" border="0">
   <tr>
     <td align="left">  <a onClick="page_imageSingle()" class="icon left" ></a></td>
-     <td width="40%">&nbsp;</td>
-    <td width="40%">&nbsp;</td>
+     <td >&nbsp;</td>
+    <td width="40%" style="font-size:16px; color:#FFF">Prescribed Product</td>
   </tr>
 </table>	
          
