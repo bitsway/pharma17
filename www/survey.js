@@ -1202,8 +1202,8 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -10594,7 +10594,23 @@ function prsearchItem() {
 			lis[i].style.display = 'none';
 	}
 }
-
+function prcancelSearch() {
+	$("#pritemSearch").val('')
+	var filter  = $("#pritemSearch").val().toUpperCase();
+	//alert (filter)
+	//var lis = document.getElementsById('mylist');
+	 var lis =document.getElementById("pr_id_lv").getElementsByTagName("li");
+	//var lis = document.getElementsByTagName('ul>li');
+	//alert(lis.length);
+	for (var i = 0; i < lis.length; i++) {
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+		
+		if (name.toUpperCase().indexOf(filter) == 0) 
+			lis[i].style.display = 'list-item';
+		else
+			lis[i].style.display = 'none';
+	}
+}
 
 //============================================
 function gotoPic(picNo) {
@@ -10615,8 +10631,10 @@ function gotoPic(picNo) {
 	image_show.src = prPic;
 	$("#myImagePrescription_show").val(prPic)
 	
-			
+	//alert (prPic)
+	if (prPic!=''){		
 	$.afui.loadContent("#imageSinglePage",true,true,'right');
+	}
 }
 function page_prItemPage(){
 	setPrProduct()
