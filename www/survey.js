@@ -1202,8 +1202,8 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
@@ -1425,7 +1425,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -5434,7 +5434,7 @@ function tourCancel_doc(){
 		$("#err_pendingRouteTour").html('Network Timeout. Please check your Internet connection..');
 	}
 	else{
-		//alert (localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
+		alert (localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep);
 		$.ajax(localStorage.base_url+'tourCancel_doc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&pendingRep='+localStorage.pendingRep,{
 
 								type: 'POST',
@@ -9834,7 +9834,7 @@ function page_PrescriptionCapture() {
 
 function setPicture(){
 localStorage.picFlag=0;
-for (j=0; j < 50; j++){
+for (j=0; j < 25; j++){
 		var picNo=parseInt(j)+1 
 		var imageDiv="myImage"+picNo
 		var imageText="prPhoto"+picNo
@@ -9904,7 +9904,7 @@ function setPrProduct(){
 				var pr_name_C=prArray_C[1];
 				
 				pr_tbl_C=pr_tbl_C+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin "  onClick="check_boxTrue_pr(\''+pr_id_C+'\')"  class="name"><font id="prName'+ pr_id_C +'" class="name" >'+ pr_name_C+'</font><input type="hidden" id="doc_pr_id'+pr_id_C+'" value="'+pr_id_C+'" > '+'</li>';		
-				var pName=$("#prName"+pr_id_C).html();
+				//var pName=$("#prName"+pr_id_C).html();
 				
 				}
 		localStorage.pr_tbl_C=pr_tbl_C		
@@ -10574,6 +10574,28 @@ function prescription_submit(){
 	}
 //$.afui.loadContent("#page_confirm_visit_success",true,true,'right');
 }
+
+
+function prsearchItem() {
+	//alert ('aaaaaaaaa ')		
+	//var filter = input.value.toUpperCase();
+	var filter  = $("#pritemSearch").val().toUpperCase();
+	//alert (filter)
+	//var lis = document.getElementsById('mylist');
+	 var lis =document.getElementById("pr_id_lv").getElementsByTagName("li");
+	//var lis = document.getElementsByTagName('ul>li');
+	//alert(lis.length);
+	for (var i = 0; i < lis.length; i++) {
+		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+		
+		if (name.toUpperCase().indexOf(filter) == 0) 
+			lis[i].style.display = 'list-item';
+		else
+			lis[i].style.display = 'none';
+	}
+}
+
+
 //============================================
 function gotoPic(picNo) {
 	var imageDiv="myImage"+picNo
@@ -10660,7 +10682,8 @@ function cameraSuccess(uri){
 }
 
 function cameraError(message){
-    alert("Canceled!"); 
+	var a=''
+    //alert("Canceled!"); 
 	
 }
 
