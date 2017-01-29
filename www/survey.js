@@ -243,7 +243,8 @@ $.afui.useOSThemes=false;
 			//$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
-		if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+		//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+		if (localStorage.synced=='YES') {
 			$.afui.loadContent("#pageHome",true,true,'right');
 		}
 		
@@ -375,14 +376,15 @@ function saved_Doc_set(i) {
 
 
 function homePage() {
-	var currentDate = new Date()
-	var day = currentDate.getDate();if(day.length==1)	{day="0" +day_1};
-	var month = currentDate.getMonth() + 1;if(month.length==1)	{month="0" +month};
-	var year = currentDate.getFullYear()
-	var today=  year + "-" + month + "-" + day
+	//var currentDate = new Date()
+//	var day = currentDate.getDate();if(day.length==1)	{day="0" +day_1};
+//	var month = currentDate.getMonth() + 1;if(month.length==1)	{month="0" +month};
+//	var year = currentDate.getFullYear()
+//	var today=  year + "-" + month + "-" + day
 							
-
-	if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+	//alert (localStorage.synced)
+	//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+	if (localStorage.synced=='YES') {
 		$.afui.loadContent("#pageHome",true,true,'right');
 	}
 	
@@ -1191,32 +1193,7 @@ function get_login() {
 	$.afui.loadContent("#login",true,true,'right');
 
 	}
-
-function check_user() {
-	
-	
-	var cid=$("#cid").val().toUpperCase();
-	cid=$.trim(cid);
-	
-	//Main
-
-	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	
-	
-	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	
-
-  // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
- 
-	
-	var user_id=$("#user_id").val();
-	var user_pass=$("#user_pass").val();
-	
-	user_id=$.trim(user_id);
-	
+function afterSync() {
 	var base_url='';
 	var photo_url='';
 	
@@ -1308,9 +1285,6 @@ function check_user() {
 		localStorage.sample_show_1='';
 		localStorage.ppm_show_1='';
 		
-		
-		
-		
 		localStorage.visit_save=''; //Saved visit data
 		localStorage.save_visit_limit=0;
 		localStorage.saved_data_submit = 0;
@@ -1352,6 +1326,35 @@ function check_user() {
 		localStorage.prProdID_Str=''
 		
 		localStorage.picFlag=0;
+}
+
+
+function check_user() {
+	
+	
+	var cid=$("#cid").val().toUpperCase();
+	cid=$.trim(cid);
+	
+	//Main
+
+	
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new_globe/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://a006.yeapps.com/gpl/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+	
+	//var  apipath_base_photo_dm='http://c003.cloudapp.net/demo/syncmobile_417/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+
+  // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_20150502/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+ 
+	
+	var user_id=$("#user_id").val();
+	var user_pass=$("#user_pass").val();
+	
+	user_id=$.trim(user_id);
+	
+	
 		//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -1410,7 +1413,7 @@ function check_user() {
 							localStorage.cid=cid;
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
-							localStorage.synced='NO'
+							//localStorage.synced='NO'
 							
 							
 							
@@ -1447,7 +1450,8 @@ function check_user() {
 											$("#error_login").html(resultArray[1]);
 										}
 										else if (resultArray[0]=='SUCCESS'){
-													//alert (resultArray)
+													afterSync();
+													
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
 													//alert (resultArray[2]);
@@ -8809,10 +8813,10 @@ function page_notice() {
 	$("#notice").html('');
 	$("#wait_image_notice").show();
 	$("#error_notice").html('');
-	//alert (client);
-	$("#error_noticeTxt").val(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccodlocalStore);
+	//alert (localStorage.synccode);
+	$("#error_noticeTxt").val(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	// ajax-------
-	//alert (localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccodlocalStore)
+	//alert (localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 			$.ajax(localStorage.report_url+'notice_report?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 
 								type: 'POST',
