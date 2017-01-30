@@ -1404,7 +1404,7 @@ function check_user() {
 							localStorage.photo_url='';
 							localStorage.photo_submit_url='';
 //							--------------------------
-							afterSync();
+							
 							localStorage.base_url=base_url;
 							localStorage.photo_url=photo_url;
 							localStorage.photo_submit_url=photo_submit_url;
@@ -1452,7 +1452,7 @@ function check_user() {
 										}
 										else if (resultArray[0]=='SUCCESS'){
 													
-													
+													afterSync();
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
 													//alert (resultArray[2]);
