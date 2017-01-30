@@ -1363,9 +1363,7 @@ function check_user() {
 		$("#error_login").html("Required User ID and Password");	
 	}else{
 		//-----------------
-		localStorage.base_url='';
-		localStorage.photo_url='';
-		localStorage.photo_submit_url='';
+		
 		
 		//alert(apipath_base_photo_dm);
 		$("#loginButton").hide();
@@ -1402,6 +1400,9 @@ function check_user() {
 							$("#error_login").html('Base URL not available');	
 						}
 						else{
+							localStorage.base_url='';
+							localStorage.photo_url='';
+							localStorage.photo_submit_url='';
 //							--------------------------
 							afterSync();
 							localStorage.base_url=base_url;
