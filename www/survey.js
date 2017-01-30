@@ -1197,9 +1197,9 @@ function afterSync() {
 	var base_url='';
 	var photo_url='';
 	
-		localStorage.base_url='';
-		localStorage.photo_url='';
-		localStorage.photo_submit_url='';
+		//localStorage.base_url='';
+//		localStorage.photo_url='';
+//		localStorage.photo_submit_url='';
 		
 
 		localStorage.marketListStr='';
